@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private Locker</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#111;color:white}
+.container{max-width:700px;margin:auto;padding:25px}
+.card{background:#1d1d1d;padding:25px;border-radius:18px;margin-top:40px}
+input,button{width:100%;padding:13px;margin:8px 0;border-radius:10px;border:0}
+button{background:#fff;color:#111;font-weight:bold}
+.hidden{display:none}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:20px}
+.photo{background:#222;border-radius:12px;overflow:hidden}
+.photo img{width:100%;display:block}
+.delete{background:#d33;color:white;border-radius:0}
+h1{text-align:center}
+#status{text-align:center;margin:10px}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div id="login" class="card">
+<h1>🔐 Private Locker</h1>
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+<p id="status"></p>
+</div>
+
+<div id="app" class="hidden">
+<h1>🖼️ My Private Photos</h1>
+
+<input id="file" type="file" accept="image/*">
+<button onclick="uploadPhoto()">Upload Photo</button>
+<button onclick="logout()">Logout</button>
+
+<p id="appStatus"></p>
+<div id="gallery" class="gallery"></div>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://yhsmupqodypzjpehuaow.supabase.co";
+const SUPABASE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+const BUCKET = "MOtki Ghaltu";
+
+async function login(){
+  const email=document.getElementById("email").value;
+  const password=document.getElementById("password").value;
+
+  const {error}=await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if(error){
+    document.getElementById("status").textContent=error.message;
+    return;
+  }
+
+  showApp();
+  loadPhotos();
+}
+
+async function logout(){
+  await supabaseClient.auth.signOut();
+  location.reload();
+}
+
+function showApp(){
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+}
+
+async function uploadPhoto(){
+  const file=document.getElementById("file").files[0];
+
+  if(!file){
+    document.getElementById("appStatus").textContent="Select a photo first.";
+    return;
+  }
+
+  const user=(await supabaseClient.auth.getUser()).data.user;
+
+  if(!user){
+    alert("Please login first.");
+    return;
+  }
+
+  const path=user.id+"/"+Date.now()+"_"+file.name;
+
+  const {error}=await supabaseClient.storage
+    .from(BUCKET)
+    .upload(path,file);
+
+  if(error){
+    document.getElementById("appStatus").textContent=error.message;
+    return;
+  }
+
+  document.getElementById("appStatus").textContent="Photo uploaded.";
+  document.getElementById("file").value="";
+  loadPhotos();
+}
+
+async function loadPhotos(){
+  const user=(await supabaseClient.auth.getUser()).data.user;
+  if(!user)return;
+
+  const {data,error}=await supabaseClient.storage
+    .from(BUCKET)
+    .list(user.id);
+
+  if(error){
+    document.getElementById("appStatus").textContent=error.message;
+    return;
+  }
+
+  const gallery=document.getElementById("gallery");
+  gallery.innerHTML="";
+
+  for(const item of data){
+    const path=user.id+"/"+item.name;
+
+    const {data:signed,error:signedError}=
+      await supabaseClient.storage
+      .from(BUCKET)
+      .createSignedUrl(path,3600);
+
+    if(signedError)continue;
+
+    const div=document.createElement("div");
+    div.className="photo";
+
+    const img=document.createElement("img");
+    img.src=signed.signedUrl;
+
+    const btn=document.createElement("button");
+    btn.className="delete";
+    btn.textContent="Delete";
+    btn.onclick=()=>deletePhoto(path);
+
+    div.appendChild(img);
+    div.appendChild(btn);
+    gallery.appendChild(div);
+  }
+}
+
+async function deletePhoto(path){
+  if(!confirm("Delete this photo?"))return;
+
+  const {error}=await supabaseClient.storage
+    .from(BUCKET)
+    .remove([path]);
+
+  if(error){
+    alert(error.message);
+    return;
+  }
+
+  loadPhotos();
+}
+
+supabaseClient.auth.getSession().then(({data})=>{
+  if(data.session){
+    showApp();
+    loadPhotos();
+  }
+});
+</script>
+
+</body>
+</html>
