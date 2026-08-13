@@ -1,152 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOtki 🫀 Ghaltu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>MOtki 🫀 Ghaltu</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      margin: 0;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Arial,sans-serif;
+  color:white;
+  background:
+    radial-gradient(circle at 15% 20%,#8b2cff55,transparent 30%),
+    radial-gradient(circle at 85% 80%,#ff3f9f55,transparent 30%),
+    linear-gradient(135deg,#17002b,#07000f);
+}
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
+.hearts{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:.18;
+}
 
-    .card {
-      background: #1d1d1d;
-      padding: 25px;
-      border-radius: 18px;
-      margin-top: 40px;
-    }
+.hearts span{
+  position:absolute;
+  font-size:35px;
+  animation:float 8s linear infinite;
+}
 
-    h1 {
-      text-align: center;
-    }
+.hearts span:nth-child(1){left:5%;animation-delay:0s}
+.hearts span:nth-child(2){left:20%;animation-delay:2s}
+.hearts span:nth-child(3){left:40%;animation-delay:4s}
+.hearts span:nth-child(4){left:65%;animation-delay:1s}
+.hearts span:nth-child(5){left:85%;animation-delay:3s}
 
-    input,
-    button {
-      width: 100%;
-      padding: 14px;
-      margin: 7px 0;
-      border: none;
-      border-radius: 10px;
-      font-size: 15px;
-    }
+@keyframes float{
+  from{transform:translateY(110vh) rotate(0deg)}
+  to{transform:translateY(-120px) rotate(360deg)}
+}
 
-    button {
-      background: white;
-      color: black;
-      font-weight: bold;
-    }
+.container{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:850px;
+  margin:auto;
+  padding:25px 15px;
+}
 
-    button:active {
-      transform: scale(.98);
-    }
+.card{
+  background:#ffffff12;
+  border:1px solid #ffffff25;
+  backdrop-filter:blur(14px);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:0 15px 50px #0008;
+}
 
-    .hidden {
-      display: none;
-    }
+.logo{
+  text-align:center;
+  font-size:30px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
 
-    #status,
-    #appStatus {
-      text-align: center;
-      margin: 12px 0;
-    }
+.subtitle{
+  text-align:center;
+  opacity:.7;
+  margin-bottom:25px;
+}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 20px;
-    }
+input,button{
+  width:100%;
+  padding:14px;
+  margin:7px 0;
+  border:0;
+  border-radius:13px;
+  font-size:15px;
+}
 
-    .photo {
-      background: #222;
-      border-radius: 12px;
-      overflow: hidden;
-    }
+input{
+  background:#ffffff12;
+  color:white;
+  border:1px solid #ffffff25;
+}
 
-    .photo img {
-      width: 100%;
-      display: block;
-    }
+input::placeholder{
+  color:#ffffff80;
+}
 
-    .delete {
-      background: #d33;
-      color: white;
-      border-radius: 0;
-      margin: 0;
-    }
+button{
+  background:white;
+  color:#160020;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .logout {
-      background: #333;
-      color: white;
-    }
-  </style>
+button:hover{
+  opacity:.9;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.status{
+  text-align:center;
+  min-height:20px;
+  margin:10px 0;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+
+.photo{
+  background:#ffffff10;
+  border:1px solid #ffffff20;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.photo img{
+  width:100%;
+  display:block;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+.photo-buttons{
+  display:flex;
+  gap:5px;
+  padding:7px;
+}
+
+.photo-buttons button{
+  margin:0;
+  padding:10px 5px;
+}
+
+.download{
+  background:#8d4dff;
+  color:white;
+}
+
+.delete{
+  background:#e63956;
+  color:white;
+}
+
+.owner-box{
+  margin-top:15px;
+  padding-top:15px;
+  border-top:1px solid #ffffff20;
+}
+
+.small{
+  font-size:12px;
+  opacity:.6;
+  text-align:center;
+  margin-top:15px;
+}
+
+@media(max-width:500px){
+  .gallery{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .logo{
+    font-size:25px;
+  }
+}
+</style>
 </head>
 
 <body>
 
+<div class="hearts">
+  <span>💜</span>
+  <span>🫀</span>
+  <span>💗</span>
+  <span>💜</span>
+  <span>💕</span>
+</div>
+
 <div class="container">
 
-  <!-- LOGIN -->
-  <div id="loginBox" class="card">
-    <h1>🔐 Private Locker</h1>
+  <!-- WEBSITE PASSWORD -->
+  <div id="passwordScreen" class="card">
+    <div class="logo">MOtki 🫀 Ghaltu</div>
+    <div class="subtitle">Private Photo Locker 💜</div>
 
     <input
-      id="email"
-      type="email"
-      placeholder="Email"
-    >
-
-    <input
-      id="password"
+      id="sitePassword"
       type="password"
-      placeholder="Password"
+      placeholder="Enter password"
+      autocomplete="off"
     >
 
-    <button onclick="login()">Login</button>
+    <button onclick="unlockWebsite()">
+      🔐 Enter
+    </button>
 
-    <p id="status"></p>
+    <div id="passwordStatus" class="status"></div>
+
+    <div class="small">
+      Enter the password to view the gallery
+    </div>
   </div>
 
 
-  <!-- APP -->
-  <div id="appBox" class="hidden">
+  <!-- GALLERY -->
+  <div id="galleryScreen" class="hidden">
 
     <div class="card">
-      <h1>🖼️ Private Photos</h1>
 
-      <input
-        id="photoFile"
-        type="file"
-        accept="image/*"
-      >
+      <div class="logo">MOtki 🫀 Ghaltu</div>
+      <div class="subtitle">💜 My Private Gallery 💜</div>
 
-      <button onclick="uploadPhoto()">
-        ⬆️ Upload Photo
+      <div id="ownerControls" class="hidden owner-box">
+
+        <input
+          id="photoFile"
+          type="file"
+          accept="image/*"
+        >
+
+        <button onclick="uploadPhoto()">
+          ⬆️ Upload Photo
+        </button>
+
+        <button onclick="ownerLogout()">
+          🚪 Owner Logout
+        </button>
+
+        <div id="uploadStatus" class="status"></div>
+
+      </div>
+
+      <div id="galleryStatus" class="status">
+        Loading photos...
+      </div>
+
+      <div id="gallery" class="gallery"></div>
+
+      <button onclick="logoutViewer()">
+        🔒 Lock Gallery
       </button>
 
-      <button class="logout" onclick="logout()">
-        🚪 Logout
-      </button>
-
-      <p id="appStatus"></p>
     </div>
 
-    <div id="gallery" class="gallery"></div>
+  </div>
 
+
+  <!-- OWNER LOGIN -->
+  <div id="ownerLoginScreen" class="hidden">
+    <div class="card">
+
+      <div class="logo">👑 Owner Login</div>
+
+      <input
+        id="ownerEmail"
+        type="email"
+        placeholder="Owner email"
+      >
+
+      <input
+        id="ownerPassword"
+        type="password"
+        placeholder="Owner password"
+      >
+
+      <button onclick="ownerLogin()">
+        Login as Owner
+      </button>
+
+      <div id="ownerStatus" class="status"></div>
+
+      <button onclick="closeOwnerLogin()">
+        Back
+      </button>
+
+    </div>
   </div>
 
 </div>
@@ -157,245 +300,198 @@
 
 <script>
 
-  /* =========================
-     SUPABASE SETTINGS
-     ========================= */
+/* =================================
+   SUPABASE CONFIG
+   ================================= */
 
-  const SUPABASE_URL =
-    "https://yhsmupqodypzjpehuaow.supabase.co";
+const SUPABASE_URL =
+  "https://yhsmupqodypzjpehuaow.supabase.co";
 
-  const SUPABASE_KEY =
-    "sb_publishable_-wp0v9tq_CqtcxzSsT9Fgw_J4T0bB6S";
+const SUPABASE_KEY =
+  "sb_publishable_-wp0v9tq_CqtcxzSsT9Fgw_J4T0bB6S";
 
-  const BUCKET =
-    "MOtki Ghaltu";
+const BUCKET =
+  "MOtki Ghaltu";
+
+const OWNER_EMAIL =
+  "raybisha26@gmail.com";
+
+const VIEWER_PASSWORD =
+  "sabbis26";
 
 
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-  /* =========================
-     LOGIN
-     ========================= */
+/* =================================
+   WEBSITE PASSWORD
+   ================================= */
 
-  async function login() {
+function unlockWebsite(){
 
-    const email =
-      document.getElementById("email").value.trim();
+  const input =
+    document.getElementById("sitePassword").value;
 
-    const password =
-      document.getElementById("password").value;
+  const status =
+    document.getElementById("passwordStatus");
 
-    const status =
-      document.getElementById("status");
+  if(input !== VIEWER_PASSWORD){
 
-    status.textContent = "Logging in...";
+    status.textContent =
+      "❌ Wrong password";
 
-    const { error } =
-      await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
+    return;
+  }
+
+  status.textContent = "";
+
+  document
+    .getElementById("passwordScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("galleryScreen")
+    .classList.remove("hidden");
+
+  loadPhotos();
+}
+
+
+/* =================================
+   LOAD PHOTOS
+   ================================= */
+
+async function loadPhotos(){
+
+  const gallery =
+    document.getElementById("gallery");
+
+  const status =
+    document.getElementById("galleryStatus");
+
+  gallery.innerHTML = "";
+
+  status.textContent =
+    "Loading photos...";
+
+
+  const {data,error} =
+    await supabaseClient.storage
+      .from(BUCKET)
+      .list("",{
+        limit:100,
+        sortBy:{
+          column:"created_at",
+          order:"desc"
+        }
       });
 
-    if (error) {
-      status.textContent = error.message;
-      return;
-    }
 
-    status.textContent = "";
-
-    showApp();
-
-    loadPhotos();
-  }
-
-
-  /* =========================
-     SHOW APP
-     ========================= */
-
-  function showApp() {
-
-    document
-      .getElementById("loginBox")
-      .classList.add("hidden");
-
-    document
-      .getElementById("appBox")
-      .classList.remove("hidden");
-  }
-
-
-  /* =========================
-     LOGOUT
-     ========================= */
-
-  async function logout() {
-
-    await supabaseClient.auth.signOut();
-
-    location.reload();
-  }
-
-
-  /* =========================
-     UPLOAD PHOTO
-     ========================= */
-
-  async function uploadPhoto() {
-
-    const fileInput =
-      document.getElementById("photoFile");
-
-    const status =
-      document.getElementById("appStatus");
-
-    const file = fileInput.files[0];
-
-    if (!file) {
-      status.textContent =
-        "Please select a photo first.";
-      return;
-    }
-
-    const { data: userData } =
-      await supabaseClient.auth.getUser();
-
-    const user = userData.user;
-
-    if (!user) {
-      status.textContent =
-        "Please login first.";
-      return;
-    }
+  if(error){
 
     status.textContent =
-      "Uploading...";
+      "❌ " + error.message;
 
-    const filePath =
-      user.id + "/" +
-      Date.now() + "_" +
-      file.name;
-
-    const { error } =
-      await supabaseClient.storage
-        .from(BUCKET)
-        .upload(filePath, file);
-
-    if (error) {
-      status.textContent =
-        error.message;
-      return;
-    }
-
-    status.textContent =
-      "Photo uploaded successfully.";
-
-    fileInput.value = "";
-
-    loadPhotos();
+    return;
   }
 
 
-  /* =========================
-     LOAD PHOTOS
-     ========================= */
+  if(!data || data.length === 0){
 
-  async function loadPhotos() {
+    status.textContent =
+      "No photos yet.";
 
-    const { data: userData } =
-      await supabaseClient.auth.getUser();
-
-    const user = userData.user;
-
-    if (!user) {
-      return;
-    }
-
-    const gallery =
-      document.getElementById("gallery");
-
-    gallery.innerHTML =
-      "<p>Loading photos...</p>";
+    return;
+  }
 
 
-    const { data, error } =
-      await supabaseClient.storage
+  status.textContent = "";
+
+
+  for(const file of data){
+
+    if(!file.name) continue;
+
+
+    const {data:urlData,error:urlError} =
+      supabaseClient.storage
         .from(BUCKET)
-        .list(user.id, {
-          limit: 100,
-          sortBy: {
-            column: "created_at",
-            order: "desc"
-          }
-        });
+        .getPublicUrl(file.name);
 
 
-    if (error) {
-
-      gallery.innerHTML =
-        "<p>" + error.message + "</p>";
-
-      return;
-    }
+    if(urlError) continue;
 
 
-    gallery.innerHTML = "";
+    const box =
+      document.createElement("div");
+
+    box.className =
+      "photo";
 
 
-    if (!data || data.length === 0) {
+    const img =
+      document.createElement("img");
 
-      gallery.innerHTML =
-        "<p>No photos yet.</p>";
+    img.src =
+      urlData.publicUrl;
 
-      return;
-    }
-
-
-    for (const file of data) {
-
-      if (!file.name) {
-        continue;
-      }
-
-      const path =
-        user.id + "/" + file.name;
+    img.loading =
+      "lazy";
 
 
-      const { data: signedData, error: signedError } =
-        await supabaseClient.storage
-          .from(BUCKET)
-          .createSignedUrl(
-            path,
-            3600
-          );
+    const buttons =
+      document.createElement("div");
+
+    buttons.className =
+      "photo-buttons";
 
 
-      if (signedError) {
-        continue;
-      }
+    const download =
+      document.createElement("button");
+
+    download.className =
+      "download";
+
+    download.textContent =
+      "⬇️ Download";
 
 
-      const box =
-        document.createElement("div");
+    download.onclick =
+      function(){
 
-      box.className =
-        "photo";
+        const link =
+          document.createElement("a");
+
+        link.href =
+          urlData.publicUrl;
+
+        link.download =
+          file.name;
+
+        link.target =
+          "_blank";
+
+        link.click();
+      };
 
 
-      const img =
-        document.createElement("img");
+    buttons.appendChild(download);
 
-      img.src =
-        signedData.signedUrl;
 
-      img.loading =
-        "lazy";
+    /* DELETE BUTTON ONLY FOR OWNER */
 
+    const owner =
+      document
+        .getElementById("ownerControls")
+        .classList
+        .contains("hidden") === false;
+
+
+    if(owner){
 
       const deleteButton =
         document.createElement("button");
@@ -408,74 +504,302 @@
 
 
       deleteButton.onclick =
-        function () {
-          deletePhoto(path);
+        function(){
+          deletePhoto(file.name);
         };
 
 
-      box.appendChild(img);
-
-      box.appendChild(deleteButton);
-
-      gallery.appendChild(box);
+      buttons.appendChild(deleteButton);
     }
+
+
+    box.appendChild(img);
+    box.appendChild(buttons);
+
+    gallery.appendChild(box);
+  }
+}
+
+
+/* =================================
+   OWNER LOGIN
+   ================================= */
+
+async function ownerLogin(){
+
+  const email =
+    document.getElementById("ownerEmail").value.trim();
+
+  const password =
+    document.getElementById("ownerPassword").value;
+
+  const status =
+    document.getElementById("ownerStatus");
+
+
+  if(email !== OWNER_EMAIL){
+
+    status.textContent =
+      "❌ Owner account only.";
+
+    return;
   }
 
 
-  /* =========================
-     DELETE PHOTO
-     ========================= */
-
-  async function deletePhoto(path) {
-
-    const confirmDelete =
-      confirm(
-        "Delete this photo?"
-      );
-
-    if (!confirmDelete) {
-      return;
-    }
+  status.textContent =
+    "Logging in...";
 
 
-    const { error } =
-      await supabaseClient.storage
-        .from(BUCKET)
-        .remove([path]);
+  const {error} =
+    await supabaseClient.auth
+      .signInWithPassword({
+        email:email,
+        password:password
+      });
 
 
-    if (error) {
+  if(error){
 
-      alert(error.message);
+    status.textContent =
+      "❌ " + error.message;
 
-      return;
-    }
-
-
-    loadPhotos();
+    return;
   }
 
 
-  /* =========================
-     CHECK LOGIN SESSION
-     ========================= */
+  document
+    .getElementById("ownerLoginScreen")
+    .classList.add("hidden");
 
-  async function checkSession() {
+  document
+    .getElementById("galleryScreen")
+    .classList.remove("hidden");
 
-    const { data } =
-      await supabaseClient.auth.getSession();
+  document
+    .getElementById("ownerControls")
+    .classList.remove("hidden");
 
 
-    if (data.session) {
+  loadPhotos();
+}
 
-      showApp();
 
-      loadPhotos();
-    }
+/* =================================
+   UPLOAD
+   ================================= */
+
+async function uploadPhoto(){
+
+  const fileInput =
+    document.getElementById("photoFile");
+
+  const status =
+    document.getElementById("uploadStatus");
+
+  const file =
+    fileInput.files[0];
+
+
+  if(!file){
+
+    status.textContent =
+      "Select a photo first.";
+
+    return;
   }
 
 
-  checkSession();
+  const {data:userData} =
+    await supabaseClient.auth.getUser();
+
+  const user =
+    userData.user;
+
+
+  if(!user || user.email !== OWNER_EMAIL){
+
+    status.textContent =
+      "❌ Owner access required.";
+
+    return;
+  }
+
+
+  status.textContent =
+    "Uploading...";
+
+
+  const fileName =
+    Date.now() + "_" +
+    file.name;
+
+
+  const {error} =
+    await supabaseClient.storage
+      .from(BUCKET)
+      .upload(fileName,file);
+
+
+  if(error){
+
+    status.textContent =
+      "❌ " + error.message;
+
+    return;
+  }
+
+
+  status.textContent =
+    "✅ Uploaded.";
+
+  fileInput.value = "";
+
+  loadPhotos();
+}
+
+
+/* =================================
+   DELETE
+   ================================= */
+
+async function deletePhoto(fileName){
+
+  if(!confirm("Delete this photo?"))
+    return;
+
+
+  const {data:userData} =
+    await supabaseClient.auth.getUser();
+
+  const user =
+    userData.user;
+
+
+  if(!user || user.email !== OWNER_EMAIL){
+
+    alert("Owner access required.");
+
+    return;
+  }
+
+
+  const {error} =
+    await supabaseClient.storage
+      .from(BUCKET)
+      .remove([fileName]);
+
+
+  if(error){
+
+    alert(error.message);
+
+    return;
+  }
+
+
+  loadPhotos();
+}
+
+
+/* =================================
+   OWNER LOGOUT
+   ================================= */
+
+async function ownerLogout(){
+
+  await supabaseClient.auth.signOut();
+
+  document
+    .getElementById("ownerControls")
+    .classList.add("hidden");
+
+  loadPhotos();
+}
+
+
+/* =================================
+   OWNER LOGIN BUTTON
+   ================================= */
+
+/*
+   Long-press / triple click on title
+   opens owner login.
+*/
+
+let taps = 0;
+
+document
+  .querySelector(".logo")
+  .addEventListener("click",function(){
+
+    taps++;
+
+    if(taps >= 3){
+
+      taps = 0;
+
+      document
+        .getElementById("galleryScreen")
+        .classList.add("hidden");
+
+      document
+        .getElementById("ownerLoginScreen")
+        .classList.remove("hidden");
+    }
+
+    setTimeout(()=>{
+      taps = 0;
+    },700);
+
+  });
+
+
+function closeOwnerLogin(){
+
+  document
+    .getElementById("ownerLoginScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("galleryScreen")
+    .classList.remove("hidden");
+}
+
+
+/* =================================
+   LOCK
+   ================================= */
+
+function logoutViewer(){
+
+  document
+    .getElementById("galleryScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("passwordScreen")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("sitePassword")
+    .value = "";
+
+}
+
+
+/* =================================
+   ENTER KEY
+   ================================= */
+
+document
+  .getElementById("sitePassword")
+  .addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+      unlockWebsite();
+    }
+
+  });
 
 </script>
 
