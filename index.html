@@ -2,71 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MOtki 🫀 Ghaltu</title>
 
 <style>
 *{box-sizing:border-box}
-
 body{
   margin:0;
   min-height:100vh;
   font-family:Arial,sans-serif;
-  background:
-    radial-gradient(circle at 10% 10%,#9b27ff55,transparent 30%),
-    radial-gradient(circle at 90% 90%,#ff3b9d55,transparent 30%),
-    linear-gradient(145deg,#100019,#21002e,#09000f);
   color:#fff;
+  background:
+    radial-gradient(circle at 15% 15%,#9b35ff55,transparent 30%),
+    radial-gradient(circle at 85% 85%,#ff3d9d55,transparent 30%),
+    linear-gradient(145deg,#100018,#26002f,#08000d);
 }
-
 button,input{font:inherit}
-
 .hidden{display:none!important}
 
-.hearts{
-  position:fixed;
-  inset:0;
-  overflow:hidden;
-  pointer-events:none;
-  opacity:.12;
-  z-index:0;
-}
-
-.hearts span{
-  position:absolute;
-  font-size:35px;
-  animation:heartFloat 9s linear infinite;
-}
-
-.hearts span:nth-child(1){left:5%;animation-delay:0s}
+.hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;opacity:.13}
+.hearts span{position:absolute;font-size:35px;animation:float 9s linear infinite}
+.hearts span:nth-child(1){left:5%}
 .hearts span:nth-child(2){left:25%;animation-delay:2s}
-.hearts span:nth-child(3){left:48%;animation-delay:4s}
-.hearts span:nth-child(4){left:70%;animation-delay:1s}
+.hearts span:nth-child(3){left:50%;animation-delay:4s}
+.hearts span:nth-child(4){left:72%;animation-delay:1s}
 .hearts span:nth-child(5){left:90%;animation-delay:3s}
-
-@keyframes heartFloat{
-  from{transform:translateY(110vh) rotate(0)}
-  to{transform:translateY(-120px) rotate(360deg)}
+@keyframes float{
+  from{transform:translateY(110vh)}
+  to{transform:translateY(-100px) rotate(360deg)}
 }
 
-/* PASSWORD */
-
-#lockScreen{
-  position:relative;
-  z-index:2;
+#lockScreen,.ownerScreen{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
+  position:relative;
+  z-index:5;
 }
 
-.lockCard{
+.card{
   width:100%;
-  max-width:370px;
-  padding:30px 22px;
+  max-width:380px;
+  padding:28px 22px;
   text-align:center;
-  border-radius:28px;
+  border-radius:26px;
   background:#ffffff12;
   border:1px solid #ffffff25;
   backdrop-filter:blur(18px);
@@ -74,55 +55,40 @@ button,input{font:inherit}
 }
 
 .logo{
-  font-size:29px;
-  font-weight:800;
-  margin-bottom:8px;
+  font-size:28px;
+  font-weight:bold;
+  cursor:pointer;
+  user-select:none;
 }
+.sub{opacity:.65;margin:8px 0 25px}
 
-.sub{
-  opacity:.65;
-  margin-bottom:25px;
-}
-
-.lockInput{
+input{
   width:100%;
-  padding:15px;
-  border-radius:15px;
+  padding:14px;
+  margin:6px 0;
+  border-radius:14px;
   border:1px solid #ffffff25;
-  outline:none;
   background:#ffffff12;
-  color:white;
-  text-align:center;
+  color:#fff;
+  outline:none;
 }
-
-.lockInput::placeholder{
-  color:#ffffff75;
-}
+input::placeholder{color:#ffffff70}
 
 .mainBtn{
   width:100%;
-  margin-top:12px;
   padding:14px;
+  margin-top:8px;
   border:0;
-  border-radius:15px;
-  background:white;
+  border-radius:14px;
+  background:#fff;
   color:#19001f;
   font-weight:bold;
 }
 
-.error{
-  color:#ff8eae;
-  margin-top:12px;
-  min-height:20px;
-}
+.status{text-align:center;padding:8px;min-height:20px}
+.error{color:#ff8da9;margin-top:10px}
 
-/* APP */
-
-#app{
-  position:relative;
-  z-index:2;
-  min-height:100vh;
-}
+#app{position:relative;z-index:2;min-height:100vh}
 
 .topbar{
   position:sticky;
@@ -131,72 +97,58 @@ button,input{font:inherit}
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:15px 16px;
-  background:#120018dd;
+  padding:14px 16px;
+  background:#120018e8;
   backdrop-filter:blur(16px);
   border-bottom:1px solid #ffffff15;
 }
 
-.title{
-  font-size:20px;
-  font-weight:bold;
-}
-
-.topMenu{
-  position:relative;
-}
+.title{font-size:20px;font-weight:bold}
 
 .menuBtn{
   width:42px;
   height:42px;
   border:0;
   border-radius:50%;
-  background:#ffffff14;
-  color:white;
+  background:#ffffff15;
+  color:#fff;
   font-size:25px;
 }
 
-.menuBox{
+.menu{
   position:absolute;
-  right:0;
-  top:50px;
-  width:190px;
+  right:15px;
+  top:58px;
+  width:170px;
   padding:8px;
-  border-radius:16px;
-  background:#21002fee;
+  border-radius:15px;
+  background:#21002ff5;
   border:1px solid #ffffff20;
   box-shadow:0 12px 35px #0009;
 }
-
-.menuBox button{
+.menu button{
   width:100%;
   padding:12px;
   border:0;
   border-radius:10px;
   background:transparent;
-  color:white;
+  color:#fff;
   text-align:left;
 }
 
-.menuBox button:hover{
-  background:#ffffff12;
-}
-
 .gallery{
-  padding:12px;
+  padding:10px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:3px;
 }
 
 .tile{
-  position:relative;
-  aspect-ratio:1/1;
+  aspect-ratio:1;
   overflow:hidden;
-  background:#ffffff0c;
+  background:#ffffff0b;
   cursor:pointer;
 }
-
 .tile img{
   width:100%;
   height:100%;
@@ -204,14 +156,22 @@ button,input{font:inherit}
   display:block;
 }
 
-.empty{
-  text-align:center;
-  padding:60px 20px;
-  opacity:.65;
+.ownerPanel{
+  padding:12px;
+  border-bottom:1px solid #ffffff15;
+  background:#ffffff08;
 }
+.ownerButtons{display:flex;gap:8px}
+.ownerButtons button{
+  flex:1;
+  padding:12px;
+  border:0;
+  border-radius:12px;
+}
+.upload{background:#fff;color:#18001d}
+.logout{background:#ffffff15;color:#fff}
 
-/* FULL SCREEN VIEWER */
-
+/* PHOTO VIEWER */
 .viewer{
   position:fixed;
   inset:0;
@@ -221,13 +181,11 @@ button,input{font:inherit}
   align-items:center;
   justify-content:center;
 }
-
 .viewer img{
   max-width:100%;
   max-height:100%;
   object-fit:contain;
 }
-
 .viewerTop{
   position:absolute;
   top:0;
@@ -236,207 +194,103 @@ button,input{font:inherit}
   z-index:5;
   display:flex;
   justify-content:space-between;
-  padding:15px;
-  background:linear-gradient(#000b,transparent);
+  padding:14px;
 }
-
-.circleBtn{
+.circle{
   width:44px;
   height:44px;
   border:0;
   border-radius:50%;
-  background:#ffffff18;
-  color:white;
-  font-size:23px;
+  background:#ffffff20;
+  color:#fff;
+  font-size:22px;
 }
-
 .viewerMenu{
   position:absolute;
-  right:15px;
   top:65px;
-  width:190px;
+  right:15px;
+  width:180px;
   padding:8px;
   border-radius:15px;
-  background:#171717f5;
+  background:#191919f5;
 }
-
 .viewerMenu button{
   width:100%;
   padding:13px;
   border:0;
-  border-radius:10px;
-  color:white;
   background:transparent;
+  color:#fff;
   text-align:left;
+  border-radius:10px;
 }
-
-.viewerMenu button:hover{
-  background:#ffffff15;
-}
-
-/* OWNER */
-
-.ownerPanel{
-  padding:15px;
-  background:#ffffff09;
-  border-bottom:1px solid #ffffff12;
-}
-
-.ownerPanel input{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #ffffff20;
-  background:#ffffff10;
-  color:white;
-}
-
-.ownerActions{
-  display:flex;
-  gap:8px;
-  margin-top:8px;
-}
-
-.ownerActions button{
-  flex:1;
-  padding:12px;
-  border:0;
-  border-radius:12px;
-  font-weight:bold;
-}
-
-.uploadBtn{
-  background:white;
-  color:#19001f;
-}
-
-.logoutBtn{
-  background:#ffffff15;
-  color:white;
-}
-
-.status{
-  text-align:center;
-  padding:8px;
-  min-height:20px;
-}
-
-.deleteBtn{
-  color:#ff6c8f!important;
-}
-
-@media(max-width:500px){
-  .gallery{
-    grid-template-columns:repeat(3,1fr);
-  }
-}
+.deleteOption{color:#ff6f91!important}
 </style>
 </head>
 
 <body>
 
 <div class="hearts">
-  <span>💜</span>
-  <span>🫀</span>
-  <span>💗</span>
-  <span>💜</span>
-  <span>💕</span>
+<span>💜</span><span>🫀</span><span>💗</span><span>💜</span><span>💕</span>
 </div>
 
-<!-- PASSWORD -->
-
-<section id="lockScreen">
-
-  <div class="lockCard">
-
+<!-- USER PASSWORD -->
+<div id="lockScreen">
+  <div class="card">
     <div class="logo">MOtki 🫀 Ghaltu</div>
+    <div class="sub">💜 Private Album</div>
 
-    <div class="sub">
-      💜 Private Album
-    </div>
-
-    <input
-      id="sitePassword"
-      class="lockInput"
+    <input id="sitePassword"
       type="password"
-      placeholder="Enter password"
-      autocomplete="off"
-    >
+      placeholder="Enter password">
 
     <button class="mainBtn" onclick="unlock()">
       🔐 Open Album
     </button>
 
     <div id="lockError" class="error"></div>
-
   </div>
+</div>
 
-</section>
 
+<!-- MAIN APP -->
+<div id="app" class="hidden">
 
-<!-- APP -->
+  <div class="topbar">
 
-<section id="app" class="hidden">
-
-  <header class="topbar">
-
-    <div class="title">
+    <!-- 3 TAP OWNER LOGIN -->
+    <div id="title"
+      class="title"
+      onclick="ownerTap()">
       MOtki 🫀 Ghaltu
     </div>
 
-    <div class="topMenu">
+    <div>
+      <button class="menuBtn" onclick="toggleMenu()">⋮</button>
 
-      <button class="menuBtn" onclick="toggleMainMenu()">
-        ⋮
-      </button>
-
-      <div id="mainMenu" class="menuBox hidden">
-
-        <button onclick="openOwnerLogin()">
-          👑 Owner Login
-        </button>
-
-        <button onclick="lockAlbum()">
-          🔒 Lock Album
-        </button>
-
+      <div id="menu" class="menu hidden">
+        <button onclick="lockAlbum()">🔒 Lock Album</button>
       </div>
-
     </div>
 
-  </header>
+  </div>
 
 
-  <!-- OWNER CONTROLS -->
-
+  <!-- OWNER ONLY -->
   <div id="ownerPanel" class="ownerPanel hidden">
 
-    <input
-      id="photoFile"
-      type="file"
-      accept="image/*"
-    >
+    <input id="photoFile" type="file" accept="image/*">
 
-    <div class="ownerActions">
-
-      <button
-        class="uploadBtn"
-        onclick="uploadPhoto()"
-      >
+    <div class="ownerButtons">
+      <button class="upload" onclick="uploadPhoto()">
         ⬆️ Upload
       </button>
 
-      <button
-        class="logoutBtn"
-        onclick="ownerLogout()"
-      >
+      <button class="logout" onclick="ownerLogout()">
         🚪 Logout
       </button>
-
     </div>
 
     <div id="uploadStatus" class="status"></div>
-
   </div>
 
 
@@ -444,100 +298,64 @@ button,input{font:inherit}
     Loading...
   </div>
 
-  <main id="gallery" class="gallery"></main>
-
-</section>
-
-
-<!-- FULL PHOTO VIEWER -->
-
-<div id="viewer" class="viewer hidden">
-
-  <div class="viewerTop">
-
-    <button
-      class="circleBtn"
-      onclick="closeViewer()"
-    >
-      ←
-    </button>
-
-    <button
-      class="circleBtn"
-      onclick="toggleViewerMenu()"
-    >
-      ⋮
-    </button>
-
-  </div>
-
-
-  <img id="viewerImage" src="" alt="Photo">
-
-
-  <div id="viewerMenu" class="viewerMenu hidden">
-
-    <button onclick="downloadCurrent()">
-      ⬇️ Download
-    </button>
-
-    <button
-      id="viewerDelete"
-      class="deleteBtn hidden"
-      onclick="deleteCurrent()"
-    >
-      🗑️ Delete
-    </button>
-
-  </div>
+  <div id="gallery" class="gallery"></div>
 
 </div>
 
 
+<!-- FULL PHOTO -->
+<div id="viewer" class="viewer hidden">
+
+  <div class="viewerTop">
+    <button class="circle" onclick="closeViewer()">←</button>
+    <button class="circle" onclick="toggleViewerMenu()">⋮</button>
+  </div>
+
+  <img id="viewerImage" src="" alt="Photo">
+
+  <div id="viewerMenu" class="viewerMenu hidden">
+
+    <button onclick="downloadPhoto()">
+      ⬇️ Download
+    </button>
+
+    <button id="deleteOption"
+      class="deleteOption hidden"
+      onclick="deletePhoto()">
+      🗑️ Delete
+    </button>
+
+  </div>
+</div>
+
+
 <!-- OWNER LOGIN -->
+<div id="ownerScreen" class="ownerScreen hidden">
 
-<div id="ownerLogin" class="lockScreen hidden">
+  <div class="card">
 
-  <div class="lockCard">
+    <div class="logo">👑 Owner Login</div>
+    <div class="sub">Only owner can manage photos</div>
 
-    <div class="logo">👑 Owner</div>
-
-    <div class="sub">
-      Owner Login
-    </div>
-
-    <input
-      id="ownerEmail"
-      class="lockInput"
+    <input id="ownerEmail"
       type="email"
-      placeholder="Owner email"
-    >
+      placeholder="Owner email">
 
-    <input
-      id="ownerPassword"
-      class="lockInput"
+    <input id="ownerPassword"
       type="password"
-      placeholder="Owner password"
-    >
+      placeholder="Owner password">
 
-    <button
-      class="mainBtn"
-      onclick="loginOwner()"
-    >
+    <button class="mainBtn" onclick="loginOwner()">
       Login
     </button>
 
     <div id="ownerError" class="error"></div>
 
-    <button
-      class="mainBtn"
-      onclick="closeOwnerLogin()"
-    >
+    <button class="mainBtn" onclick="closeOwnerLogin()">
       Back
     </button>
 
   </div>
-
 </div>
 
 
@@ -545,46 +363,43 @@ button,input{font:inherit}
 
 <script>
 
-/* =========================
-   SETTINGS
-========================= */
+/* ===== SUPABASE ===== */
 
 const SUPABASE_URL =
-  "https://yhsmupqodypzjpehuaow.supabase.co";
+"https://yhsmupqodypzjpehuaow.supabase.co";
 
+/* आफ्नो वास्तविक Publishable Key यहाँ राख */
 const SUPABASE_KEY =
-  "sb_publishable_-wp0v9tq_CqtcxzSsT9Fgw_J4T0bB6S";
+"PASTE_YOUR_REAL_PUBLISHABLE_KEY_HERE";
 
 const BUCKET =
-  "MOtki Ghaltu";
+"MOtki Ghaltu";
 
 const OWNER_EMAIL =
-  "raybisha26@gmail.com";
+"raybisha26@gmail.com";
 
 const VIEWER_PASSWORD =
-  "sabbis26";
-
+"sabbis26";
 
 const supabaseClient =
-  window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 let currentFile = null;
+let taps = 0;
+let tapTimer = null;
 
 
-/* =========================
-   VIEWER PASSWORD
-========================= */
+/* ===== USER PASSWORD ===== */
 
 function unlock(){
 
-  const password =
+  const pass =
     document.getElementById("sitePassword").value;
 
-  if(password !== VIEWER_PASSWORD){
+  if(pass !== VIEWER_PASSWORD){
 
     document.getElementById("lockError").textContent =
       "❌ Wrong password";
@@ -602,9 +417,32 @@ function unlock(){
 }
 
 
-/* =========================
-   LOAD ALBUM
-========================= */
+/* ===== 3 TAP OWNER ===== */
+
+function ownerTap(){
+
+  taps++;
+
+  clearTimeout(tapTimer);
+
+  tapTimer = setTimeout(()=>{
+    taps = 0;
+  },700);
+
+  if(taps === 3){
+
+    taps = 0;
+
+    document.getElementById("app")
+      .classList.add("hidden");
+
+    document.getElementById("ownerScreen")
+      .classList.remove("hidden");
+  }
+}
+
+
+/* ===== LOAD ALBUM ===== */
 
 async function loadPhotos(){
 
@@ -615,10 +453,7 @@ async function loadPhotos(){
     document.getElementById("galleryStatus");
 
   gallery.innerHTML = "";
-
-  status.textContent =
-    "Loading photos...";
-
+  status.textContent = "Loading photos...";
 
   const {data,error} =
     await supabaseClient.storage
@@ -631,83 +466,58 @@ async function loadPhotos(){
         }
       });
 
-
   if(error){
-
-    status.textContent =
-      "❌ " + error.message;
-
+    status.textContent = "❌ " + error.message;
     return;
   }
-
 
   if(!data || data.length === 0){
-
-    status.textContent =
-      "No photos yet 💜";
-
+    status.textContent = "No photos yet 💜";
     return;
   }
 
-
   status.textContent = "";
-
 
   for(const file of data){
 
     if(!file.name) continue;
-
 
     const {data:urlData} =
       supabaseClient.storage
         .from(BUCKET)
         .getPublicUrl(file.name);
 
-
     const tile =
       document.createElement("div");
 
     tile.className = "tile";
 
-
     const img =
       document.createElement("img");
 
-    img.src =
-      urlData.publicUrl;
-
-    img.loading =
-      "lazy";
-
+    img.src = urlData.publicUrl;
+    img.loading = "lazy";
 
     tile.appendChild(img);
 
-
-    tile.onclick = () => {
-
+    tile.onclick = ()=>{
       openViewer(
         file.name,
         urlData.publicUrl
       );
-
     };
 
-
     gallery.appendChild(tile);
-
   }
-
 }
 
 
-/* =========================
-   PHOTO VIEWER
-========================= */
+/* ===== PHOTO VIEW ===== */
 
-function openViewer(fileName,url){
+function openViewer(name,url){
 
   currentFile = {
-    name:fileName,
+    name:name,
     url:url
   };
 
@@ -740,42 +550,29 @@ function toggleViewerMenu(){
 
   document.getElementById("viewerMenu")
     .classList.toggle("hidden");
-
 }
 
 
-/* =========================
-   DOWNLOAD
-========================= */
+/* ===== DOWNLOAD FOR USER ===== */
 
-function downloadCurrent(){
+function downloadPhoto(){
 
   if(!currentFile) return;
 
   const link =
     document.createElement("a");
 
-  link.href =
-    currentFile.url;
-
-  link.download =
-    currentFile.name;
-
-  link.target =
-    "_blank";
+  link.href = currentFile.url;
+  link.download = currentFile.name;
+  link.target = "_blank";
 
   document.body.appendChild(link);
-
   link.click();
-
   link.remove();
-
 }
 
 
-/* =========================
-   OWNER LOGIN
-========================= */
+/* ===== OWNER LOGIN ===== */
 
 async function loginOwner(){
 
@@ -790,7 +587,6 @@ async function loginOwner(){
   const error =
     document.getElementById("ownerError");
 
-
   if(email !== OWNER_EMAIL){
 
     error.textContent =
@@ -799,10 +595,7 @@ async function loginOwner(){
     return;
   }
 
-
-  error.textContent =
-    "Logging in...";
-
+  error.textContent = "Logging in...";
 
   const {error:loginError} =
     await supabaseClient.auth
@@ -810,7 +603,6 @@ async function loginOwner(){
         email:email,
         password:password
       });
-
 
   if(loginError){
 
@@ -820,42 +612,30 @@ async function loginOwner(){
     return;
   }
 
-
-  document.getElementById("ownerLogin")
+  document.getElementById("ownerScreen")
     .classList.add("hidden");
+
+  document.getElementById("app")
+    .classList.remove("hidden");
 
   document.getElementById("ownerPanel")
     .classList.remove("hidden");
-
-
-  updateDeleteButton();
 
   loadPhotos();
 }
 
 
-function openOwnerLogin(){
-
-  document.getElementById("mainMenu")
-    .classList.add("hidden");
-
-  document.getElementById("ownerLogin")
-    .classList.remove("hidden");
-
-}
-
-
 function closeOwnerLogin(){
 
-  document.getElementById("ownerLogin")
+  document.getElementById("ownerScreen")
     .classList.add("hidden");
 
+  document.getElementById("app")
+    .classList.remove("hidden");
 }
 
 
-/* =========================
-   OWNER CHECK
-========================= */
+/* ===== CHECK OWNER ===== */
 
 async function isOwner(){
 
@@ -866,77 +646,58 @@ async function isOwner(){
     data.user &&
     data.user.email === OWNER_EMAIL
   );
-
 }
 
 
 async function updateDeleteButton(){
 
-  const owner =
-    await isOwner();
+  const owner = await isOwner();
 
-  const btn =
-    document.getElementById("viewerDelete");
-
-  if(owner){
-
-    btn.classList.remove("hidden");
-
-  }else{
-
-    btn.classList.add("hidden");
-
-  }
-
+  document.getElementById("deleteOption")
+    .classList.toggle(
+      "hidden",
+      !owner
+    );
 }
 
 
-/* =========================
-   UPLOAD
-========================= */
+/* ===== UPLOAD OWNER ONLY ===== */
 
 async function uploadPhoto(){
 
   if(!(await isOwner())){
 
     alert("Owner access required.");
-
     return;
   }
-
 
   const input =
     document.getElementById("photoFile");
 
-  const file =
-    input.files[0];
-
+  const file = input.files[0];
 
   if(!file){
 
     alert("Choose a photo first.");
-
     return;
   }
-
 
   const status =
     document.getElementById("uploadStatus");
 
-  status.textContent =
-    "Uploading...";
+  status.textContent = "Uploading...";
 
-
-  const safeName =
+  const fileName =
     Date.now() + "_" +
-    file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
-
+    file.name.replace(
+      /[^a-zA-Z0-9._-]/g,
+      "_"
+    );
 
   const {error} =
     await supabaseClient.storage
       .from(BUCKET)
-      .upload(safeName,file);
-
+      .upload(fileName,file);
 
   if(error){
 
@@ -946,40 +707,27 @@ async function uploadPhoto(){
     return;
   }
 
-
-  status.textContent =
-    "✅ Uploaded";
-
+  status.textContent = "✅ Uploaded";
   input.value = "";
 
   loadPhotos();
-
 }
 
 
-/* =========================
-   DELETE
-========================= */
+/* ===== DELETE OWNER ONLY ===== */
 
-async function deleteCurrent(){
+async function deletePhoto(){
 
   if(!currentFile) return;
-
 
   if(!(await isOwner())){
 
     alert("Owner access required.");
-
     return;
   }
 
-
-  const yes =
-    confirm("Delete this photo?");
-
-
-  if(!yes) return;
-
+  if(!confirm("Delete this photo?"))
+    return;
 
   const {error} =
     await supabaseClient.storage
@@ -988,25 +736,18 @@ async function deleteCurrent(){
         currentFile.name
       ]);
 
-
   if(error){
 
     alert(error.message);
-
     return;
   }
 
-
   closeViewer();
-
   loadPhotos();
-
 }
 
 
-/* =========================
-   OWNER LOGOUT
-========================= */
+/* ===== OWNER LOGOUT ===== */
 
 async function ownerLogout(){
 
@@ -1015,30 +756,25 @@ async function ownerLogout(){
   document.getElementById("ownerPanel")
     .classList.add("hidden");
 
-  updateDeleteButton();
-
   loadPhotos();
-
 }
 
 
-/* =========================
-   MENU
-========================= */
+/* ===== 3 DOT MENU ===== */
 
-function toggleMainMenu(){
+function toggleMenu(){
 
-  document.getElementById("mainMenu")
+  document.getElementById("menu")
     .classList.toggle("hidden");
-
 }
 
 
-/* =========================
-   LOCK ALBUM
-========================= */
+/* ===== LOCK ===== */
 
 function lockAlbum(){
+
+  document.getElementById("menu")
+    .classList.add("hidden");
 
   document.getElementById("app")
     .classList.add("hidden");
@@ -1048,13 +784,10 @@ function lockAlbum(){
 
   document.getElementById("sitePassword")
     .value = "";
-
 }
 
 
-/* =========================
-   KEYBOARD
-========================= */
+/* ===== ENTER PASSWORD ===== */
 
 document.getElementById("sitePassword")
 .addEventListener("keydown",(e)=>{
@@ -1068,4 +801,4 @@ document.getElementById("sitePassword")
 </script>
 
 </body>
-  </html>
+</html>
