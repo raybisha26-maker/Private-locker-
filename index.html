@@ -797,7 +797,36 @@ document.getElementById("sitePassword")
   }
 
 });
+<script>
+let ownerTaps = 0;
+let ownerTapTimer;
 
+document.querySelector(".title").addEventListener("click", function () {
+  ownerTaps++;
+
+  clearTimeout(ownerTapTimer);
+
+  ownerTapTimer = setTimeout(() => {
+    ownerTaps = 0;
+  }, 1000);
+
+  if (ownerTaps === 3) {
+    ownerTaps = 0;
+
+    document.getElementById("app").classList.add("hidden");
+    clearTimeout(ownerTapTimer);
+
+  ownerTapTimer = setTimeout(() => {
+    ownerTaps = 0;
+  }, 1000);
+
+  if (ownerTaps === 3) {
+    ownerTaps = 0;
+
+    document.getElementById("app").classList.add("hidden");
+    document.getElementById("ownerScreen").classList.remove("hidden");
+  }
+});
 </script>
 
 </body>
