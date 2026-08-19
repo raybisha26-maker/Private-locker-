@@ -73,7 +73,6 @@
             background:white;
             color:#160020;
             font-weight:bold;
-            cursor:pointer;
         }
 
         .status{
@@ -196,9 +195,9 @@
                 Private Album
             </div>
 
-            <input 
-                id="userPassword" 
-                type="password" 
+            <input
+                id="userPassword"
+                type="password"
                 placeholder="Enter password"
             >
 
@@ -232,16 +231,16 @@
                 👑 Owner Login
             </div>
 
-            <input 
-                id="ownerEmail" 
-                type="email" 
-                value="bishalff211@gmail.com" 
+            <input
+                id="ownerEmail"
+                type="email"
+                value="bishalff211@gmail.com"
                 readonly
             >
 
-            <input 
-                id="ownerPassword" 
-                type="password" 
+            <input
+                id="ownerPassword"
+                type="password"
                 placeholder="Owner password"
             >
 
@@ -270,9 +269,9 @@
             </div>
 
             <div class="card">
-                <input 
-                    id="fileInput" 
-                    type="file" 
+                <input
+                    id="fileInput"
+                    type="file"
                     accept="image/*"
                 >
 
@@ -362,7 +361,8 @@ $("secretTitle").addEventListener("click", function(){
    OWNER LOGIN
 ============================ */
 
-function ownerLogin(){
+async function ownerLogin(){
+    const email = OWNER_EMAIL;
     const password = $("ownerPassword").value;
 
     if(!password){
@@ -377,39 +377,8 @@ function ownerLogin(){
 
     $("ownerScreen").classList.add("hidden");
     $("ownerPanel").classList.remove("hidden");
+
     loadOwnerGallery();
-}
-
-/* ============================
-   NAVIGATION & UI HELPERS
-============================ */
-
-function backToUser(){
-    $("ownerScreen").classList.add("hidden");
-    $("loginScreen").classList.remove("hidden");
-}
-
-function lockEverything(){
-    $("albumScreen").classList.add("hidden");
-    $("ownerPanel").classList.add("hidden");
-    $("ownerScreen").classList.add("hidden");
-    $("loginScreen").classList.remove("hidden");
-    $("userPassword").value = "";
-    $("ownerPassword").value = "";
-    $("userStatus").textContent = "";
-    $("ownerStatus").textContent = "";
-}
-
-function loadUserGallery(){
-    // User Gallery logic
-}
-
-function loadOwnerGallery(){
-    // Owner Gallery logic
-}
-
-function uploadPhoto(){
-    // Upload logic
 }
 
 </script>
