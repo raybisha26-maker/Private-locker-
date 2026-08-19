@@ -1,474 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Sabbu ❤️ - Surprise</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-    
+    <title>Happy Birthday My Love ❤️</title>
     <style>
         body {
-            font-family: 'Quicksand', sans-serif;
-            background: #fff0f3;
-            overflow-x: hidden;
-            touch-action: manipulation;
+            background-color: #ffe4e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
         }
-        
-        .font-handwriting { font-family: 'Dancing Script', cursive; }
-        .font-cute { font-family: 'Fredoka One', cursive; }
-
-        #treeCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .card {
+            background: white;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            border: 2px solid #ffafcc;
             z-index: 10;
         }
-
-        @keyframes pulse-glow {
-            0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,105,180,0.5)); }
-            50% { transform: scale(1.15); filter: drop-shadow(0 0 25px rgba(255,20,147,0.8)); }
-            100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,105,180,0.5)); }
-        }
-
-        .heart-pulse {
-            animation: pulse-glow 1.8s infinite ease-in-out;
-        }
-
-        @keyframes float-around {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-
-        .floating-badge {
-            animation: float-around 3s ease-in-out infinite;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 182, 193, 0.5);
-            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2);
-        }
-
-        .bow-container {
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .custom-btn {
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-            transition: all 0.3s ease;
-        }
-
-        .custom-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(255, 117, 140, 0.4);
-        }
+        h1 { color: #d63384; font-size: 2.5em; }
+        .nickname { font-size: 2em; color: #ff4d6d; font-weight: bold; }
+        .emoji-rain { font-size: 2em; margin-top: 20px; }
+        .heart { font-size: 80px; animation: beat 1s infinite; }
+        @keyframes beat { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
     </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center relative overflow-hidden select-none">
+<body>
 
-    <audio id="bgMusic" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-sunburst-241.mp3" type="audio/mp3">
-    </audio>
-
-    <div id="heartsContainer" class="fixed inset-0 pointer-events-none z-0"></div>
-
-    <div class="relative w-full max-w-md h-[100vh] flex flex-col justify-between items-center p-4 z-20">
-
-        <div class="text-center mt-4 z-30">
-            <span class="text-xs uppercase tracking-widest text-pink-500 font-bold bg-pink-100 px-3 py-1 rounded-full shadow-sm">
-                ✨ A little something, for you ✨
-            </span>
-            <h1 class="text-3xl font-cute text-pink-600 mt-2 flex items-center justify-center gap-2">
-                <span>Happy Birthday</span> 
-                <span class="text-red-500 animate-bounce">🎂🎉</span>
-            </h1>
-            <p class="text-sm text-gray-600 font-semibold italic mt-1">
-                For Mero Pyari <span class="text-pink-600 font-bold underline decoration-pink-400">Sabbu</span> 💖
-            </p>
-        </div>
-
-        <div id="stage1" class="w-full flex flex-col items-center justify-center my-auto z-30 transition-all duration-700">
-            
-            <div id="targetHeart" class="relative heart-pulse mb-12 cursor-pointer text-center">
-                <div class="text-7xl text-pink-500 drop-shadow-lg">💖</div>
-                <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-bold text-pink-600 whitespace-nowrap bg-white/80 px-2 py-0.5 rounded-full border border-pink-200">
-                    Shoot Me! 💘
-                </span>
-            </div>
-
-            <div id="bowArea" class="relative w-64 h-32 flex items-center justify-center bow-container">
-                <div id="pullText" class="absolute -top-8 text-xs font-bold text-pink-500 tracking-wider uppercase animate-pulse">
-                    🏹 Pull Arrow & Release!
-                </div>
-                <canvas id="bowCanvas" width="260" height="130" class="absolute top-0 left-0"></canvas>
-            </div>
-
-            <button id="tapShootBtn" class="mt-8 text-xs font-bold text-pink-600 bg-white/80 border border-pink-300 px-4 py-2 rounded-full shadow-md active:scale-95 transition">
-                👉 Click Here if Pulling is Hard 🎯
-            </button>
-        </div>
-
-        <div id="stage2" class="hidden w-full flex-col items-center justify-center my-auto z-30 transition-all duration-1000 opacity-0">
-            
-            <div class="flex flex-wrap justify-center gap-2 mb-4 w-full px-2">
-                <span class="floating-badge bg-pink-100 border border-pink-300 text-pink-700 text-xs px-3 py-1 rounded-full font-bold shadow-sm">
-                    🐷 Motki
-                </span>
-                <span class="floating-badge bg-rose-100 border border-rose-300 text-rose-700 text-xs px-3 py-1 rounded-full font-bold shadow-sm" style="animation-delay: 0.5s;">
-                    🐭 Musarni
-                </span>
-                <span class="floating-badge bg-purple-100 border border-purple-300 text-purple-700 text-xs px-3 py-1 rounded-full font-bold shadow-sm" style="animation-delay: 1s;">
-                    🧙‍♀️ Churel
-                </span>
-                <span class="floating-badge bg-red-100 border border-red-300 text-red-700 text-xs px-3 py-1 rounded-full font-bold shadow-sm" style="animation-delay: 1.5s;">
-                    👻 Bhootni
-                </span>
-            </div>
-
-            <div class="glass-card rounded-3xl p-6 w-full text-center relative overflow-hidden my-2">
-                <div class="text-4xl mb-2">🌸🎂🎁</div>
-                <h2 class="text-2xl font-cute text-pink-600 mb-2">
-                    Happy Birthday, Motki! 💖
-                </h2>
-                <p class="text-sm text-gray-700 leading-relaxed font-semibold">
-                    Happy Birthday mero Musarni 🐭! Timi jati nai <span class="text-purple-600 font-bold">Churel 🧙‍♀️</span> ra <span class="text-red-500 font-bold">Bhootni 👻</span> bhae pani, mero sabai bhanda pyari <span class="text-pink-600 font-bold">Sabbu 💖</span> timi nai hau. Always keep smiling, and stay happy! 🥰✨
-                </p>
-
-                <div class="mt-6 flex flex-col gap-2">
-                    <button id="surpriseBtn" class="custom-btn text-white text-xs font-bold py-3 px-6 rounded-full shadow-lg flex items-center justify-center gap-2">
-                        <span>💌 Tap for Secret Love Note</span>
-                        <i class="fa-solid fa-heart"></i>
-                    </button>
-                    <button id="musicToggle" class="bg-white text-pink-600 border border-pink-300 text-xs font-bold py-2 px-4 rounded-full shadow-sm hover:bg-pink-50 transition">
-                        🎵 Toggle Music (On/Off)
-                    </button>
-                </div>
-            </div>
-
-        </div>
-
-        <canvas id="treeCanvas"></canvas>
-
-        <div class="text-center mb-3 z-30">
-            <p class="text-[11px] text-pink-400 font-bold">
-                Made with ❤️ for Mero Sabbu | Always Yours 💕
-            </p>
-        </div>
-    </div>
-
-    <div id="secretModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-white rounded-3xl p-6 max-w-sm w-full text-center shadow-2xl relative border-4 border-pink-200 transform scale-90 transition-transform duration-300" id="modalCard">
-            <button id="closeModal" class="absolute top-3 right-4 text-gray-400 hover:text-pink-600 text-xl font-bold">
-                &times;
-            </button>
-            <div class="text-5xl my-2">👑💖</div>
-            <h3 class="text-xl font-cute text-pink-600 mb-2">To My Special Churel 🧙‍♀️</h3>
-            <div class="text-xs text-gray-600 space-y-2 text-left font-medium bg-pink-50 p-4 rounded-2xl border border-pink-100">
-                <p>👉 <b>Motki 🐷:</b> Jati khaye ni slim dekhine rog lagos!</p>
-                <p>👉 <b>Musarni 🐭:</b> Sadhai yestai cute tarika le malai satairakhu!</p>
-                <p>👉 <b>Sabbu 💖:</b> Timi mero life ko sabai bhanda best gift hau.</p>
-                <p>👉 <b>Birthday Wish 🎈:</b> May all your dreams come true this year! Love you endless amounts! 😘</p>
-            </div>
-            <button id="hugBtn" class="mt-4 w-full custom-btn text-white text-xs font-bold py-2.5 rounded-full shadow-md">
-                Send Virtual Hug & Kisses 🤗💋
-            </button>
-        </div>
+    <div class="card">
+        <div class="heart">❤️</div>
+        <h1>Happy Birthday!</h1>
+        <p>मेरो प्यारो</p>
+        <div id="nicknames" class="nickname">Loading...</div>
+        <div class="emoji-rain">🥰✨🎂🎉💖💕💗😍🎈🎁🎊🌹💘🍭🎀</div>
     </div>
 
     <script>
-        const stage1 = document.getElementById('stage1');
-        const stage2 = document.getElementById('stage2');
-        const targetHeart = document.getElementById('targetHeart');
-        const bowArea = document.getElementById('bowArea');
-        const bowCanvas = document.getElementById('bowCanvas');
-        const ctxBow = bowCanvas.getContext('2d');
-        const treeCanvas = document.getElementById('treeCanvas');
-        const ctxTree = treeCanvas.getContext('2d');
-        const bgMusic = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        const surpriseBtn = document.getElementById('surpriseBtn');
-        const secretModal = document.getElementById('secretModal');
-        const modalCard = document.getElementById('modalCard');
-        const closeModal = document.getElementById('closeModal');
-        const hugBtn = document.getElementById('hugBtn');
-        const tapShootBtn = document.getElementById('tapShootBtn');
-
-        let musicStarted = false;
-
-        function resizeCanvases() {
-            treeCanvas.width = window.innerWidth;
-            treeCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvases);
-        resizeCanvases();
-
-        function createFloatingHearts() {
-            const container = document.getElementById('heartsContainer');
-            const emojis = ['💖', '💕', '💗', '💓', '✨', '🌸', '🐭', '🐷'];
-            for (let i = 0; i < 20; i++) {
-                const heart = document.createElement('div');
-                heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                heart.className = 'absolute text-lg opacity-40 pointer-events-none';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.top = Math.random() * 100 + 'vh';
-                heart.style.animation = `float-around ${3 + Math.random() * 4}s ease-in-out infinite`;
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                container.appendChild(heart);
-            }
-        }
-        createFloatingHearts();
-
-        let isDragging = false;
-        let dragY = 0;
-        const startY = 65;
-
-        function drawBow(pullX = 0, pullY = 0) {
-            ctxBow.clearRect(0, 0, bowCanvas.width, bowCanvas.height);
-
-            ctxBow.beginPath();
-            ctxBow.strokeStyle = '#8B4513';
-            ctxBow.lineWidth = 6;
-            ctxBow.lineCap = 'round';
-            ctxBow.arc(130, -20, 90, 0.25 * Math.PI, 0.75 * Math.PI);
-            ctxBow.stroke();
-
-            ctxBow.beginPath();
-            ctxBow.strokeStyle = '#D2B48C';
-            ctxBow.lineWidth = 2;
-            ctxBow.moveTo(65, 45);
-            ctxBow.lineTo(130 + pullX, 45 + pullY);
-            ctxBow.lineTo(195, 45);
-            ctxBow.stroke();
-
-            ctxBow.beginPath();
-            ctxBow.strokeStyle = '#333';
-            ctxBow.lineWidth = 3;
-            ctxBow.moveTo(130 + pullX, 45 + pullY);
-            ctxBow.lineTo(130 + pullX, 45 + pullY - 45);
-            ctxBow.stroke();
-
-            ctxBow.fillStyle = '#ff4b2b';
-            ctxBow.font = '16px serif';
-            ctxBow.fillText('💖', 123 + pullX, 45 + pullY - 45);
-        }
-
-        drawBow();
-
-        function handleStart(e) {
-            isDragging = true;
-            if (!musicStarted) {
-                bgMusic.play().catch(() => {});
-                musicStarted = true;
-            }
-        }
-
-        function handleMove(e) {
-            if (!isDragging) return;
-            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-            const rect = bowCanvas.getBoundingClientRect();
-            let offsetY = clientY - rect.top - startY;
-            if (offsetY > 0 && offsetY < 50) {
-                dragY = offsetY;
-                drawBow(0, dragY);
-            }
-        }
-
-        function handleEnd() {
-            if (!isDragging) return;
-            isDragging = false;
-            if (dragY > 20) {
-                shootArrow();
-            } else {
-                drawBow(0, 0);
-            }
-        }
-
-        bowCanvas.addEventListener('mousedown', handleStart);
-        window.addEventListener('mousemove', handleMove);
-        window.addEventListener('mouseup', handleEnd);
-
-        bowCanvas.addEventListener('touchstart', handleStart);
-        window.addEventListener('touchmove', handleMove);
-        window.addEventListener('touchend', handleEnd);
-
-        tapShootBtn.addEventListener('click', () => {
-            if (!musicStarted) {
-                bgMusic.play().catch(() => {});
-                musicStarted = true;
-            }
-            shootArrow();
-        });
-
-        function shootArrow() {
-            let arrowY = 45;
-            const interval = setInterval(() => {
-                arrowY -= 15;
-                drawBow(0, arrowY);
-                if (arrowY < -150) {
-                    clearInterval(interval);
-                    triggerHeartHit();
-                }
-            }, 16);
-        }
-
-        function triggerHeartHit() {
-            targetHeart.style.transform = 'scale(1.8)';
-            targetHeart.style.opacity = '0';
-            targetHeart.style.transition = 'all 0.5s ease-out';
-
-            setTimeout(() => {
-                stage1.classList.add('hidden');
-                stage2.classList.remove('hidden');
-                setTimeout(() => {
-                    stage2.classList.remove('opacity-0');
-                    stage2.classList.add('opacity-100');
-                    startHeartTreeBloom();
-                }, 100);
-            }, 500);
-        }
-
-        class Branch {
-            constructor(x, y, length, angle, depth) {
-                this.x = x;
-                this.y = y;
-                this.length = length;
-                this.angle = angle;
-                this.depth = depth;
-                this.currLength = 0;
-            }
-
-            draw() {
-                const endX = this.x + Math.cos(this.angle) * this.currLength;
-                const endY = this.y + Math.sin(this.angle) * this.currLength;
-
-                ctxTree.beginPath();
-                ctxTree.moveTo(this.x, this.y);
-                ctxTree.lineTo(endX, endY);
-                ctxTree.strokeStyle = '#5a3d28';
-                ctxTree.lineWidth = Math.max(1, this.depth * 1.2);
-                ctxTree.lineCap = 'round';
-                ctxTree.stroke();
-
-                return { endX, endY };
-            }
-        }
-
-        let branches = [];
-        let heartLeaves = [];
-
-        function startHeartTreeBloom() {
-            const startX = treeCanvas.width / 2;
-            const startY = treeCanvas.height - 40;
-
-            branches.push(new Branch(startX, startY, 90, -Math.PI / 2, 8));
-
-            growTree();
-        }
-
-        function growTree() {
-            let growing = false;
-
-            for (let i = 0; i < branches.length; i++) {
-                let b = branches[i];
-                if (b.currLength < b.length) {
-                    b.currLength += 3;
-                    growing = true;
-                    const { endX, endY } = b.draw();
-
-                    if (b.currLength >= b.length && b.depth > 1) {
-                        branches.push(new Branch(endX, endY, b.length * 0.75, b.angle - 0.35, b.depth - 1));
-                        branches.push(new Branch(endX, endY, b.length * 0.75, b.angle + 0.35, b.depth - 1));
-                    }
-
-                    if (b.depth === 1 && b.currLength >= b.length) {
-                        for (let k = 0; k < 5; k++) {
-                            heartLeaves.push({
-                                x: endX + (Math.random() - 0.5) * 60,
-                                y: endY + (Math.random() - 0.5) * 60,
-                                size: 8 + Math.random() * 12,
-                                color: ['#ff4b2b', '#ff758c', '#ff7eb3', '#ffa07a'][Math.floor(Math.random() * 4)],
-                                scale: 0
-                            });
-                        }
-                    }
-                }
-            }
-
-            if (growing || heartLeaves.length === 0) {
-                requestAnimationFrame(growTree);
-            } else {
-                animateLeaves();
-            }
-        }
-
-        function animateLeaves() {
-            ctxTree.clearRect(0, 0, treeCanvas.width, treeCanvas.height);
-            branches.forEach(b => b.draw());
-
-            let bloomsDone = true;
-            heartLeaves.forEach(leaf => {
-                if (leaf.scale < 1) {
-                    leaf.scale += 0.05;
-                    bloomsDone = false;
-                }
-                ctxTree.save();
-                ctxTree.translate(leaf.x, leaf.y);
-                ctxTree.scale(leaf.scale, leaf.scale);
-                ctxTree.fillStyle = leaf.color;
-                ctxTree.font = `${leaf.size}px serif`;
-                ctxTree.fillText('❤️', 0, 0);
-                ctxTree.restore();
-            });
-
-            if (!bloomsDone) {
-                requestAnimationFrame(animateLeaves);
-            }
-        }
-
-        musicToggle.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                musicToggle.innerText = '🎵 Pause Music';
-            } else {
-                bgMusic.pause();
-                musicToggle.innerText = '🎵 Play Music';
-            }
-        });
-
-        surpriseBtn.addEventListener('click', () => {
-            secretModal.classList.remove('hidden');
-            setTimeout(() => {
-                secretModal.classList.remove('opacity-0');
-                modalCard.classList.remove('scale-90');
-                modalCard.classList.add('scale-100');
-            }, 10);
-        });
-
-        function closeModalFunc() {
-            secretModal.classList.add('opacity-0');
-            modalCard.classList.remove('scale-100');
-            modalCard.classList.add('scale-90');
-            setTimeout(() => {
-                secretModal.classList.add('hidden');
-            }, 300);
-        }
-
-        closeModal.addEventListener('click', closeModalFunc);
-        secretModal.addEventListener('click', (e) => {
-            if (e.target === secretModal) closeModalFunc();
-        });
-
-        hugBtn.addEventListener('click', () => {
-            alert('🤗 Hugs & Kisses Sent to Motki / Sabbu! 💋❤️');
-            closeModalFunc();
-        });
+        const names = ["Motki", "Musarni", "Sabbu", "Churelbi"];
+        let i = 0;
+        const display = document.getElementById('nicknames');
+        
+        setInterval(() => {
+            display.innerText = names[i];
+            i = (i + 1) % names.length;
+        }, 2000); // हरेक २ सेकेन्डमा नाम फेरिनेछ
     </script>
+
 </body>
 </html>
