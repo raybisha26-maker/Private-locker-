@@ -1,292 +1,488 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MOtki 🫀 Ghaltu</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        *{box-sizing:border-box}
+<title>MOtki 🫀 Ghaltu 💕</title>
 
-        body{
-            margin:0;
-            min-height:100vh;
-            font-family:Arial,sans-serif;
-            color:#fff;
-            background:
-                radial-gradient(circle at 15% 15%,#9b35ff55,transparent 30%),
-                radial-gradient(circle at 85% 85%,#ff3d9d55,transparent 30%),
-                linear-gradient(145deg,#100018,#26002f,#08000d);
-        }
+<style>
+*{
+    box-sizing:border-box;
+}
 
-        button,input{font:inherit}
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:#fff;
+    overflow-x:hidden;
 
-        .hidden{display:none!important}
+    background:
+        radial-gradient(circle at 15% 15%,#ff4f9a55,transparent 30%),
+        radial-gradient(circle at 85% 20%,#ff174455,transparent 28%),
+        radial-gradient(circle at 50% 90%,#a000ff55,transparent 35%),
+        linear-gradient(145deg,#16000e,#35001f,#09000d);
+}
 
-        .wrap{
-            max-width:480px;
-            margin:auto;
-            padding:25px 18px;
-        }
+button,input{
+    font:inherit;
+}
 
-        .title{
-            text-align:center;
-            font-size:29px;
-            font-weight:bold;
-            margin:12px 0;
-            user-select:none;
-        }
+button{
+    cursor:pointer;
+}
 
-        .subtitle{
-            text-align:center;
-            opacity:.7;
-            margin-bottom:25px;
-        }
+.hidden{
+    display:none!important;
+}
 
-        .card{
-            background:#ffffff10;
-            border:1px solid #ffffff20;
-            border-radius:20px;
-            padding:20px;
-            backdrop-filter:blur(12px);
-        }
+/* ROMANTIC WALLPAPER */
 
-        input,button{
-            width:100%;
-            padding:14px;
-            margin:7px 0;
-            border:0;
-            border-radius:13px;
-        }
+.love-bg{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+}
 
-        input{
-            background:#ffffff12;
-            color:white;
-            border:1px solid #ffffff25;
-        }
+.love-bg span{
+    position:absolute;
+    font-size:30px;
+    opacity:.22;
+    animation:loveFloat linear infinite;
+}
 
-        input::placeholder{
-            color:#ffffff80;
-        }
+.love-bg span:nth-child(1){
+    left:5%;
+    animation-duration:10s;
+}
 
-        button{
-            background:white;
-            color:#160020;
-            font-weight:bold;
-        }
+.love-bg span:nth-child(2){
+    left:18%;
+    animation-duration:13s;
+    animation-delay:2s;
+}
 
-        .status{
-            text-align:center;
-            min-height:20px;
-            margin:10px 0;
-        }
+.love-bg span:nth-child(3){
+    left:32%;
+    animation-duration:11s;
+    animation-delay:4s;
+}
 
-        .topbar{
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-        }
+.love-bg span:nth-child(4){
+    left:48%;
+    animation-duration:15s;
+    animation-delay:1s;
+}
 
-        .topbar .title{
-            flex:1;
-        }
+.love-bg span:nth-child(5){
+    left:64%;
+    animation-duration:12s;
+    animation-delay:5s;
+}
 
-        .menu{
-            width:45px;
-            padding:8px;
-            background:#ffffff15;
-            color:white;
-            font-size:25px;
-        }
+.love-bg span:nth-child(6){
+    left:78%;
+    animation-duration:14s;
+    animation-delay:3s;
+}
 
-        .gallery{
-            display:grid;
-            grid-template-columns:repeat(2,1fr);
-            gap:12px;
-            margin-top:20px;
-        }
+.love-bg span:nth-child(7){
+    left:91%;
+    animation-duration:10s;
+    animation-delay:6s;
+}
 
-        .photo{
-            background:#ffffff10;
-            border:1px solid #ffffff20;
-            border-radius:15px;
-            overflow:hidden;
-        }
+@keyframes loveFloat{
+    0%{
+        transform:translateY(110vh) rotate(0deg) scale(.7);
+    }
 
-        .photo img{
-            width:100%;
-            aspect-ratio:1/1;
-            object-fit:cover;
-            display:block;
-        }
+    50%{
+        transform:translateY(45vh) rotate(180deg) scale(1);
+    }
 
-        .photo-buttons{
-            display:flex;
-            gap:5px;
-            padding:7px;
-        }
+    100%{
+        transform:translateY(-120px) rotate(360deg) scale(.8);
+    }
+}
 
-        .photo-buttons button{
-            margin:0;
-            padding:10px 4px;
-            font-size:12px;
-        }
+/* MAIN */
 
-        .download{
-            background:#8d4dff;
-            color:white;
-        }
+.wrap{
+    max-width:480px;
+    margin:auto;
+    padding:22px 18px 40px;
+}
 
-        .delete{
-            background:#ff3d67;
-            color:white;
-        }
+.title{
+    text-align:center;
+    font-size:29px;
+    font-weight:bold;
+    margin:12px 0;
+    user-select:none;
 
-        .hearts{
-            position:fixed;
-            inset:0;
-            overflow:hidden;
-            pointer-events:none;
-            opacity:.13;
-            z-index:-1;
-        }
+    text-shadow:
+        0 0 10px #ff4f9a,
+        0 0 25px #ff1744;
+}
 
-        .hearts span{
-            position:absolute;
-            font-size:35px;
-            animation:float 9s linear infinite;
-        }
+.subtitle{
+    text-align:center;
+    opacity:.8;
+    margin-bottom:24px;
+}
 
-        .hearts span:nth-child(1){left:5%}
-        .hearts span:nth-child(2){left:25%;animation-delay:2s}
-        .hearts span:nth-child(3){left:50%;animation-delay:4s}
-        .hearts span:nth-child(4){left:72%;animation-delay:6s}
-        .hearts span:nth-child(5){left:90%;animation-delay:8s}
+/* CARD */
 
-        @keyframes float{
-            from{
-                transform:translateY(110vh);
-            }
-            to{
-                transform:translateY(-100px) rotate(360deg);
-            }
-        }
-    </style>
+.card{
+    background:#ffffff12;
+    border:1px solid #ffffff25;
+    border-radius:24px;
+    padding:20px;
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    box-shadow:
+        0 10px 40px #00000055,
+        inset 0 0 20px #ffffff05;
+}
+
+/* LOGIN */
+
+.love-line{
+    text-align:center;
+    font-size:24px;
+    letter-spacing:5px;
+    margin:8px 0 18px;
+}
+
+input,
+button{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border:0;
+    border-radius:14px;
+}
+
+input{
+    background:#ffffff14;
+    color:white;
+    border:1px solid #ffffff30;
+    outline:none;
+}
+
+input:focus{
+    border-color:#ff5b9d;
+    box-shadow:0 0 12px #ff2f7d55;
+}
+
+input::placeholder{
+    color:#ffffff90;
+}
+
+button{
+    background:linear-gradient(135deg,#fff,#ffd6e8);
+    color:#280014;
+    font-weight:bold;
+
+    box-shadow:0 5px 18px #ff3d8d33;
+    transition:.2s;
+}
+
+button:active{
+    transform:scale(.97);
+}
+
+.status{
+    text-align:center;
+    min-height:20px;
+    margin:10px 0;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.topbar .title{
+    flex:1;
+}
+
+.menu{
+    width:46px;
+    padding:8px;
+    background:#ffffff18;
+    color:white;
+    font-size:25px;
+    box-shadow:none;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:20px;
+}
+
+.photo{
+    background:#ffffff10;
+    border:1px solid #ffffff22;
+    border-radius:17px;
+    overflow:hidden;
+    box-shadow:0 8px 25px #00000040;
+}
+
+.photo img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+}
+
+.photo-buttons{
+    display:flex;
+    gap:5px;
+    padding:7px;
+}
+
+.photo-buttons button{
+    margin:0;
+    padding:10px 4px;
+    font-size:12px;
+}
+
+.download{
+    background:#9b4dff;
+    color:white;
+}
+
+.delete{
+    background:#ff3d67;
+    color:white;
+}
+
+/* LOVE MESSAGE */
+
+.love-message{
+    text-align:center;
+    margin:22px 0 5px;
+    font-size:14px;
+    opacity:.75;
+}
+
+.love-message b{
+    color:#ff83b8;
+}
+
+/* OWNER */
+
+.owner-badge{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:5px;
+}
+
+.owner-info{
+    text-align:center;
+    opacity:.7;
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+/* MOBILE */
+
+@media(max-width:380px){
+    .title{
+        font-size:25px;
+    }
+
+    .gallery{
+        gap:9px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="hearts">
-        <span>🫀</span>
-        <span>😘</span>
-        <span>💋</span>
-        <span>🫀</span>
-        <span>😘</span>
+<!-- 💕 LOVERS WALLPAPER -->
+<div class="love-bg">
+
+    <span>❤️</span>
+    <span>💖</span>
+    <span>💋</span>
+    <span>🫀</span>
+    <span>😘</span>
+    <span>🥰</span>
+    <span>🌹</span>
+
+</div>
+
+<div id="app" class="wrap">
+
+    <!-- USER LOGIN -->
+
+    <div id="loginScreen" class="card">
+
+        <div id="secretTitle" class="title">
+            MOtki 🫀 Ghaltu 💕
+        </div>
+
+        <div class="love-line">
+            ❤️ 💋 🥰 💞 🫀
+        </div>
+
+        <div class="subtitle">
+            Our Little Private Album 🌹✨
+        </div>
+
+        <input
+            id="userPassword"
+            type="password"
+            placeholder="🔐 Enter password"
+        >
+
+        <button onclick="userLogin()">
+            💕 Open Love Album 💕
+        </button>
+
+        <div id="userStatus" class="status"></div>
+
+        <div class="love-message">
+            Made with ❤️ for <b>lovers</b> 💋
+        </div>
+
     </div>
 
-    <div id="app" class="wrap">
 
-        <!-- USER LOGIN -->
-        <div id="loginScreen" class="card">
-            <div id="secretTitle" class="title">
-                MOtki 🫀 Ghaltu
-            </div>
-            <div class="subtitle">
-                Private Album
-            </div>
+    <!-- USER ALBUM -->
 
-            <input
-                id="userPassword"
-                type="password"
-                placeholder="Enter password"
-            >
+    <div id="albumScreen" class="hidden">
 
-            <button onclick="userLogin()">
-                Open Album
-            </button>
-
-            <div id="userStatus" class="status"></div>
-        </div>
-
-        <!-- USER ALBUM -->
-        <div id="albumScreen" class="hidden">
-
-            <div class="topbar">
-                <div class="title">
-                    MOtki 🫀 Ghaltu
-                </div>
-                <button class="menu" onclick="lockEverything()">
-                    ⋮
-                </button>
-            </div>
-
-            <div id="gallery" class="gallery"></div>
-
-        </div>
-
-        <!-- OWNER LOGIN -->
-        <div id="ownerScreen" class="hidden card">
+        <div class="topbar">
 
             <div class="title">
-                👑 Owner Login
+                MOtki 🫀 Ghaltu 💕
             </div>
 
-            <input
-                id="ownerEmail"
-                type="email"
-                value="bishalff211@gmail.com"
-                readonly
-            >
-
-            <input
-                id="ownerPassword"
-                type="password"
-                placeholder="Owner password"
-            >
-
-            <button onclick="ownerLogin()">
-                Owner Login
+            <button
+                class="menu"
+                onclick="lockEverything()">
+                ⋮
             </button>
-
-            <button onclick="backToUser()">
-                Back
-            </button>
-
-            <div id="ownerStatus" class="status"></div>
 
         </div>
 
-        <!-- OWNER PANEL -->
-        <div id="ownerPanel" class="hidden">
+        <div class="love-line">
+            🥰 ❤️ 💋 🫀 💖 🌹
+        </div>
 
-            <div class="topbar">
-                <div class="title">
-                    👑 Owner Panel
-                </div>
-                <button class="menu" onclick="lockEverything()">
-                    ⋮
-                </button>
-            </div>
+        <div id="gallery" class="gallery"></div>
 
-            <div class="card">
-                <input
-                    id="fileInput"
-                    type="file"
-                    accept="image/*"
-                >
-
-                <button onclick="uploadPhoto()">
-                    📥 Upload Photo
-                </button>
-
-                <div id="uploadStatus" class="status"></div>
-            </div>
-
-            <div id="ownerGallery" class="gallery"></div>
-
+        <div class="love-message">
+            Every picture has a little piece of our ❤️
         </div>
 
     </div>
+
+
+    <!-- OWNER LOGIN -->
+
+    <div id="ownerScreen" class="hidden card">
+
+        <div class="owner-badge">
+            👑
+        </div>
+
+        <div class="title">
+            Owner Login 💕
+        </div>
+
+        <div class="owner-info">
+            Only the owner can manage this album 🔐
+        </div>
+
+        <input
+            id="ownerEmail"
+            type="email"
+            value="bishalff211@gmail.com"
+            readonly
+        >
+
+        <input
+            id="ownerPassword"
+            type="password"
+            placeholder="👑 Owner password"
+        >
+
+        <button onclick="ownerLogin()">
+            👑 Enter Owner Panel
+        </button>
+
+        <button onclick="backToUser()">
+            ❤️ Back
+        </button>
+
+        <div id="ownerStatus" class="status"></div>
+
+    </div>
+
+
+    <!-- OWNER PANEL -->
+
+    <div id="ownerPanel" class="hidden">
+
+        <div class="topbar">
+
+            <div class="title">
+                👑 Owner Panel 💕
+            </div>
+
+            <button
+                class="menu"
+                onclick="lockEverything()">
+                ⋮
+            </button>
+
+        </div>
+
+        <div class="love-line">
+            👑 ❤️ 🫀 💋 🌹
+        </div>
+
+        <div class="card">
+
+            <input
+                id="fileInput"
+                type="file"
+                accept="image/*"
+            >
+
+            <button onclick="uploadPhoto()">
+                📥 Upload Love Photo ❤️
+            </button>
+
+            <div id="uploadStatus" class="status"></div>
+
+        </div>
+
+        <div id="ownerGallery" class="gallery"></div>
+
+    </div>
+
+</div>
+
 
 <script>
 
@@ -294,13 +490,29 @@
    SUPABASE SETTINGS
 ============================ */
 
-const SUPABASE_URL = "https://dytkmhisobvhyzzqsbjj.supabase.co";
-const SUPABASE_KEY = "YOUR_PUBLISHABLE_KEY";
-const BUCKET = "MOtki Ghaltu";
+const SUPABASE_URL =
+"https://dytkmhisobvhyzzqsbjj.supabase.co";
 
-const OWNER_EMAIL = "bishalff211@gmail.com";
-const USER_PASSWORD = "sabbis26";
-const OWNER_PASSWORD = "sabbis26";
+const SUPABASE_KEY =
+"YOUR_PUBLISHABLE_KEY";
+
+const BUCKET =
+"MOtki Ghaltu";
+
+
+/* ============================
+   PASSWORD SETTINGS
+============================ */
+
+const OWNER_EMAIL =
+"bishalff211@gmail.com";
+
+const USER_PASSWORD =
+"sabbis26";
+
+const OWNER_PASSWORD =
+"sabbis26";
+
 
 /* ============================
    BASIC HELPERS
@@ -314,23 +526,35 @@ function status(id,text){
     $(id).textContent = text;
 }
 
+
 /* ============================
    USER LOGIN
 ============================ */
 
 function userLogin(){
-    const password = $("userPassword").value;
+
+    const password =
+        $("userPassword").value;
 
     if(password !== USER_PASSWORD){
-        status("userStatus", "Wrong password");
+
+        status(
+            "userStatus",
+            "❌ Wrong password 💔"
+        );
+
         return;
     }
 
-    $("loginScreen").classList.add("hidden");
-    $("albumScreen").classList.remove("hidden");
+    $("loginScreen")
+        .classList.add("hidden");
+
+    $("albumScreen")
+        .classList.remove("hidden");
 
     loadUserGallery();
 }
+
 
 /* ============================
    3 TAP OWNER
@@ -339,48 +563,185 @@ function userLogin(){
 let tapCount = 0;
 let tapTimer = null;
 
-$("secretTitle").addEventListener("click", function(){
+$("secretTitle")
+.addEventListener("click",function(){
+
     tapCount++;
 
     clearTimeout(tapTimer);
 
-    tapTimer = setTimeout(function(){
-        tapCount = 0;
-    }, 800);
+    tapTimer =
+        setTimeout(function(){
+
+            tapCount = 0;
+
+        },800);
+
 
     if(tapCount === 3){
+
         tapCount = 0;
-        $("loginScreen").classList.add("hidden");
-        $("ownerScreen").classList.remove("hidden");
+
+        $("loginScreen")
+            .classList.add("hidden");
+
+        $("ownerScreen")
+            .classList.remove("hidden");
+
         $("ownerPassword").value = "";
-        $("ownerStatus").textContent = "";
+
+        $("ownerStatus")
+            .textContent = "";
     }
+
 });
+
 
 /* ============================
    OWNER LOGIN
 ============================ */
 
 async function ownerLogin(){
-    const email = OWNER_EMAIL;
-    const password = $("ownerPassword").value;
+
+    const password =
+        $("ownerPassword").value;
+
 
     if(!password){
-        status("ownerStatus", "Enter password");
+
+        status(
+            "ownerStatus",
+            "🔐 Enter owner password"
+        );
+
         return;
     }
+
 
     if(password !== OWNER_PASSWORD){
-        status("ownerStatus", "Wrong owner password");
+
+        status(
+            "ownerStatus",
+            "❌ Wrong owner password 💔"
+        );
+
         return;
     }
 
-    $("ownerScreen").classList.add("hidden");
-    $("ownerPanel").classList.remove("hidden");
+
+    $("ownerScreen")
+        .classList.add("hidden");
+
+    $("ownerPanel")
+        .classList.remove("hidden");
 
     loadOwnerGallery();
 }
 
+
+/* ============================
+   BACK TO USER
+============================ */
+
+function backToUser(){
+
+    $("ownerScreen")
+        .classList.add("hidden");
+
+    $("loginScreen")
+        .classList.remove("hidden");
+
+    $("ownerPassword").value = "";
+
+    $("ownerStatus")
+        .textContent = "";
+}
+
+
+/* ============================
+   LOCK EVERYTHING
+============================ */
+
+function lockEverything(){
+
+    $("albumScreen")
+        .classList.add("hidden");
+
+    $("ownerPanel")
+        .classList.add("hidden");
+
+    $("ownerScreen")
+        .classList.add("hidden");
+
+    $("loginScreen")
+        .classList.remove("hidden");
+
+    $("userPassword").value = "";
+
+    $("ownerPassword").value = "";
+}
+
+
+/* ============================
+   SUPABASE FUNCTIONS
+============================ */
+
+/*
+   यहाँ तिम्रो पहिलेको Supabase
+   gallery/upload/delete code राख्न सकिन्छ।
+
+   अहिले password/login part complete छ।
+*/
+
+
+async function loadUserGallery(){
+
+    /*
+       Supabase gallery loading
+       code यहाँ राखिनेछ।
+    */
+
+}
+
+
+async function loadOwnerGallery(){
+
+    /*
+       Supabase owner gallery loading
+       code यहाँ राखिनेछ।
+    */
+
+}
+
+
+async function uploadPhoto(){
+
+    const file =
+        $("fileInput").files[0];
+
+    if(!file){
+
+        status(
+            "uploadStatus",
+            "📸 पहिले photo select गर ❤️"
+        );
+
+        return;
+    }
+
+    status(
+        "uploadStatus",
+        "⏳ Upload हुँदैछ... 💕"
+    );
+
+    /*
+       Supabase upload code
+       यहाँ राखिनेछ।
+    */
+
+}
+
 </script>
+
 </body>
 </html>
