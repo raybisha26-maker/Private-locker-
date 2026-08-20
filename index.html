@@ -1,330 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Papa Prank 😂</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prank 😂</title>
 
-<style>
-*{
-  box-sizing:border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  background:#050505;
-  color:white;
-  font-family:Arial,sans-serif;
-  min-height:100vh;
-  padding:14px;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
 
-.wrap{
-  max-width:760px;
-  margin:auto;
-  text-align:center;
-}
+    .box {
+      width: 100%;
+      max-width: 700px;
+      text-align: center;
+      padding: 15px;
+    }
 
-h1{
-  font-size:clamp(28px,8vw,54px);
-  margin:5px 0 8px;
-}
+    .box img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+    }
 
-.sub{
-  color:#ff3030;
-  font-weight:800;
-  font-size:18px;
-  margin-bottom:14px;
-}
+    .title {
+      margin-top: 18px;
+      color: #ffd400;
+      font-size: clamp(30px, 8vw, 58px);
+      font-weight: 900;
+      text-shadow: 3px 3px 0 #111;
+    }
 
-.card{
-  position:relative;
-  overflow:hidden;
-  border:2px solid #333;
-  border-radius:18px;
-  background:#111;
-  box-shadow:0 0 30px #111;
-}
-
-.card img{
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-/* Kue Re Madharchod - animation छैन */
-.threeD{
-  position:absolute;
-  top:10px;
-  left:0;
-  width:100%;
-  font-weight:1000;
-  font-size:clamp(28px,8vw,58px);
-  color:#ffd400;
-  text-shadow:3px 3px 0 #111;
-}
-
-.question{
-  margin:16px 0 10px;
-  padding:18px;
-  background:#151515;
-  border:2px solid #333;
-  border-radius:16px;
-  font-size:clamp(20px,5vw,30px);
-  font-weight:900;
-}
-
-.love{
-  font-size:15px;
-  color:#aaa;
-  margin-top:7px;
-  font-weight:normal;
-}
-
-.buttons{
-  position:relative;
-  height:90px;
-  margin-top:8px;
-}
-
-button{
-  border:0;
-  border-radius:13px;
-  padding:15px 30px;
-  font-size:18px;
-  font-weight:900;
-  cursor:pointer;
-  min-width:120px;
-  transition:.25s;
-}
-
-#yes{
-  background:#19c75b;
-  color:#071b0d;
-}
-
-#no{
-  background:#e53935;
-  color:white;
-  position:absolute;
-  left:50%;
-  transform:translateX(45px);
-}
-
-button:active{
-  transform:scale(.94);
-}
-
-.note{
-  color:#888;
-  font-size:14px;
-  margin-top:4px;
-}
-
-.surprise{
-  display:none;
-  margin-top:18px;
-  padding:24px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#191919,#301010);
-  border:2px solid #ff3030;
-}
-
-.surprise h2{
-  font-size:clamp(28px,8vw,45px);
-  margin:0 0 10px;
-  color:#ffd400;
-}
-
-.surprise p{
-  font-size:21px;
-  font-weight:800;
-  line-height:1.45;
-}
-
-.reset{
-  background:#333;
-  color:#fff;
-  margin-top:12px;
-  font-size:14px;
-}
-</style>
+    .sub {
+      margin-top: 12px;
+      color: white;
+      font-size: clamp(24px, 6vw, 42px);
+      font-weight: 900;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="wrap">
+  <div class="box">
 
-  <h1>😂 OI BETA!</h1>
-
-  <div class="sub">
-    Ekchoti ramrari answer deu ta 😏
-  </div>
-
-  <div class="card">
-
-    <!-- CID PHOTO -->
+    <!-- PHOTO -->
     <img
-      src="https://i.imgur.com/placeholder.jpg"
+      src="YOUR_PHOTO_LINK_HERE"
       alt="CID Photo"
     >
 
-    <div class="threeD">
+    <!-- TEXT -->
+    <div class="title">
       Kue Re Madharchod
     </div>
 
-  </div>
-
-  <div class="question" id="question">
-
-    Mei tumhara papa hu na beta? 😎
-
-    <div class="love">
-      Yes bhana hai ta ❤️
+    <div class="sub">
+      Padhle bhosdi ke 😂
     </div>
 
   </div>
-
-  <div class="buttons">
-
-    <button id="yes" onclick="yesClick()">
-      YES ❤️
-    </button>
-
-    <button id="no" onclick="noClick()">
-      NO 😏
-    </button>
-
-  </div>
-
-  <div class="note" id="note">
-    NO lai 3 choti click garepachi question फेरि style change huncha 😂
-  </div>
-
-  <div class="surprise" id="surprise">
-
-    <h2>
-      🎁 SURPRISE!
-    </h2>
-
-    <p>
-      Padhle re bhosdi ke 😂😂
-      <br><br>
-      Phone chalaera matra basne hoina ni! 📚🤣
-    </p>
-
-    <button
-      class="reset"
-      onclick="location.reload()"
-    >
-      फेरि Prank 😈
-    </button>
-
-  </div>
-
-</div>
-
-<script>
-
-const questions = [
-
-  "Mei tumhara papa hu na beta? 😎",
-
-  "Sach sach bol... mei tumhara papa hu na? 🥺❤️",
-
-  "Beta, itna bhi attitude? Papa hu ki haina? 😂",
-
-  "Ek baar maya le bhana... YES gardainau? 🥹",
-
-  "Aba ta man le bhana: mei tumhara papa hu? 😌❤️",
-
-  "Last chance beta... YES ki YES? 😂"
-
-];
-
-let q = 0;
-
-let noClicks = 0;
-
-let side = 0;
-
-
-function noClick(){
-
-  noClicks++;
-
-  /*
-    3 पटक NO click गरेपछि
-    अर्को question आउँछ
-  */
-
-  if(noClicks % 3 === 0){
-
-    q = (q + 1) % questions.length;
-
-    document.getElementById("question").innerHTML =
-      questions[q] +
-      '<div class="love">' +
-      'Maya ko saath answer deu hai ❤️' +
-      '</div>';
-
-  }
-
-
-  /*
-    NO button यता-उता भाग्छ
-  */
-
-  const no =
-    document.getElementById("no");
-
-  side++;
-
-
-  if(side % 2 === 1){
-
-    no.style.left = "8%";
-
-    no.style.transform =
-      "translateX(0)";
-
-  }
-
-  else{
-
-    no.style.left = "72%";
-
-    no.style.transform =
-      "translateX(0)";
-
-  }
-
-
-  document.getElementById("note").textContent =
-    "😂 NO bhanda bhanda pani bachdainau... YES try gara!";
-
-}
-
-
-function yesClick(){
-
-  document.querySelector(".buttons")
-    .style.display = "none";
-
-  document.getElementById("note")
-    .style.display = "none";
-
-  document.getElementById("question")
-    .style.display = "none";
-
-  document.getElementById("surprise")
-    .style.display = "block";
-
-  document.getElementById("animatedText");
-
-}
-
-</script>
 
 </body>
 </html>
