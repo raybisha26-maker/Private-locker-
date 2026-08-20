@@ -3,144 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Bapa Prank 😂</title>
+<title>Papa Prank 😂</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+}
 
 body{
+  margin:0;
   background:#050505;
   color:white;
   font-family:Arial,sans-serif;
   min-height:100vh;
-  padding:15px;
+  padding:14px;
 }
 
-.container{
-  width:100%;
-  max-width:780px;
+.wrap{
+  max-width:760px;
   margin:auto;
   text-align:center;
 }
 
 h1{
-  font-size:clamp(28px,7vw,55px);
-  margin:5px 0;
-  font-weight:900;
+  font-size:clamp(28px,8vw,54px);
+  margin:5px 0 8px;
 }
 
 .sub{
   color:#ff3030;
-  font-size:20px;
-  font-weight:bold;
-  margin-bottom:18px;
+  font-weight:800;
+  font-size:18px;
+  margin-bottom:14px;
 }
 
-.photo{
+.card{
   position:relative;
-  border:2px solid #333;
-  border-radius:15px;
   overflow:hidden;
-  box-shadow:0 0 25px #111;
+  border:2px solid #333;
+  border-radius:18px;
+  background:#111;
+  box-shadow:0 0 30px #111;
 }
 
-.photo img{
+.card img{
   display:block;
   width:100%;
   height:auto;
 }
 
-.photo-text{
+/* Kue Re Madharchod - animation छैन */
+.threeD{
   position:absolute;
-  top:12px;
+  top:10px;
+  left:0;
   width:100%;
-  color:#ffd92f;
-  font-size:clamp(25px,6vw,48px);
-  font-weight:900;
-  text-shadow:3px 3px 5px #000;
+  font-weight:1000;
+  font-size:clamp(28px,8vw,58px);
+  color:#ffd400;
+  text-shadow:3px 3px 0 #111;
 }
 
-.message{
-  margin-top:15px;
+.question{
+  margin:16px 0 10px;
+  padding:18px;
   background:#151515;
   border:2px solid #333;
-  border-radius:14px;
-  padding:18px;
-  text-align:left;
-  font-size:18px;
-  line-height:1.55;
+  border-radius:16px;
+  font-size:clamp(20px,5vw,30px);
+  font-weight:900;
 }
 
-.message-title{
-  color:#ff3030;
-  font-weight:bold;
-  font-size:21px;
-  margin-bottom:5px;
-}
-
-.count{
-  margin:18px 0 8px;
-  color:#ff3333;
-  font-size:20px;
-  font-weight:bold;
-}
-
-.bar{
-  width:100%;
-  height:20px;
-  background:#292929;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.progress{
-  width:100%;
-  height:100%;
-  background:#e00000;
-  border-radius:20px;
-  transition:width 1s linear;
+.love{
+  font-size:15px;
+  color:#aaa;
+  margin-top:7px;
+  font-weight:normal;
 }
 
 .buttons{
-  display:flex;
-  gap:12px;
-  margin-top:18px;
+  position:relative;
+  height:90px;
+  margin-top:8px;
 }
 
 button{
-  flex:1;
-  padding:16px 10px;
-  border-radius:12px;
-  border:1px solid #555;
-  background:#181818;
-  color:white;
-  font-size:17px;
-  font-weight:bold;
+  border:0;
+  border-radius:13px;
+  padding:15px 30px;
+  font-size:18px;
+  font-weight:900;
   cursor:pointer;
+  min-width:120px;
+  transition:.25s;
 }
 
-button:first-child{
-  background:#d90000;
+#yes{
+  background:#19c75b;
+  color:#071b0d;
+}
+
+#no{
+  background:#e53935;
+  color:white;
+  position:absolute;
+  left:50%;
+  transform:translateX(45px);
 }
 
 button:active{
-  transform:scale(.97);
+  transform:scale(.94);
 }
 
-.result{
+.note{
+  color:#888;
+  font-size:14px;
+  margin-top:4px;
+}
+
+.surprise{
   display:none;
-  margin-top:20px;
-  padding:20px;
-  background:#171717;
-  border-radius:15px;
-  border:2px solid #333;
-  font-size:22px;
-  font-weight:bold;
+  margin-top:18px;
+  padding:24px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#191919,#301010);
+  border:2px solid #ff3030;
 }
 
-.footer{
-  margin-top:20px;
-  color:#777;
+.surprise h2{
+  font-size:clamp(28px,8vw,45px);
+  margin:0 0 10px;
+  color:#ffd400;
+}
+
+.surprise p{
+  font-size:21px;
+  font-weight:800;
+  line-height:1.45;
+}
+
+.reset{
+  background:#333;
+  color:#fff;
+  margin-top:12px;
   font-size:14px;
 }
 </style>
@@ -148,119 +153,174 @@ button:active{
 
 <body>
 
-<div class="container">
+<div class="wrap">
 
-  <h1>⚠️ Bapa ne bola aaye ko ta aagya! 🚨</h1>
+  <h1>😂 OI BETA!</h1>
 
   <div class="sub">
-    Chup chap screen herdai bas 😂
+    Ekchoti ramrari answer deu ta 😏
   </div>
 
-  <div class="photo">
+  <div class="card">
 
-    <!-- आफ्नो फोटोको filename यही राख -->
-    <img src="prank-photo.png" alt="Prank Photo">
+    <!-- CID PHOTO -->
+    <img
+      src="https://i.imgur.com/placeholder.jpg"
+      alt="CID Photo"
+    >
 
-    <div class="photo-text">
+    <div class="threeD">
       Kue Re Madharchod
     </div>
 
   </div>
 
-  <div class="message">
+  <div class="question" id="question">
 
-    <div class="message-title">
-      👨‍🦳 Message from Bapa:
+    Mei tumhara papa hu na beta? 😎
+
+    <div class="love">
+      Yes bhana hai ta ❤️
     </div>
 
-    Padhai likhai chhodera phone ma lagya re?<br>
-    Aab bolau ki ghar aayera samjhaau? 😤<br>
-    Siddai ghar aa ja, time waste nagara! 😂
-
-  </div>
-
-  <div class="count">
-    Ghar aayeko in <span id="timer">10</span> seconds... 😨
-  </div>
-
-  <div class="bar">
-    <div class="progress" id="progress"></div>
   </div>
 
   <div class="buttons">
 
-    <button onclick="ghar()">
-      🏠 Ghar Jana Paryo!
-      <br>
-      <small>(Ma aauchhu bapa!)</small>
+    <button id="yes" onclick="yesClick()">
+      YES ❤️
     </button>
 
-    <button onclick="padhnu()">
-      📖 Alik Padhnu Parxa
-      <br>
-      <small>(Thik xa bapa 😂)</small>
+    <button id="no" onclick="noClick()">
+      NO 😏
     </button>
 
   </div>
 
-  <div class="result" id="result"></div>
+  <div class="note" id="note">
+    NO lai 3 choti click garepachi question फेरि style change huncha 😂
+  </div>
 
-  <div class="footer">
-    ❤️ Bapa lai man paryo vaney share gara 😂
+  <div class="surprise" id="surprise">
+
+    <h2>
+      🎁 SURPRISE!
+    </h2>
+
+    <p>
+      Padhle re bhosdi ke 😂😂
+      <br><br>
+      Phone chalaera matra basne hoina ni! 📚🤣
+    </p>
+
+    <button
+      class="reset"
+      onclick="location.reload()"
+    >
+      फेरि Prank 😈
+    </button>
+
   </div>
 
 </div>
 
 <script>
 
-let time = 10;
+const questions = [
 
-const timer = document.getElementById("timer");
-const progress = document.getElementById("progress");
-const result = document.getElementById("result");
+  "Mei tumhara papa hu na beta? 😎",
 
-const countdown = setInterval(() => {
+  "Sach sach bol... mei tumhara papa hu na? 🥺❤️",
 
-  time--;
+  "Beta, itna bhi attitude? Papa hu ki haina? 😂",
 
-  timer.textContent = time;
+  "Ek baar maya le bhana... YES gardainau? 🥹",
 
-  progress.style.width = (time * 10) + "%";
+  "Aba ta man le bhana: mei tumhara papa hu? 😌❤️",
 
-  if(time <= 0){
+  "Last chance beta... YES ki YES? 😂"
 
-    clearInterval(countdown);
+];
 
-    timer.textContent = "0";
+let q = 0;
 
-    result.style.display = "block";
+let noClicks = 0;
 
-    result.innerHTML =
-      "😂 PRANK HO NI! Bapa aaunu bhako chaina!<br><br>" +
-      "Timi ta darayau hola 😭😂";
+let side = 0;
+
+
+function noClick(){
+
+  noClicks++;
+
+  /*
+    3 पटक NO click गरेपछि
+    अर्को question आउँछ
+  */
+
+  if(noClicks % 3 === 0){
+
+    q = (q + 1) % questions.length;
+
+    document.getElementById("question").innerHTML =
+      questions[q] +
+      '<div class="love">' +
+      'Maya ko saath answer deu hai ❤️' +
+      '</div>';
 
   }
 
-},1000);
+
+  /*
+    NO button यता-उता भाग्छ
+  */
+
+  const no =
+    document.getElementById("no");
+
+  side++;
 
 
-function ghar(){
+  if(side % 2 === 1){
 
-  result.style.display = "block";
+    no.style.left = "8%";
 
-  result.innerHTML =
-    "🏠 Hahaha! Ghar jana ready bhayechhau 😂<br><br>" +
-    "Tara wait... <b>PRANK HO!</b> 😭😂";
+    no.style.transform =
+      "translateX(0)";
+
+  }
+
+  else{
+
+    no.style.left = "72%";
+
+    no.style.transform =
+      "translateX(0)";
+
+  }
+
+
+  document.getElementById("note").textContent =
+    "😂 NO bhanda bhanda pani bachdainau... YES try gara!";
+
 }
 
 
-function padhnu(){
+function yesClick(){
 
-  result.style.display = "block";
+  document.querySelector(".buttons")
+    .style.display = "none";
 
-  result.innerHTML =
-    "📖 Wah! Padhai garne manche po raichhau 😂<br><br>" +
-    "Bapa khusi hunuhuncha 😎❤️";
+  document.getElementById("note")
+    .style.display = "none";
+
+  document.getElementById("question")
+    .style.display = "none";
+
+  document.getElementById("surprise")
+    .style.display = "block";
+
+  document.getElementById("animatedText");
 
 }
 
