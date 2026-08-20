@@ -1,73 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bapa Prank 😂</title>
 
-  <title>Kue Re Madharchod</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+body{
+  background:#050505;
+  color:white;
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  padding:15px;
+}
 
-    body {
-      min-height: 100vh;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-    }
+.container{
+  width:100%;
+  max-width:780px;
+  margin:auto;
+  text-align:center;
+}
 
-    .photo-box {
-      position: relative;
-      width: 100%;
-      max-width: 650px;
-    }
+h1{
+  font-size:clamp(28px,7vw,55px);
+  margin:5px 0;
+  font-weight:900;
+}
 
-    .photo-box img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+.sub{
+  color:#ff3030;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:18px;
+}
 
-    .text {
-      position: absolute;
-      top: 20px;
-      left: 0;
-      width: 100%;
-      text-align: center;
+.photo{
+  position:relative;
+  border:2px solid #333;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 0 25px #111;
+}
 
-      color: #ffd83d;
-      font-size: clamp(30px, 8vw, 65px);
-      font-weight: bold;
+.photo img{
+  display:block;
+  width:100%;
+  height:auto;
+}
 
-      text-shadow:
-        2px 2px 3px #000,
-        -2px -2px 3px #000,
-        2px -2px 3px #000,
-        -2px 2px 3px #000;
-    }
-  </style>
+.photo-text{
+  position:absolute;
+  top:12px;
+  width:100%;
+  color:#ffd92f;
+  font-size:clamp(25px,6vw,48px);
+  font-weight:900;
+  text-shadow:3px 3px 5px #000;
+}
+
+.message{
+  margin-top:15px;
+  background:#151515;
+  border:2px solid #333;
+  border-radius:14px;
+  padding:18px;
+  text-align:left;
+  font-size:18px;
+  line-height:1.55;
+}
+
+.message-title{
+  color:#ff3030;
+  font-weight:bold;
+  font-size:21px;
+  margin-bottom:5px;
+}
+
+.count{
+  margin:18px 0 8px;
+  color:#ff3333;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.bar{
+  width:100%;
+  height:20px;
+  background:#292929;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress{
+  width:100%;
+  height:100%;
+  background:#e00000;
+  border-radius:20px;
+  transition:width 1s linear;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+}
+
+button{
+  flex:1;
+  padding:16px 10px;
+  border-radius:12px;
+  border:1px solid #555;
+  background:#181818;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:first-child{
+  background:#d90000;
+}
+
+button:active{
+  transform:scale(.97);
+}
+
+.result{
+  display:none;
+  margin-top:20px;
+  padding:20px;
+  background:#171717;
+  border-radius:15px;
+  border:2px solid #333;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.footer{
+  margin-top:20px;
+  color:#777;
+  font-size:14px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="photo-box">
+<div class="container">
 
-    <!-- तिम्रो फोटो -->
-    <img src="photo.jpg" alt="Photo">
+  <h1>⚠️ Bapa ne bola aaye ko ta aagya! 🚨</h1>
 
-    <!-- माथिको Text -->
-    <div class="text">
+  <div class="sub">
+    Chup chap screen herdai bas 😂
+  </div>
+
+  <div class="photo">
+
+    <!-- आफ्नो फोटोको filename यही राख -->
+    <img src="prank-photo.png" alt="Prank Photo">
+
+    <div class="photo-text">
       Kue Re Madharchod
     </div>
 
   </div>
+
+  <div class="message">
+
+    <div class="message-title">
+      👨‍🦳 Message from Bapa:
+    </div>
+
+    Padhai likhai chhodera phone ma lagya re?<br>
+    Aab bolau ki ghar aayera samjhaau? 😤<br>
+    Siddai ghar aa ja, time waste nagara! 😂
+
+  </div>
+
+  <div class="count">
+    Ghar aayeko in <span id="timer">10</span> seconds... 😨
+  </div>
+
+  <div class="bar">
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <div class="buttons">
+
+    <button onclick="ghar()">
+      🏠 Ghar Jana Paryo!
+      <br>
+      <small>(Ma aauchhu bapa!)</small>
+    </button>
+
+    <button onclick="padhnu()">
+      📖 Alik Padhnu Parxa
+      <br>
+      <small>(Thik xa bapa 😂)</small>
+    </button>
+
+  </div>
+
+  <div class="result" id="result"></div>
+
+  <div class="footer">
+    ❤️ Bapa lai man paryo vaney share gara 😂
+  </div>
+
+</div>
+
+<script>
+
+let time = 10;
+
+const timer = document.getElementById("timer");
+const progress = document.getElementById("progress");
+const result = document.getElementById("result");
+
+const countdown = setInterval(() => {
+
+  time--;
+
+  timer.textContent = time;
+
+  progress.style.width = (time * 10) + "%";
+
+  if(time <= 0){
+
+    clearInterval(countdown);
+
+    timer.textContent = "0";
+
+    result.style.display = "block";
+
+    result.innerHTML =
+      "😂 PRANK HO NI! Bapa aaunu bhako chaina!<br><br>" +
+      "Timi ta darayau hola 😭😂";
+
+  }
+
+},1000);
+
+
+function ghar(){
+
+  result.style.display = "block";
+
+  result.innerHTML =
+    "🏠 Hahaha! Ghar jana ready bhayechhau 😂<br><br>" +
+    "Tara wait... <b>PRANK HO!</b> 😭😂";
+}
+
+
+function padhnu(){
+
+  result.style.display = "block";
+
+  result.innerHTML =
+    "📖 Wah! Padhai garne manche po raichhau 😂<br><br>" +
+    "Bapa khusi hunuhuncha 😎❤️";
+
+}
+
+</script>
 
 </body>
 </html>
