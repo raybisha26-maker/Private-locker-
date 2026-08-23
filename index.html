@@ -2,419 +2,934 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sabnam ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Sabnam 💗</title>
+
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#070308;color:#fff;font-family:system-ui,sans-serif}
-section{min-height:100vh;padding:70px 6%;display:grid;place-items:center}
-.wrap{width:min(1000px,100%);text-align:center}
-h1{font-size:clamp(55px,15vw,120px);margin:15px 0;color:#ff5d8a}
-h2{font-size:clamp(35px,8vw,65px)}
-p{line-height:1.8;color:#ddd}
-button{border:0;border-radius:30px;padding:14px 25px;background:#ef1855;color:#fff;cursor:pointer;margin:10px}
-#home{background:radial-gradient(circle,#430d29,#070308 70%);position:relative;overflow:hidden}
-.heart{position:fixed;bottom:-30px;color:#ff4d7d;animation:up 6s linear forwards;z-index:0}
-@keyframes up{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
-.card{background:#120912;border:1px solid #482033;border-radius:25px;padding:25px;margin:15px 0;box-shadow:0 15px 40px #0008}
-.timeline{max-width:750px;width:100%}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;width:100%}
-.gallery img{width:100%;height:300px;object-fit:cover;border-radius:20px;border:1px solid #482033}
-.memories{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.letter{display:none;text-align:left;white-space:pre-line}
-.game{width:100%;height:400px;position:relative;background:#100811;border:1px solid #482033;border-radius:25px;overflow:hidden}
-.balloon{position:absolute;width:55px;height:70px;border-radius:50%;cursor:pointer}
-.catch{position:absolute;font-size:40px;cursor:pointer}
-#fire{display:none;background:#000;position:relative;overflow:hidden}
-canvas{position:absolute;inset:0}
-.final{position:relative;z-index:2;text-align:center}
-.final h2{color:#ff5d8a;text-shadow:0 0 30px #ff3570}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#08030a;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ---------- INTRO ---------- */
+
+#intro{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:linear-gradient(135deg,#12000d,#3b001f,#080008);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  transition:1s;
+}
+
+.intro-box{
+  padding:25px;
+}
+
+.intro-heart{
+  font-size:80px;
+  animation:beat 1s infinite;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.2)}
+}
+
+.intro-box h1{
+  font-size:35px;
+  margin:20px 0 10px;
+}
+
+.intro-box p{
+  color:#ddd;
+  margin-bottom:25px;
+}
+
+.start-btn,
+.surprise-btn{
+  border:0;
+  padding:14px 28px;
+  border-radius:30px;
+  background:linear-gradient(90deg,#ff2d75,#ff6aa2);
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  box-shadow:0 0 25px #ff2d7566;
+  cursor:pointer;
+}
+
+/* ---------- MAIN ---------- */
+
+main{
+  display:none;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px 20px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at top,#5c0035 0%,transparent 45%),
+    linear-gradient(#090008,#16000e);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:15px;
+  background:linear-gradient(90deg,#fff,#ff82b7,#fff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero h2{
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+.hero p{
+  max-width:500px;
+  margin:auto;
+  line-height:1.7;
+  color:#ddd;
+}
+
+/* floating hearts */
+
+.heart{
+  position:absolute;
+  bottom:-40px;
+  font-size:25px;
+  animation:float 7s linear infinite;
+  opacity:.7;
+}
+
+@keyframes float{
+  0%{
+    transform:translateY(0) rotate(0);
+    opacity:0;
+  }
+  15%{opacity:1}
+  100%{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* ---------- SECTIONS ---------- */
+
+section{
+  padding:80px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:45px;
+}
+
+.section-title span{
+  color:#ff5b99;
+}
+
+/* ---------- PHOTOS ---------- */
+
+.photos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.photo-card{
+  background:#180812;
+  border:1px solid #ff4f9344;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 15px 40px #000;
+  transition:.4s;
+}
+
+.photo-card:hover{
+  transform:translateY(-8px);
+}
+
+.photo-card img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  display:block;
+}
+
+.photo-card p{
+  text-align:center;
+  padding:16px;
+  color:#ddd;
+}
+
+/* ---------- TIMELINE ---------- */
+
+.timeline{
+  position:relative;
+  max-width:700px;
+  margin:auto;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:20px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:#ff4f91;
+}
+
+.event{
+  position:relative;
+  margin-bottom:35px;
+  padding-left:55px;
+}
+
+.event:before{
+  content:"♥";
+  position:absolute;
+  left:7px;
+  top:0;
+  width:28px;
+  height:28px;
+  background:#ff3e85;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+}
+
+.event-box{
+  background:#170811;
+  border:1px solid #ff4f9144;
+  border-radius:18px;
+  padding:22px;
+}
+
+.event-box h3{
+  color:#ff75a8;
+  margin-bottom:10px;
+}
+
+.event-box p{
+  color:#ddd;
+  line-height:1.7;
+}
+
+/* ---------- MEMORY ---------- */
+
+.memory{
+  background:linear-gradient(135deg,#180712,#270b1c);
+  border-radius:25px;
+  padding:35px 25px;
+  line-height:1.9;
+  border:1px solid #ff4d9044;
+  box-shadow:0 20px 50px #000;
+}
+
+.memory p{
+  color:#eee;
+  margin-bottom:18px;
+}
+
+/* ---------- LETTER ---------- */
+
+.letter{
+  background:#fff6fa;
+  color:#32101f;
+  border-radius:20px;
+  padding:35px 25px;
+  line-height:1.9;
+  box-shadow:0 20px 50px #000;
+  position:relative;
+}
+
+.letter:before{
+  content:"💌";
+  position:absolute;
+  right:20px;
+  top:15px;
+  font-size:35px;
+}
+
+.letter h3{
+  margin-bottom:20px;
+  color:#d92868;
+}
+
+/* ---------- SURPRISE ---------- */
+
+#surprise{
+  text-align:center;
+  min-height:70vh;
+}
+
+.surprise-box{
+  background:linear-gradient(135deg,#220817,#450d29);
+  border-radius:30px;
+  padding:45px 20px;
+  border:1px solid #ff5b9944;
+}
+
+.hidden-message{
+  display:none;
+  margin-top:35px;
+  animation:appear 1.5s;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.hidden-message h2{
+  font-size:34px;
+  color:#ff72a7;
+  margin-bottom:20px;
+}
+
+.hidden-message p{
+  line-height:1.8;
+  color:#eee;
+}
+
+/* ---------- FIREWORKS ---------- */
+
+#fireworks{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  text-align:center;
+  padding:40px 20px;
+  color:#aaa;
+}
+
+footer b{
+  color:#ff619c;
+}
+
+/* ---------- MOBILE ---------- */
+
 @media(max-width:600px){
-.gallery{grid-template-columns:1fr 1fr}
-.gallery img{height:220px}
-.memories{grid-template-columns:1fr}
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero h2{
+    font-size:21px;
+  }
+
+  .section-title{
+    font-size:27px;
+  }
+
+  .photo-card img{
+    height:400px;
+  }
+
+  section{
+    padding:65px 16px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<section id="home">
-<div class="wrap">
-<small>A SPECIAL SURPRISE FOR</small>
-<h1>Sabnam ❤️</h1>
-<p>Happy 17th Birthday<br>From your Ghaltu ✨</p>
-<button onclick="go('story')">Start Our Story →</button>
+<!-- INTRO -->
+
+<div id="intro">
+
+  <div class="intro-box">
+
+    <div class="intro-heart">💗</div>
+
+    <h1>Hey, Sabnam...</h1>
+
+    <p>
+      I made a little birthday surprise for you.
+      <br>
+      Ready?
+    </p>
+
+    <button class="start-btn" onclick="startWebsite()">
+      Open Your Surprise ✨
+    </button>
+
+  </div>
+
 </div>
+
+
+<!-- MAIN WEBSITE -->
+
+<main id="main">
+
+<!-- HERO -->
+
+<div class="hero">
+
+  <div class="hero-content">
+
+    <div style="font-size:55px;">🎂</div>
+
+    <h1>Happy Birthday, Sabnam</h1>
+
+    <h2>My Motki • Sabbu • Musarni • Churelbi 💗</h2>
+
+    <p>
+      Today is your special day, so I wanted to make
+      something that keeps a few of our memories
+      in one beautiful place.
+    </p>
+
+    <br>
+
+    <button class="start-btn"
+      onclick="document.getElementById('photos').scrollIntoView()">
+      Start the Memories ↓
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- PHOTOS -->
+
+<section id="photos">
+
+  <h2 class="section-title">
+    Our <span>Photos</span> 📸
+  </h2>
+
+  <div class="photos">
+
+    <div class="photo-card">
+
+      <img src="IMG_20250827_184410.jpg"
+           alt="Sabnam">
+
+      <p>One beautiful memory 💗</p>
+
+    </div>
+
+
+    <div class="photo-card">
+
+      <img src="ChatGPT Image Jun 15, 2025, 02_27_03 PM.png"
+           alt="Memory">
+
+      <p>A little moment worth remembering ✨</p>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section id="story">
-<div class="wrap">
-<h2>Our Story 📖</h2>
-<div class="timeline">
-<div class="card">
-<h3>📚 Class 7</h3>
-<p>यहीँबाट हाम्रो story सुरु भयो। साना moments नै आजका special memories बनेका छन्।</p>
-</div>
-<div class="card">
-<h3>🌅 Every Morning</h3>
-<p>हरेक बिहान सबैभन्दा पहिले भेट्ने अनि hug गर्ने त्यो habit।</p>
-</div>
-<div class="card">
-<h3>🪑 Our Place</h3>
-<p>तिमी अगाडि र म पछाडि बस्ने हाम्रो school memory।</p>
-</div>
-<div class="card">
-<h3>🌸 Saraswati Puja</h3>
-<p>हाम्रो anniversary — हाम्रो story को एउटा special chapter।</p>
-</div>
-</div>
-</div>
-</section>
+
+<!-- TIMELINE -->
 
 <section>
-<div class="wrap">
-<h2>Our Photos 📸</h2>
-<p>तिम्रा photos का URL तलका ठाउँमा राख्नू।</p>
 
-<div class="gallery">
-<img src="PHOTO_1_URL" alt="Memory 1">
-<img src="PHOTO_2_URL" alt="Memory 2">
-<img src="PHOTO_3_URL" alt="Memory 3">
-</div>
-</div>
+  <h2 class="section-title">
+    Our <span>Timeline</span> 🕰️
+  </h2>
+
+  <div class="timeline">
+
+    <div class="event">
+
+      <div class="event-box">
+
+        <h3>Class 7 🌱</h3>
+
+        <p>
+          यहीँबाट हाम्रो memory सुरु भएको थियो।
+          बिहान सबैभन्दा पहिले आएर भेट्ने,
+          एक ठाउँ अगाडि–पछाडि बसेर दिन बिताउने
+          ती साना moments अझै सम्झनलायक छन्।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="event">
+
+      <div class="event-box">
+
+        <h3>School Memories 🏫</h3>
+
+        <p>
+          School का ती साधारण दिनहरू नै पछि
+          सबैभन्दा special memories बने।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="event">
+
+      <div class="event-box">
+
+        <h3>Saraswati Puja 🌸</h3>
+
+        <p>
+          Saraswati Puja हाम्रो लागि एउटा
+          special anniversary memory बन्यो।
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="event">
+
+      <div class="event-box">
+
+        <h3>Today 🎂</h3>
+
+        <p>
+          अनि आज — Bhaado 12 गते —
+          Sabnam को birthday।
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
+
+
+<!-- MEMORY -->
 
 <section>
-<div class="wrap">
-<h2>Our Memories 🫀</h2>
 
-<div class="memories">
-<div class="card">
-<h2>🌅</h2>
-<h3>Morning</h3>
-<p>सबैभन्दा पहिले भेट्ने त्यो habit।</p>
-</div>
+  <h2 class="section-title">
+    Little <span>Memories</span> 🫶
+  </h2>
 
-<div class="card">
-<h2>🤗</h2>
-<h3>Hug</h3>
-<p>एउटा hug ले दिन special बनाउने।</p>
-</div>
+  <div class="memory">
 
-<div class="card">
-<h2>🏫</h2>
-<h3>School</h3>
-<p>Class 7 देखि सुरु भएको हाम्रो story।</p>
-</div>
+    <p>
+      Class 7 देखि सुरु भएका ती memories,
+      बिहान सबैभन्दा पहिले आएर भेट्ने बानी,
+      अगाडि–पछाडि बसेका दिनहरू,
+      school का साना–साना moments —
+      यी सबै कुरा आज सम्झिँदा अझै special लाग्छ।
+    </p>
 
-<div class="card">
-<h2>🌸</h2>
-<h3>Anniversary</h3>
-<p>Saraswati Puja ❤️</p>
-</div>
-</div>
-</div>
+    <p>
+      कहिलेकाहीँ ठूला gift भन्दा पनि
+      साना memories नै धेरै valuable हुन्छन्।
+      त्यसैले यी moments लाई यो सानो website मा
+      राखेको हुँ।
+    </p>
+
+    <p>
+      <b>Happy Birthday, Sabnam. 🎂💗</b>
+    </p>
+
+  </div>
+
 </section>
+
+
+<!-- LETTER -->
 
 <section>
-<div class="wrap">
-<h2>For Sabnam 💌</h2>
-<div class="card">
 
-<div style="font-size:60px">💌</div>
+  <h2 class="section-title">
+    A Small <span>Letter</span> 💌
+  </h2>
 
-<button onclick="letter()">Open My Letter</button>
+  <div class="letter">
 
-<div id="letter" class="letter">
+    <h3>Dear Sabnam,</h3>
 
-Sabnam,
+    <p>
+      Happy Birthday! 🎂
+    </p>
 
-Class 7 देखि सुरु भएको हाम्रो story
-आज यहाँसम्म आइपुगेको छ।
+    <p>
+      Class 7 देखि सुरु भएका memories देखि
+      आजसम्म आइपुग्दा धेरै कुरा change भए,
+      तर केही memories सधैँ special रहन्छन्।
+    </p>
 
-हरेक बिहान तिमीलाई सबैभन्दा पहिले भेट्ने,
-hug गर्ने अनि सँगै बिताएका ती साना moments
-मेरो favourite memories हुन्।
+    <p>
+      तिमीलाई बोलाउने ती funny nicknames —
+      Motki, Sabbu, Musarni, Churelbi —
+      सबै आफ्नै किसिमका memories हुन्। 😄
+    </p>
 
-Motki, Sabbu, Musarni, Churelbi ❤️
+    <p>
+      आजको दिन तिम्रो लागि खुशी,
+      हाँसो र राम्रा memories ले भरियोस्।
+    </p>
 
-Saraswati Puja हाम्रो लागि special day बन्यो।
+    <p>
+      Once again...
+      <br><br>
+      <b>Happy Birthday, Sabnam! 💗🎂✨</b>
+    </p>
 
-आज तिम्रो 17th birthday मा
-तिम्रो हरेक दिन खुशीले भरिएको होस्।
+  </div>
 
-Happy Birthday, Sabnam ❤️
-
-— Ghaltu
-
-</div>
-</div>
-</div>
 </section>
 
-<section>
-<div class="wrap">
-<h2>Pop The Balloons 🎈</h2>
-<p>सबै balloons tap गर!</p>
 
-<div class="game" id="balloons"></div>
+<!-- SURPRISE -->
 
-<h3 id="score">0 / 10</h3>
-</div>
+<section id="surprise">
+
+  <h2 class="section-title">
+    One Last <span>Surprise</span> 🎁
+  </h2>
+
+  <div class="surprise-box">
+
+    <div style="font-size:70px;">🎁</div>
+
+    <h2 style="margin:20px 0;">
+      There's something waiting...
+    </h2>
+
+    <p style="color:#ddd;margin-bottom:25px;">
+      Tap the button and see what happens.
+    </p>
+
+    <button class="surprise-btn"
+            onclick="showSurprise()">
+      Open Surprise 💗
+    </button>
+
+
+    <div class="hidden-message"
+         id="hiddenMessage">
+
+      <h2>Happy Birthday! 🎂</h2>
+
+      <p>
+        Sabnam, may your day be full of
+        happiness, smiles and beautiful memories.
+      </p>
+
+      <br>
+
+      <div style="font-size:45px;">
+        🎈 🎂 💗 ✨ 🎆
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<section>
-<div class="wrap">
-<h2>Catch The Hearts ❤️</h2>
-<p>Heart लाई 7 पटक catch गर!</p>
 
-<div class="game" id="heartGame"></div>
+<footer>
 
-<h3 id="hscore">0 / 7</h3>
-</div>
-</section>
+  Made specially for <b>Sabnam</b> 💗
+  <br><br>
+  <small>From a collection of memories ✨</small>
 
-<section>
-<div class="wrap">
-<h2>Secret Quiz 🧩</h2>
+</footer>
 
-<div class="card">
-<p>हाम्रो story कुन class बाट सुरु भयो?</p>
+</main>
 
-<input id="answer" placeholder="Your answer"
-style="padding:14px;border-radius:15px;border:1px solid #542137;background:#09050a;color:white;text-align:center">
 
-<br>
+<canvas id="fireworks"></canvas>
 
-<button onclick="quiz()">Unlock ❤️</button>
-
-<h3 id="result"></h3>
-</div>
-</div>
-</section>
-
-<section>
-<div class="wrap">
-<h2>One Last Surprise 🎁</h2>
-
-<div class="card">
-
-<div id="gift" style="font-size:110px;cursor:pointer" onclick="gift()">
-🎁
-</div>
-
-<div id="surprise" style="display:none">
-
-<h2>Happy Birthday Sabnam! ❤️</h2>
-
-<p>
-Motki ❤️ Sabbu ❤️ Musarni ❤️ Churelbi ❤️
-</p>
-
-<p>
-Class 7 बाट सुरु भएको हाम्रो story
-अझ धेरै memories को सुरुवात हो। ✨
-</p>
-
-<button onclick="fireworks()">Final Surprise 🎆</button>
-
-</div>
-
-</div>
-</div>
-</section>
-
-<section id="fire">
-<canvas id="canvas"></canvas>
-
-<div class="final">
-<h2>Happy 17th<br>Sabnam ❤️</h2>
-<p>From Ghaltu,<br>with every memory and every smile.</p>
-</div>
-</section>
 
 <script>
 
-function go(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
+/* ---------- START WEBSITE ---------- */
+
+function startWebsite(){
+
+  document.getElementById("intro").style.opacity="0";
+
+  setTimeout(function(){
+
+    document.getElementById("intro").style.display="none";
+
+    document.getElementById("main").style.display="block";
+
+  },1000);
+
 }
 
-setInterval(()=>{
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤";
-h.style.left=Math.random()*100+"%";
-h.style.fontSize=15+Math.random()*25+"px";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),6000);
-},500);
 
-function letter(){
-let x=document.getElementById("letter");
-x.style.display=x.style.display==="block"?"none":"block";
+/* ---------- FLOATING HEARTS ---------- */
+
+function createHeart(){
+
+  const heart=document.createElement("div");
+
+  heart.className="heart";
+
+  heart.innerHTML=["💗","💖","💕","❤️","✨"][Math.floor(Math.random()*5)];
+
+  heart.style.left=Math.random()*100+"%";
+
+  heart.style.animationDuration=
+    (5+Math.random()*5)+"s";
+
+  heart.style.fontSize=
+    (18+Math.random()*25)+"px";
+
+  document.querySelector(".hero").appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },10000);
+
 }
 
-let popped=0;
+setInterval(createHeart,700);
 
-for(let i=0;i<10;i++){
 
-let b=document.createElement("div");
-b.className="balloon";
+/* ---------- SURPRISE ---------- */
 
-b.style.left=5+Math.random()*88+"%";
-b.style.top=20+Math.random()*75+"%";
-b.style.background=[
-"#ff477e",
-"#ffb52e",
-"#6d78ff",
-"#52d6be",
-"#ff7a3d"
-][i%5];
+function showSurprise(){
 
-document.getElementById("balloons").appendChild(b);
+  document.getElementById("hiddenMessage").style.display="block";
 
-b.onclick=()=>{
+  launchFireworks();
 
-if(b.dataset.done)return;
+  createBalloons();
 
-b.dataset.done=1;
-b.style.transform="scale(0)";
-b.style.transition=".2s";
-
-popped++;
-
-document.getElementById("score").innerText=
-popped+" / 10";
-};
 }
 
-let hs=0;
 
-function spawnHeart(){
+/* ---------- BALLOONS ---------- */
 
-let area=document.getElementById("heartGame");
+function createBalloons(){
 
-area.innerHTML="";
+  for(let i=0;i<30;i++){
 
-let h=document.createElement("div");
+    const balloon=document.createElement("div");
 
-h.className="catch";
-h.innerHTML="❤️";
+    balloon.innerHTML="🎈";
 
-h.style.left=5+Math.random()*85+"%";
-h.style.top=5+Math.random()*75+"%";
+    balloon.style.position="fixed";
 
-area.appendChild(h);
+    balloon.style.bottom="-50px";
 
-h.onclick=()=>{
+    balloon.style.left=Math.random()*100+"%";
 
-hs++;
+    balloon.style.fontSize=
+      (25+Math.random()*30)+"px";
 
-document.getElementById("hscore").innerText=
-hs+" / 7";
+    balloon.style.zIndex="9999";
 
-if(hs<7)spawnHeart();
+    balloon.style.transition=
+      (3+Math.random()*3)+"s linear";
 
-};
+    document.body.appendChild(balloon);
+
+    setTimeout(()=>{
+
+      balloon.style.transform=
+        "translateY(-110vh)";
+
+    },50);
+
+    setTimeout(()=>{
+
+      balloon.remove();
+
+    },6500);
+
+  }
+
 }
 
-spawnHeart();
 
-function quiz(){
+/* ---------- FIREWORKS ---------- */
 
-let a=document.getElementById("answer")
-.value.toLowerCase().trim();
+const canvas=document.getElementById("fireworks");
 
-document.getElementById("result").innerText=
-(a==="7"||a==="class 7"||a==="class7")
-?"Correct! ❤️"
-:"Hint: Class ... 😄";
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas(){
+
+  canvas.width=window.innerWidth;
+
+  canvas.height=window.innerHeight;
+
 }
 
-function gift(){
+resizeCanvas();
 
-document.getElementById("gift").style.display="none";
+window.addEventListener("resize",resizeCanvas);
 
-document.getElementById("surprise").style.display="block";
-}
-
-function fireworks(){
-
-let sec=document.getElementById("fire");
-
-sec.style.display="grid";
-
-sec.scrollIntoView({behavior:"smooth"});
-
-let c=document.getElementById("canvas");
-let ctx=c.getContext("2d");
-
-function resize(){
-c.width=innerWidth;
-c.height=innerHeight;
-}
-
-resize();
 
 let particles=[];
 
-function boom(){
+function createFirework(x,y){
 
-let x=Math.random()*c.width;
-let y=100+Math.random()*c.height*.45;
+  for(let i=0;i<70;i++){
 
-for(let i=0;i<80;i++){
+    const angle=
+      Math.PI*2*i/70;
 
-let a=i*Math.PI*2/80;
-let s=1+Math.random()*6;
+    const speed=
+      2+Math.random()*5;
 
-particles.push({
-x:x,y:y,
-vx:Math.cos(a)*s,
-vy:Math.sin(a)*s,
-life:100,
-h:Math.random()*360
-});
+    particles.push({
+
+      x:x,
+
+      y:y,
+
+      vx:Math.cos(angle)*speed,
+
+      vy:Math.sin(angle)*speed,
+
+      life:80,
+
+      size:2+Math.random()*2
+
+    });
+
+  }
 
 }
+
+
+function animateFireworks(){
+
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
+
+  particles.forEach((p,index)=>{
+
+    p.x+=p.vx;
+
+    p.y+=p.vy;
+
+    p.vy+=0.04;
+
+    p.life--;
+
+    ctx.globalAlpha=p.life/80;
+
+    ctx.fillStyle=
+      ["#ff4d88","#ffd166","#ffffff","#8be9fd"]
+      [Math.floor(Math.random()*4)];
+
+    ctx.beginPath();
+
+    ctx.arc(
+      p.x,
+      p.y,
+      p.size,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fill();
+
+    if(p.life<=0){
+
+      particles.splice(index,1);
+
+    }
+
+  });
+
+  ctx.globalAlpha=1;
+
+  requestAnimationFrame(animateFireworks);
+
 }
 
-function animate(){
+animateFireworks();
 
-ctx.fillStyle="rgba(0,0,0,.2)";
-ctx.fillRect(0,0,c.width,c.height);
 
-if(Math.random()<.07)boom();
+function launchFireworks(){
 
-particles.forEach((p,i)=>{
+  for(let i=0;i<8;i++){
 
-p.x+=p.vx;
-p.y+=p.vy;
-p.vy+=.04;
-p.life--;
+    setTimeout(()=>{
 
-ctx.beginPath();
-ctx.arc(p.x,p.y,2,0,Math.PI*2);
+      createFirework(
+        50+Math.random()*(
+          window.innerWidth-100
+        ),
+        100+Math.random()*(
+          window.innerHeight*0.5
+        )
+      );
 
-ctx.fillStyle=
-"hsl("+p.h+",100%,70%)";
+    },i*500);
 
-ctx.fill();
-
-if(p.life<0)
-particles.splice(i,1);
-
-});
-
-requestAnimationFrame(animate);
-}
-
-animate();
+  }
 
 }
 
 </script>
 
 </body>
-</html>
+  </html>
