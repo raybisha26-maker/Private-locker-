@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cute Birthday Gift 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOtki ❤️ Birthday</title>
 
 <style>
 *{
@@ -12,509 +12,103 @@
   padding:0;
 }
 
-body{
+html,body{
+  width:100%;
+  height:100%;
   overflow:hidden;
-  background:#000;
   font-family:Georgia,serif;
+  background:#080308;
+}
+
+body{
+  color:white;
 }
 
 .scene{
-  width:100vw;
-  height:100vh;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.card{
-  width:100%;
-  max-width:576px;
-  height:min(56.25vw,56.25vh);
-  max-height:1024px;
-  min-height:420px;
-  position:relative;
+  position:fixed;
+  inset:0;
+  display:none;
   overflow:hidden;
-  background:#fff5ef;
 }
 
-/* ---------- FIRST PAGE ---------- */
+.scene.active{
+  display:block;
+}
 
-.page1{
-  position:absolute;
-  inset:0;
+/* ================= COUNTDOWN ================= */
+
+#countdown{
   background:
-    radial-gradient(circle at 50% 42%,
-    #ffd8e4 0%,
-    #fff2eb 30%,
-    #fff8f4 65%);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  transition:1s;
-}
-
-.small{
-  margin-top:45px;
-  font-size:13px;
-  font-style:italic;
-  color:#876f68;
-  letter-spacing:.4px;
-}
-
-.heart{
-  position:absolute;
-  top:34%;
-  width:105px;
-  height:105px;
-  background:linear-gradient(145deg,#ff8db2,#ee145d);
-  transform:rotate(-45deg);
-  border-radius:18px;
-  box-shadow:
-    0 0 25px #ff82aa,
-    0 0 70px rgba(255,80,140,.55);
-  animation:pulse 1.2s infinite;
-  cursor:pointer;
-}
-
-.heart:before,
-.heart:after{
-  content:"";
-  position:absolute;
-  width:105px;
-  height:105px;
-  border-radius:50%;
-  background:inherit;
-}
-
-.heart:before{
-  top:-52px;
-  left:0;
-}
-
-.heart:after{
-  left:52px;
-  top:0;
-}
-
-@keyframes pulse{
-  0%,100%{transform:rotate(-45deg) scale(1)}
-  50%{transform:rotate(-45deg) scale(1.08)}
-}
-
-.instruction{
-  position:absolute;
-  bottom:65px;
-  color:#9b8178;
-  font-size:11px;
-  letter-spacing:3px;
-  font-style:italic;
-}
-
-/* ---------- BIRTHDAY PAGE ---------- */
-
-.page2{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 50% 45%,#ff82b3,#c90855 75%);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  transition:1.2s;
-}
-
-.page2.show{
-  opacity:1;
-}
-
-.mini{
-  color:#ffe8ed;
-  font-size:12px;
-  font-style:italic;
-  margin-bottom:8px;
-}
-
-.title{
-  color:#fff8ed;
+    radial-gradient(circle at 50% 35%,#4d1745 0%,#21091e 38%,#080308 100%);
   text-align:center;
-  font-size:clamp(45px,10vw,82px);
-  line-height:.85;
-  text-shadow:2px 3px 0 rgba(90,0,30,.2);
-  animation:titleIn 1.5s ease;
 }
 
-@keyframes titleIn{
-  from{
-    opacity:0;
-    transform:translateY(35px) scale(.8);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+.intro{
+  position:absolute;
+  top:15%;
+  width:100%;
+  padding:20px;
+  animation:introIn 1.6s ease both;
 }
 
-.line{
-  width:150px;
-  height:3px;
-  margin:25px 0 12px;
-  background:#f7d77d;
-  border-radius:50%;
+.small-title{
+  color:#eebbd9;
+  letter-spacing:6px;
+  font-size:13px;
+  margin-bottom:35px;
 }
 
-.bottomText{
-  color:#ffe8d4;
-  font-size:11px;
+.intro h1{
+  font-size:clamp(42px,12vw,76px);
   font-style:italic;
+  line-height:1.05;
+  text-shadow:0 0 30px rgba(255,170,220,.35);
 }
 
-/* ---------- FINAL PAGE ---------- */
+.intro p{
+  margin-top:25px;
+  color:#efc7dc;
+  font-size:18px;
+}
 
-.page3{
+.count{
   position:absolute;
-  inset:0;
-  opacity:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 50% 45%,
-    #fffdf9,
-    #ffe7dc 70%);
-  transition:1.2s;
-  overflow:hidden;
+  bottom:17%;
+  left:5%;
+  width:90%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
 }
 
-.page3.show{
-  opacity:1;
-}
-
-/* tree trunk */
-
-.trunk{
-  position:absolute;
-  width:14px;
-  height:230px;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  background:linear-gradient(90deg,#3b1824,#6b303e,#32141e);
-  border-radius:50% 50% 0 0;
-}
-
-/* heart cloud */
-
-.treeHeart{
-  position:absolute;
-  left:50%;
-  top:28%;
-  width:250px;
-  height:220px;
-  transform:translateX(-50%);
-}
-
-.balloon{
-  position:absolute;
-  width:26px;
-  height:32px;
-  border-radius:55% 55% 48% 48%;
-  transform:rotate(var(--r));
-  animation:float 2s infinite ease-in-out alternate;
-  box-shadow:inset 5px 4px 7px rgba(255,255,255,.55);
-}
-
-@keyframes float{
-  from{margin-top:0}
-  to{margin-top:-8px}
-}
-
-/* text */
-
-.finalText{
-  position:absolute;
-  left:28px;
-  bottom:50px;
-  color:#c94368;
-  font-family:cursive;
-}
-
-.finalText .and{
-  font-size:14px;
-  color:#555;
-}
-
-.finalText h2{
-  font-size:35px;
-  font-weight:400;
-}
-
-.finalText p{
-  font-family:Georgia,serif;
-  font-size:10px;
-  color:#777;
-}
-
-/* falling hearts */
-
-.fall{
-  position:absolute;
-  color:#ef7196;
-  animation:fall 4s linear infinite;
-}
-
-@keyframes fall{
-  from{
-    transform:translateY(-30px) rotate(0);
-    opacity:0;
-  }
-  20%{opacity:1}
-  to{
-    transform:translateY(600px) rotate(360deg);
-    opacity:0;
-  }
-}
-
-.again{
-  position:absolute;
-  right:12px;
-  bottom:12px;
-  border:0;
+.box{
+  border:1px solid rgba(255,220,240,.3);
+  background:rgba(255,255,255,.07);
   border-radius:20px;
-  padding:5px 12px;
-  background:white;
-  color:#999;
-  font-size:9px;
+  padding:18px 4px;
+  backdrop-filter:blur(8px);
 }
 
-/* mobile */
-
-@media(max-width:600px){
-  .card{
-    width:100vw;
-    height:100vh;
-    max-height:none;
-    min-height:0;
-  }
-
-  .small{
-    margin-top:20vh;
-  }
-
-  .heart{
-    top:37%;
-  }
-
-  .instruction{
-    bottom:18vh;
-  }
-
-  .treeHeart{
-    top:30%;
-    transform:translateX(-50%) scale(.85);
-  }
-
-  .trunk{
-    height:220px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<div class="scene">
-<div class="card">
-
-<!-- PAGE 1 -->
-<section class="page1" id="page1">
-  <div class="small">a little something, for you</div>
-
-  <div class="heart" id="heart"></div>
-
-  <div class="instruction">PULL & RELEASE</div>
-</section>
-
-
-<!-- PAGE 2 -->
-<section class="page2" id="page2">
-  <div class="mini">make a wish...</div>
-
-  <div class="title">
-    Happy<br>
-    Birthday
-  </div>
-
-  <div class="line"></div>
-
-  <div class="bottomText">
-    to someone worth celebrating
-  </div>
-</section>
-
-
-<!-- PAGE 3 -->
-<section class="page3" id="page3">
-
-  <div class="treeHeart" id="treeHeart"></div>
-
-  <div class="trunk"></div>
-
-  <div class="finalText">
-    <div class="and">and... make it count</div>
-    <h2>Happy Birthday</h2>
-    <p>here's to a year that's worth blooming</p>
-  </div>
-
-  <button class="again" onclick="restart()">↻ AGAIN</button>
-
-</section>
-
-</div>
-</div>
-
-
-<script>
-
-/* =========================
-   CHANGE THESE
-========================= */
-
-const birthdayName = "Someone Special";
-
-
-/* =========================
-   HEART CLICK
-========================= */
-
-const heart = document.getElementById("heart");
-const page1 = document.getElementById("page1");
-const page2 = document.getElementById("page2");
-const page3 = document.getElementById("page3");
-
-heart.addEventListener("click",()=>{
-
-  page1.style.opacity="0";
-
-  setTimeout(()=>{
-    page1.style.display="none";
-    page2.classList.add("show");
-
-    setTimeout(()=>{
-      page2.classList.remove("show");
-
-      setTimeout(()=>{
-        page2.style.display="none";
-        page3.classList.add("show");
-      },900);
-
-    },4200);
-
-  },900);
-
-});
-
-
-/* =========================
-   HEART TREE
-========================= */
-
-const tree = document.getElementById("treeHeart");
-
-const colors=[
-  "#ff4f91",
-  "#ff76a8",
-  "#ff9abc",
-  "#ffcfda",
-  "#f54283",
-  "#ffd36b"
-];
-
-for(let i=0;i<95;i++){
-
-  const b=document.createElement("div");
-
-  b.className="balloon";
-
-  const x=Math.random()*230;
-  const y=Math.random()*190;
-
-  /*
-    Heart-shaped area
-  */
-
-  const nx=(x-115)/115;
-  const ny=(y-85)/100;
-
-  const inside =
-    Math.pow(nx,2)+
-    Math.pow(ny,2) < 1.3;
-
-  if(!inside){
-    i--;
-    continue;
-  }
-
-  b.style.left=x+"px";
-  b.style.top=y+"px";
-
-  b.style.background=
-    colors[Math.floor(Math.random()*colors.length)];
-
-  b.style.setProperty(
-    "--r",
-    (Math.random()*50-25)+"deg"
-  );
-
-  b.style.animationDelay=
-    (Math.random()*2)+"s";
-
-  tree.appendChild(b);
+.box b{
+  display:block;
+  font-size:30px;
 }
 
-
-/* =========================
-   FALLING HEARTS
-========================= */
-
-for(let i=0;i<28;i++){
-
-  const h=document.createElement("div");
-
-  h.className="fall";
-  h.innerHTML="♥";
-
-  h.style.left=
-    Math.random()*100+"%";
-
-  h.style.top=
-    Math.random()*-300+"px";
-
-  h.style.fontSize=
-    (8+Math.random()*10)+"px";
-
-  h.style.animationDuration=
-    (3+Math.random()*4)+"s";
-
-  h.style.animationDelay=
-    Math.random()*4+"s";
-
-  page3.appendChild(h);
+.box span{
+  font-size:10px;
+  letter-spacing:3px;
+  color:#dcb9d0;
 }
 
-
-/* =========================
-   RESTART
-========================= */
-
-function restart(){
-
-  location.reload();
-
-}
-
-</script>
-
-</body>
-</html>
+.start-btn{
+  position:absolute;
+  bottom:7%;
+  left:50%;
+  transform:translateX(-50%);
+  padding:12px 28px;
+  border:1px solid #e8a9d0;
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+  color:white;
+  font-family:inherit;
+  font-size:15
