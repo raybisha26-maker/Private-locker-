@@ -1,264 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cute Birthday Gift</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #fce4ec;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        .screen {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .hide {
-            opacity: 0;
-            pointer-events: none;
-            transform: scale(0.9);
-        }
-
-        /* Screen 1: Pull & Release */
-        .subtitle {
-            color: #888;
-            font-size: 14px;
-            margin-bottom: 40px;
-            font-style: italic;
-        }
-
-        .heart-container {
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(255,182,193,0.8) 0%, rgba(255,255,255,0) 70%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .heart {
-            width: 50px;
-            height: 50px;
-            background-color: #ff4081;
-            transform: rotate(-45deg);
-            position: relative;
-            animation: pulse 1.5s infinite;
-        }
-
-        .heart::before, .heart::after {
-            content: '';
-            width: 50px;
-            height: 50px;
-            background-color: #ff4081;
-            border-radius: 50%;
-            position: absolute;
-        }
-
-        .heart::before { top: -25px; left: 0; }
-        .heart::after { left: 25px; top: 0; }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1) rotate(-45deg); }
-            50% { transform: scale(1.1) rotate(-45deg); }
-        }
-
-        .bow-arrow {
-            margin-top: 60px;
-            font-size: 32px;
-            cursor: grab;
-            user-select: none;
-            transition: transform 0.1s ease;
-        }
-
-        .instruction {
-            margin-top: 40px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            color: #aaa;
-        }
-
-        /* Screen 2: Main Message */
-        #message-screen {
-            background-color: #d81b60;
-            color: white;
-        }
-
-        .wish-title {
-            font-size: 16px;
-            opacity: 0.8;
-            font-style: italic;
-        }
-
-        .main-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-
-        .sub-text {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* Screen 3: Tree Scene */
-        .tree-container {
-            position: relative;
-            width: 150px;
-            height: 200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .trunk {
-            width: 8px;
-            height: 100px;
-            background: #5d4037;
-            position: absolute;
-            bottom: 0;
-            border-radius: 4px;
-        }
-
-        .heart-foliage {
-            width: 120px;
-            height: 120px;
-            background-color: #ff80ab;
-            transform: rotate(-45deg);
-            position: absolute;
-            top: 10px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(255, 64, 129, 0.4);
-        }
-
-        .final-wish {
-            text-align: center;
-            margin-top: 20px;
-            color: #ad1457;
-        }
-
-        .final-wish h2 {
-            font-size: 28px;
-        }
-
-        .final-wish p {
-            font-size: 14px;
-            color: #888;
-            font-style: italic;
-            margin-top: 5px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Motki ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(135deg, #ff9ecb, #ffc4e1, #fff0f5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+  .start-screen, .birthday-screen {
+    text-align: center;
+    transition: all 0.8s ease;
+  }
+  .hint { color: #d6005c; font-size: 1.1em; margin-bottom: 15px; }
+  
+  .heart {
+    width: 130px;
+    height: 130px;
+    background: #ff2e63;
+    position: relative;
+    transform: rotate(45deg);
+    cursor: pointer;
+    margin: 0 auto;
+    animation: pulse 1.5s infinite;
+    box-shadow: 0 0 40px rgba(255,46,99,0.7);
+  }
+  .heart:before, .heart:after {
+    content: "";
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    border-radius: 50%;
+    background: #ff2e63;
+  }
+  .heart:before { top: -65px; left: 0; }
+  .heart:after { left: -65px; top: 0; }
+  @keyframes pulse { 0%,100%{transform:rotate(45deg) scale(1)} 50%{transform:rotate(45deg) scale(1.15)} }
+  
+  .pull-text { color: #d6005c; margin-top: 15px; font-weight: 600; }
+  
+  .birthday-screen { display: none; }
+  .birthday-screen h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4em;
+    color: #d6005c;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease;
+  }
+  .birthday-screen p {
+    font-size: 1.3em;
+    color: #b3004d;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease;
+  }
+  .heart-tree {
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    position: relative;
+    animation: grow 2s ease;
+  }
+  .heart-tree span {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #ff4b7d;
+    transform: rotate(45deg);
+    border-radius: 5px;
+  }
+  .heart-tree span:before, .heart-tree span:after {
+    content: ""; width: 30px; height: 30px; position: absolute; border-radius: 50%; background: #ff4b7d;
+  }
+  .heart-tree span:before { top: -15px; left: 0; }
+  .heart-tree span:after { left: -15px; top: 0; }
+  
+  @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)} }
+  @keyframes grow { from{transform:scale(0)} to{transform:scale(1)} }
+  
+  .confetti {
+    position: absolute;
+    width: 10px; height: 10px;
+    top: -10px;
+    animation: fall 3s linear forwards;
+  }
+  @keyframes fall {
+    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Screen 1: Pull & Release Interactive Screen -->
-    <div id="interactive-screen" class="screen">
-        <p class="subtitle">a little something, for you</p>
-        
-        <div class="heart-container">
-            <div class="heart"></div>
-        </div>
+  <div class="start-screen" id="start">
+    <p class="hint">a little something for you</p>
+    <div class="heart" onclick="showBirthday()"></div>
+    <p class="pull-text">CLICK ME ❤️</p>
+  </div>
 
-        <div class="bow-arrow" id="drag-item">🏹</div>
+  <div class="birthday-screen" id="birthday">
+    <h1>Happy Birthday Motki!</h1>
+    <p>Bhado 12 gate - timro din ❤️</p>
+    <p>Sabnam, tim bina ma adhuro chhu. Timro smile nai mero duniya ho.</p>
+    <div class="heart-tree" id="tree"></div>
+    <p>- Love, [Timi ko naam]</p>
+  </div>
 
-        <p class="instruction">PULL & RELEASE</p>
-    </div>
+<script>
+function showBirthday() {
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('birthday').style.display = 'block';
+  createConfetti();
+  createHeartTree();
+}
 
-    <!-- Screen 2: Happy Birthday Message Screen -->
-    <div id="message-screen" class="screen hide">
-        <p class="wish-title">make a wish...</p>
-        <h1 class="main-title">Happy Birthday</h1>
-        <p class="sub-text">to someone worth celebrating</p>
-    </div>
+function createConfetti() {
+  for(let i=0; i<80; i++){
+    let c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.left = Math.random()*100 + 'vw';
+    c.style.background = ['#ff2e63','#ff85b3','#ffb3d1','#ffc4e1'][Math.floor(Math.random()*4)];
+    c.style.animationDelay = Math.random()*0.5 + 's';
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(), 3000);
+  }
+}
 
-    <!-- Screen 3: Heart Tree Animation Screen -->
-    <div id="tree-screen" class="screen hide">
-        <p class="subtitle">and... make it count</p>
-        <div class="tree-container">
-            <div class="trunk"></div>
-            <div class="heart-foliage"></div>
-        </div>
-        <div class="final-wish">
-            <h2>Happy Birthday</h2>
-            <p>here's to a year that blooms</p>
-        </div>
-    </div>
-
-    <script>
-        const dragItem = document.getElementById('drag-item');
-        const screen1 = document.getElementById('interactive-screen');
-        const screen2 = document.getElementById('message-screen');
-        const screen3 = document.getElementById('tree-screen');
-
-        let isDragging = false;
-        let startY = 0;
-
-        // Mouse & Touch events
-        dragItem.addEventListener('mousedown', startDrag);
-        dragItem.addEventListener('touchstart', startDrag);
-
-        window.addEventListener('mousemove', onDrag);
-        window.addEventListener('touchmove', onDrag);
-
-        window.addEventListener('mouseup', endDrag);
-        window.addEventListener('touchend', endDrag);
-
-        function startDrag(e) {
-            isDragging = true;
-            startY = e.clientY || e.touches[0].clientY;
-        }
-
-        function onDrag(e) {
-            if (!isDragging) return;
-            let currentY = e.clientY || (e.touches ? e.touches[0].clientY : startY);
-            let deltaY = currentY - startY;
-
-            if (deltaY > 0) {
-                dragItem.style.transform = `translateY(${deltaY}px)`;
-            }
-        }
-
-        function endDrag() {
-            if (!isDragging) return;
-            isDragging = false;
-            dragItem.style.transform = `translateY(0px)`;
-            
-            triggerSurpriseSequence();
-        }
-
-        function triggerSurpriseSequence() {
-            // Step 1: Hide Screen 1 & Show Screen 2
-            screen1.classList.add('hide');
-            setTimeout(() => {
-                screen2.classList.remove('hide');
-            }, 500);
-
-            // Step 2: Hide Screen 2 & Show Screen 3 (Tree Scene)
-            setTimeout(() => {
-                screen2.classList.add('hide');
-                setTimeout(() => {
-                    screen3.classList.remove('hide');
-                }, 800);
-            }, 3000);
-        }
-    </script>
+function createHeartTree() {
+  let tree = document.getElementById('tree');
+  for(let i=0; i<15; i++){
+    let h = document.createElement('span');
+    let x = Math.random()*200 + 25;
+    let y = Math.random()*200 + 25;
+    h.style.left = x + 'px';
+    h.style.top = y + 'px';
+    h.style.animationDelay = (i*0.1) + 's';
+    tree.appendChild(h);
+  }
+}
+</script>
 </body>
 </html>
