@@ -24,7 +24,6 @@
 .number { font-size: 2.8em; font-weight: 700; color: #ff8fc4; text-shadow: 0 0 15px #ff8fc4; }
 
   /* INPUT */
-.input-page { background: radial-gradient(circle at top, #ff8fc4 0%, #350b29 60%); }
 .glass input { width: 100%; padding: 14px; margin: 12px 0; border-radius: 15px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); color: white; font-size: 1em; }
 
   /* BIRTHDAY */
@@ -33,30 +32,34 @@
   @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
 .birthday h1 { font-family: 'Great Vibes', cursive; font-size: 5em; color: #fff; }
 
-  /* SURPRISE LETTER */
+  /* LETTER */
 .letter-page { background: linear-gradient(180deg, #350b29, #12000d); }
-.letter { background: #fffdf5; color: #333; padding: 30px; border-radius: 20px; text-align: left; font-size: 1.1em; line-height: 1.8; max-height: 70vh; overflow-y: auto; box-shadow: 0 0 40px rgba(255,143,196,0.5); }
-.letter h2 { font-family: 'Great Vibes', cursive; font-size: 2.5em; color: #ff3f91; text-align: center; margin-bottom: 15px; }
+.letter { background: #fffdf5; color: #333; padding: 30px; border-radius: 20px; text-align: left; font-size: 1.1em; line-height: 1.8; max-height: 70vh; overflow-y: auto; }
 
   /* REASONS */
 .reasons-page { background: linear-gradient(135deg, #1a0033, #660066); }
 .reason-box { background: rgba(255,255,255,0.1); padding: 15px; margin: 10px 0; border-radius: 15px; border-left: 4px solid #ff8fc4; text-align: left; font-size: 1.1em; }
 
-  /* PHOTO */
+  /* PHOTO - FIXED */
 .photo-page { background: linear-gradient(180deg, #12000d, #350b29); }
-.photo-card { width: 90%; max-width: 420px; padding: 15px; border-radius: 30px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); }
+.photo-card { width: 90%; max-width: 420px; padding: 15px; border-radius: 30px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); box-shadow: 0 0 40px rgba(255,143,196,0.4); }
 .photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 20px; }
 
-  /* CAKE */
+  /* NEW CAKE DESIGN */
 .cake-page { background: linear-gradient(180deg, #ffc2d9, #ffe6f0); color: #a3003d; }
-.cake-container { position: relative; width: 260px; height: 220px; margin: 30px auto; }
-.cake-body { width: 260px; height: 110px; background: linear-gradient(#ff8fc4, #ff6bb3); border-radius: 0 30px 30px; position: absolute; bottom: 0; }
-.flame { width: 22px; height: 30px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -20px; left: -4px; animation: flicker 0.3s infinite alternate; }
-  @keyframes flicker { 0%{transform:scale(1)} 100%{transform:scale(1.2)} }
-.cake.cut { animation: cakeCut 1s ease-in forwards; }
-  @keyframes cakeCut { 0%{transform:translateY(0)} 100%{transform:translateY(100vh)} }
+.cake-wrapper { position: relative; width: 280px; height: 280px; margin: 20px auto; }
+.cake-base { width: 280px; height: 120px; background: linear-gradient(180deg, #ff8fc4, #ff6bb3); border-radius: 0 0 50px 50px; position: absolute; bottom: 0; box-shadow: inset 0 -10px 20px rgba(0,0,0,0.2); }
+.cake-middle { width: 240px; height: 100px; background: linear-gradient(180deg, #ffb8d8, #ff8fc4); border-radius: 0 0 40px 40px; position: absolute; bottom: 120px; left: 20px; }
+.cake-top { width: 200px; height: 80px; background: linear-gradient(180deg, #ffd9e9, #ffb8d8); border-radius: 50%; position: absolute; bottom: 220px; left: 40px; }
+.cream-drip { width: 20px; height: 30px; background: #fff; border-radius: 0 0 10px 10px; position: absolute; bottom: 190px; }
+.candle-holder { position: absolute; bottom: 300px; left: 130px; }
+.candle { width: 16px; height: 60px; background: linear-gradient(#fff, #ffe6f0); border-radius: 10px; position: relative; }
+.flame { width: 25px; height: 35px; background: radial-gradient(#fff,#ffeb3b 40%,#ff9800 70%); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; position: absolute; top: -25px; left: -4px; animation: flicker 0.3s infinite alternate; filter: drop-shadow(0 0 15px #ff9800); }
+  @keyframes flicker { 0%{transform:scale(1) rotate(-5deg)} 100%{transform:scale(1.2) rotate(5deg)} }
+.cake.cut { animation: cakeCut 1.2s ease-in forwards; }
+  @keyframes cakeCut { 0%{transform:translateY(0) scale(1)} 100%{transform:translateY(100vh) scale(0.8) rotate(15deg)} }
 
-  /* VIDEO WISH */
+  /* VIDEO */
 .video-page { background: #000; }
 .video-box { width: 90%; max-width: 400px; border-radius: 25px; overflow: hidden; box-shadow: 0 0 40px rgba(255,63,145,0.6); }
 
@@ -110,38 +113,41 @@
   </div>
 </section>
 
-<!-- 5. SURPRISE 1: LAAMO LETTER -->
+<!-- 5. LETTER -->
 <section class="page letter-page" id="letterPage">
   <div class="letter">
-    <h2>For You My MOtki ❤️</h2>
+    <h2 style="font-family:'Great Vibes',cursive; font-size:2.5em; color:#ff3f91; text-align:center;">For You My MOtki ❤️</h2>
     <p>Dear MOtki,</p>
     <p>Aaja timro birthday ho. Yo din timi yo sansar ma aako din ho. Timilai dekheko bela dekhi nai mero life ma euta naya ra color ayo jasto lagcha.</p>
     <p>Timi hasda mero sabai tension gayab huncha. Timi ruda mero man dhadkancha. Timro ekta smile ko lagi ma kei pani garna sakchu.</p>
     <p>Timi jati special chau ma shabda ma batauna sakdina. Timi mero strength hau, mero khusi hau, mero sabai kura hau.</p>
-    <p>May this year bring you all the happiness, success, and love you deserve. I promise to always be there for you, to make you laugh, to hold your hand, and to love you more every single day.</p>
+    <p>May this year bring you all the happiness, success, and love you deserve. I promise to always be there for you.</p>
     <p style="text-align:right; margin-top:20px;">With all my love,<br><b>Timro Manche ❤️</b></p>
   </div>
 </section>
 
-<!-- 6. PHOTO 1 -->
+<!-- 6. PHOTO 1 - FIXED PATH -->
 <section class="page photo-page" id="photo1">
   <div style="font-family:'Dancing Script',cursive; font-size:2em; margin-bottom:15px;">MOtki ❤️</div>
   <div class="photo-card"><img src="2853965898329535"></div>
+  <div style="margin-top:10px;">01 / 03</div>
 </section>
 
-<!-- 7. PHOTO 2 -->
+<!-- 7. PHOTO 2 - FIXED PATH -->
 <section class="page photo-page" id="photo2">
   <div style="font-family:'Dancing Script',cursive; font-size:2em; margin-bottom:15px;">A Little Memory ✨</div>
   <div class="photo-card"><img src="1627023902089696"></div>
+  <div style="margin-top:10px;">02 / 03</div>
 </section>
 
-<!-- 8. PHOTO 3 -->
+<!-- 8. PHOTO 3 - FIXED PATH -->
 <section class="page photo-page" id="photo3">
   <div style="font-family:'Dancing Script',cursive; font-size:2em; margin-bottom:15px;">Always Special ❤️</div>
   <div class="photo-card"><img src="1786729114527.jpg"></div>
+  <div style="margin-top:10px;">03 / 03</div>
 </section>
 
-<!-- 9. SURPRISE 2: 5 REASONS -->
+<!-- 9. REASONS -->
 <section class="page reasons-page" id="reasonsPage">
   <h2 class="gradient-text">5 Reasons Why I Love You</h2>
   <div class="glass" style="text-align:left;">
@@ -153,24 +159,29 @@
   </div>
 </section>
 
-<!-- 10. CAKE -->
+<!-- 10. NEW CAKE -->
 <section class="page cake-page" id="cakePage">
   <h2 style="font-family:'Dancing Script',cursive; font-size:2em;">Slide up to cut the cake... 🎂</h2>
-  <div class="cake-container" id="cakeContainer">
+  <div class="cake-wrapper" id="cakeContainer">
     <div class="cake" id="cake">
-      <div style="width:14px; height:55px; background:#fff; position:absolute; bottom:200px; left:123px; border-radius:10px;">
-        <div class="flame"></div>
-      </div>
-      <div class="cake-body"></div>
+      <div class="cake-base"></div>
+      <div class="cake-middle"></div>
+      <div class="cake-top"></div>
+      <div class="cream-drip" style="left:50px;"></div>
+      <div class="cream-drip" style="left:90px;"></div>
+      <div class="cream-drip" style="left:130px;"></div>
+      <div class="cream-drip" style="left:170px;"></div>
+      <div class="cream-drip" style="left:210px;"></div>
+      <div class="candle-holder"><div class="candle"><div class="flame"></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- 11. SURPRISE 3: VIDEO WISH -->
+<!-- 11. VIDEO WISH -->
 <section class="page video-page" id="videoPage">
   <h2 style="font-family:'Great Vibes',cursive; font-size:3em; color:#ff8fc4;">A Special Message For You</h2>
   <div class="video-box">
-    <video width="100%" controls autoplay>
+    <video width="100%" controls>
       <source src="birthday_wish.mp4" type="video/mp4">
       Timi ko browser le video support gardaina.
     </video>
@@ -186,8 +197,6 @@
     May your day be filled with endless smiles, <br>
     beautiful surprises, and moments you will <br>
     cherish forever. <br><br>
-    You deserve the whole world, and I promise <br>
-    to be your little piece of it. <br><br>
     I love you more than words can say. ✨
   </p></div>
 </section>
@@ -200,7 +209,7 @@ function goToPage(pageIndex) {
   document.getElementById(pages[currentPage]).classList.remove('active');
   document.getElementById(pages[pageIndex]).classList.add('active');
   currentPage = pageIndex;
-  // Auto next for photo and letter
+  // Auto next for letter, photos, reasons
   if([3,4,5,6,7,8].includes(pageIndex)) setTimeout(() => goToPage(pageIndex + 1), 5000);
 }
 
@@ -219,7 +228,7 @@ const cake = document.getElementById('cake');
 let startY = 0;
 document.getElementById('cakeContainer').addEventListener('touchstart', e => startY = e.touches[0].clientY);
 document.getElementById('cakeContainer').addEventListener('touchend', e => {
-  if(startY - e.changedTouches[0].clientY > 50){ cake.classList.add('cut'); setTimeout(() => goToPage(10), 1000); }
+  if(startY - e.changedTouches[0].clientY > 50){ cake.classList.add('cut'); setTimeout(() => goToPage(10), 1200); }
 });
 </script>
 </body>
