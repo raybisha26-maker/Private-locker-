@@ -8,62 +8,69 @@
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Poppins', sans-serif; background: #12000d; color: white; overflow: hidden; }
-.page { height: 100vh; width: 100vw; display: none; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; padding: 20px; text-align: center; }
-.page.active { display: flex; } /* display none bata flex ma change */
+ .page { height: 100vh; width: 100vw; display: none; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; padding: 20px; text-align: center; }
+ .page.active { display: flex; }
 
-  /* COUNTDOWN */
+  /* 1. COUNTDOWN */
   #countPage { background: linear-gradient(180deg, #350b29, #12000d); }
-.countdown-title { font-size: 2em; color: #ffd9e9; margin-bottom: 10px; }
-.bs-date { font-size: 1.2em; color: #ff8fc4; margin-bottom: 30px; }
-.countdown { display: flex; gap: 15px; margin-bottom: 30px; }
-.timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); }
-.number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
-.next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; }
+ .countdown-title { font-size: 2em; color: #ffd9e9; margin-bottom: 10px; }
+ .bs-date { font-size: 1.2em; color: #ff8fc4; margin-bottom: 30px; }
+ .countdown { display: flex; gap: 15px; margin-bottom: 30px; }
+ .timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); }
+ .number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
+ .next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; }
 
-  /* INPUT PAGE */
-.input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
-.input-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 25px; }
-.input-box input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; }
-.input-box button { width: 100%; padding: 12px; margin-top: 15px; border-radius: 10px; border: none; background: #ff3f91; color: white; font-weight: 600; cursor: pointer; }
+  /* 2. INPUT */
+ .input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
+ .input-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 25px; width: 90%; max-width: 400px; }
+ .input-box h2 { margin-bottom: 20px; color: #ffd9e9; }
+ .input-box input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1em; }
+ .input-box button { width: 100%; padding: 12px; margin-top: 15px; border-radius: 10px; border: none; background: #ff3f91; color: white; font-weight: 600; font-size: 1.1em; cursor: pointer; }
 
-  /* ARROW GAME */
+  /* 3. ARROW GAME */
   #arrowPage { background: linear-gradient(135deg, #ffc2d9, #ffe6f0); color: #a3003d; }
-.instruction { font-size: 1.3em; font-weight: 600; position: absolute; top: 50px; }
-.stage { position: relative; width: 100%; height: 100%; }
-.bow { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
-.bow-upper,.bow-lower { width: 60px; height: 120px; border: 5px solid #a3003d; border-left: none; border-radius: 0 120px 120px 0; }
-.arrow { position: absolute; left: 60px; top: 50%; width: 150px; height: 5px; background: #a3003d; cursor: grab; transform: translateY(-50%); }
-.target-heart { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
-.heart-shape { width: 80px; height: 80px; background: #ff1a5e; transform: rotate(45deg); }
-.flying-arrow { position: absolute; height: 5px; background: #a3003d; z-index: 10; }
+ .instruction { font-size: 1.3em; font-weight: 600; position: absolute; top: 50px; }
+ .stage { position: relative; width: 100%; height: 80%; }
+ .bow { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
+ .bow-upper,.bow-lower { width: 60px; height: 120px; border: 5px solid #a3003d; border-left: none; border-radius: 0 120px 120px 0; }
+ .bow-lower { transform: rotate(180deg); margin-top: -5px; }
+ .arrow { position: absolute; left: 60px; top: 50%; width: 150px; height: 5px; background: #a3003d; cursor: grab; transform: translateY(-50%); }
+ .arrow:after { content: ""; position: absolute; right: -12px; border: 12px solid transparent; border-left: 18px solid #a3003d; }
+ .target-heart { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
+ .heart-shape { width: 80px; height: 80px; background: #ff1a5e; transform: rotate(45deg); transition: all 0.5s; }
+ .heart-shape:before,.heart-shape:after { content: ""; width: 80px; height: 80px; position: absolute; border-radius: 50%; background: #ff1a5e; }
+ .heart-shape:before { top: -40px; }.heart-shape:after { left: -40px; }
+ .heart-shape.broken { transform: rotate(45deg) scale(0); opacity: 0; }
 
-  /* BIRTHDAY */
+  /* 4. BIRTHDAY */
   #birthdayPage { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
-.big-heart { font-size: 6em; }
-.birthday h1 { font-family: 'Great Vibes', cursive; font-size: 4.5em; color: #fff; }
+ .big-heart { font-size: 6em; }
+ .birthday h1 { font-family: 'Great Vibes', cursive; font-size: 4.5em; color: #fff; }
 
-  /* PHOTO */
-.photo-page { background: linear-gradient(180deg, #350b29, #12000d); }
-.photo-card { width: 90%; max-width: 420px; padding: 12px; border-radius: 25px; background: rgba(255,255,255,0.13); }
-.photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 18px; }
+  /* 5. PHOTO */
+ .photo-page { background: linear-gradient(180deg, #350b29, #12000d); }
+ .photo-card { width: 90%; max-width: 420px; padding: 12px; border-radius: 25px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.35); }
+ .photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 18px; }
 
-  /* CAKE */
-.cake-page { background: linear-gradient(180deg, #ffc2d9, #ffe6f0); color: #a3003d; }
-.cake-container { position: relative; width: 240px; height: 200px; margin: 30px auto; }
-.cake-body { width: 240px; height: 100px; background: #ff8fc4; border-radius: 0 0 25px 25px; position: absolute; bottom: 0; }
-.flame { width: 18px; height: 25px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -18px; left: -3px; }
-.cake.cut { animation: cakeCut 0.8s forwards; }
+  /* 6. CAKE */
+ .cake-page { background: linear-gradient(180deg, #ffc2d9, #ffe6f0); color: #a3003d; }
+ .cake-container { position: relative; width: 240px; height: 200px; margin: 30px auto; }
+ .cake-body { width: 240px; height: 100px; background: #ff8fc4; border-radius: 0 0 25px 25px; position: absolute; bottom: 0; }
+ .cream { width: 240px; height: 25px; background: #fff; position: absolute; bottom: 100px; border-radius: 25px; }
+ .cake-top { width: 220px; height: 50px; background: #ff6bb3; border-radius: 25px; position: absolute; bottom: 125px; left: 10px; }
+ .candle { width: 12px; height: 50px; background: #fff; position: absolute; bottom: 175px; left: 114px; }
+ .flame { width: 18px; height: 25px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -18px; left: -3px; }
+ .cake.cut { animation: cakeCut 0.8s forwards; }
 
-  /* FINAL */
-.final { background: linear-gradient(180deg, #350b29, #12000d); }
-.final h1 { font-family: 'Great Vibes', cursive; font-size: 4em; color: #ffd9e9; }
-
+  /* 7. FINAL */
+ .final { background: linear-gradient(180deg, #350b29, #12000d); }
+ .final h1 { font-family: 'Great Vibes', cursive; font-size: 4em; color: #ffd9e9; }
   @keyframes cakeCut { 0%{transform:translateY(0)} 100%{transform:translateY(100vh)} }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1 -->
+<!-- 1. COUNTDOWN -->
 <section class="page active" id="countPage">
   <h2 class="countdown-title">MOtki's Birthday Countdown</h2>
   <p class="bs-date">Bhado 12, 2083 BS</p>
@@ -76,17 +83,17 @@
   <button class="next-btn" onclick="goToPage(1)">Next →</button>
 </section>
 
-<!-- PAGE 2 -->
+<!-- 2. AGE -->
 <section class="page" id="agePage">
   <div class="input-box">
     <h2>Hey MOtki! ❤️</h2>
     <p>Today timi kati barsa ko bhayo?</p>
-    <input type="number" id="ageInput" placeholder="Age lekha">
+    <input type="number" id="ageInput" placeholder="Timi ko age lekha">
     <button onclick="goToPage(2)">Submit</button>
   </div>
 </section>
 
-<!-- PAGE 3 -->
+<!-- 3. DOB -->
 <section class="page" id="dobPage">
   <div class="input-box">
     <h2>Ekchin! ✨</h2>
@@ -96,41 +103,44 @@
   </div>
 </section>
 
-<!-- PAGE 4 -->
+<!-- 4. ARROW GAME -->
 <section class="page" id="arrowPage">
-  <div class="instruction"><b>For MOtki ❤️</b><br>Drag arrow and release</div>
+  <div class="instruction"><b>For MOtki ❤️</b><br>Drag arrow back and release</div>
   <div class="stage">
     <div class="bow"><div class="bow-upper"></div><div class="bow-lower"></div></div>
     <div class="arrow" id="arrow"></div>
-    <div class="target-heart"><div class="heart-shape" id="targetHeart"></div></div>
+    <div class="target-heart"><div class="heart-shape" id="targetHeart"></div><div>MOtki ❤️</div></div>
   </div>
 </section>
 
-<!-- PAGE 5 -->
+<!-- 5. BIRTHDAY -->
 <section class="page" id="birthdayPage"><div class="birthday"><span class="big-heart">❤️</span><h1>Happy Birthday</h1><h2>MOtki ✨</h2></div></section>
 
-<!-- PAGE 6 -->
-<section class="page photo-page" id="photo1"><div class="photo-card"><img src="1786729114527.jpg"></div><div>01 / 03</div></section>
+<!-- 6. PHOTO 1 -->
+<section class="page photo-page" id="photo1"><div class="photo-title">MOtki ❤️</div><div class="photo-card"><img src="1786729114527.jpg"></div><div>01 / 03</div></section>
 
-<!-- PAGE 7 -->
-<section class="page photo-page" id="photo2"><div class="photo-card"><img src="ChatGPT Image Jun 15, 2025, 02_27_03 PM.png"></div><div>02 / 03</div></section>
+<!-- 7. PHOTO 2 -->
+<section class="page photo-page" id="photo2"><div class="photo-title">A Little Memory ✨</div><div class="photo-card"><img src="ChatGPT Image Jun 15, 2025, 02_27_03 PM.png"></div><div>02 / 03</div></section>
 
-<!-- PAGE 8 -->
-<section class="page photo-page" id="photo3"><div class="photo-card"><img src="IMG_20250827_184410.jpg"></div><div>03 / 03</div></section>
+<!-- 8. PHOTO 3 -->
+<section class="page photo-page" id="photo3"><div class="photo-title">Always Special ❤️</div><div class="photo-card"><img src="IMG_20250827_184410.jpg"></div><div>03 / 03</div></section>
 
-<!-- PAGE 9 -->
+<!-- 9. CAKE -->
 <section class="page cake-page" id="cakePage">
   <h2>Slide up to cut the cake...</h2>
   <div class="cake-container" id="cakeContainer">
     <div class="cake" id="cake">
-      <div class="flame"></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="cake-top"></div>
+      <div class="cream"></div>
       <div class="cake-body"></div>
     </div>
   </div>
+  <h2>Make a wish, MOtki ✨</h2>
 </section>
 
-<!-- PAGE 10 -->
-<section class="page final" id="finalPage"><div><div class="big-heart">💗</div><h1>Happy Birthday MOtki</h1></div></section>
+<!-- 10. FINAL -->
+<section class="page final" id="finalPage"><div><div class="big-heart">💗</div><h1>Happy Birthday MOtki</h1><p>May your day be filled with<br>smiles, beautiful moments<br>and lots of happiness. ✨</p></div></section>
 
 <script>
 const pages = ["countPage", "agePage", "dobPage", "arrowPage", "birthdayPage", "photo1", "photo2", "photo3", "cakePage", "finalPage"];
@@ -140,10 +150,11 @@ function goToPage(pageIndex) {
   document.getElementById(pages[currentPage]).classList.remove('active');
   document.getElementById(pages[pageIndex]).classList.add('active');
   currentPage = pageIndex;
+  // Photo dekhi Cake samma auto 3 sec ma next
   if(pageIndex >= 4 && pageIndex <= 8) setTimeout(() => goToPage(pageIndex + 1), 3000);
 }
 
-/* COUNTDOWN */
+/* COUNTDOWN - BHADO 12 2083 = AUG 28 2026 */
 const birthdayDate = new Date("2026-08-28 00:00:00").getTime();
 setInterval(() => {
   const distance = birthdayDate - new Date().getTime();
@@ -156,10 +167,11 @@ setInterval(() => {
 /* ARROW DRAG */
 const arrow = document.getElementById('arrow');
 let isDragging = false;
-arrow.addEventListener('mousedown', () => isDragging = true);
-arrow.addEventListener('touchstart', () => isDragging = true);
-document.addEventListener('mouseup', () => { if(isDragging){ isDragging=false; goToPage(4); } });
-document.addEventListener('touchend', () => { if(isDragging){ isDragging=false; goToPage(4); } });
+let startX = 0;
+arrow.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
+arrow.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; });
+document.addEventListener('mouseup', () => { if(isDragging){ isDragging=false; document.getElementById('targetHeart').classList.add('broken'); setTimeout(() => goToPage(4), 600); } });
+document.addEventListener('touchend', () => { if(isDragging){ isDragging=false; document.getElementById('targetHeart').classList.add('broken'); setTimeout(() => goToPage(4), 600); } });
 
 /* CAKE SLIDE */
 const cake = document.getElementById('cake');
