@@ -3,60 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Princess MOtki 👑</title>
+<title>I Love You Mera Baccha ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Poppins', sans-serif; background: #000; color: white; overflow: hidden; }
 
-  /* NAYA BACKGROUND */
-.bg-gradient { position: fixed; width: 100%; height: 100%; background: linear-gradient(135deg, #ff0066, #ff3399, #ff66cc, #ff99dd); background-size: 400% 400%; animation: gradientBG 8s ease infinite; z-index: -1; }
-  @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+  /* ANIMATED BACKGROUND + HEARTS */
+.bg-hearts { position: fixed; width: 100%; height: 100%; background: linear-gradient(135deg, #1a0033, #330044, #660066); z-index: -1; }
+.heart { position: absolute; font-size: 20px; color: rgba(255,143,196,0.6); animation: floatHeart 6s infinite linear; }
+  @keyframes floatHeart { 0%{transform:translateY(100vh) scale(0) rotate(0)} 100%{transform:translateY(-10vh) scale(1.5) rotate(360deg)} }
 
 .page { height: 100vh; width: 100vw; display: none; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; padding: 20px; text-align: center; }
-.page.active { display: flex; animation: fadeIn 0.8s; }
-  @keyframes fadeIn { from{opacity:0; transform:scale(0.9)} to{opacity:1; transform:scale(1)} }
+.page.active { display: flex; animation: fadeZoom 0.8s; }
+  @keyframes fadeZoom { from{opacity:0; transform:scale(0.8)} to{opacity:1; transform:scale(1)} }
 
-  /* NAYA COUNTDOWN BOX */
-.count-box { background: rgba(0,0,0,0.4); padding: 40px; border-radius: 30px; border: 2px solid #ff8fc4; box-shadow: 0 0 50px #ff3f91; }
+  /* COUNTDOWN */
+.count-box { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 30px; border: 2px solid #ff8fc4; backdrop-filter: blur(20px); box-shadow: 0 0 50px #ff3f91; }
 .count-title { font-family: 'Great Vibes', cursive; font-size: 3.5em; color: #fff; text-shadow: 0 0 20px #ff8fc4; }
 .countdown { display: flex; gap: 15px; margin: 30px 0; }
 .timebox { background: linear-gradient(135deg, #ff3f91, #ff8fc4); padding: 20px; border-radius: 20px; min-width: 90px; box-shadow: 0 5px 20px rgba(255,63,145,0.6); }
 .number { font-size: 3em; font-weight: 700; color: #fff; }
-
-  /* NAYA BUTTON */
 .btn-pink { padding: 16px 50px; background: linear-gradient(90deg,#ff0066,#ff3399); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.2em; cursor: pointer; box-shadow: 0 0 30px #ff0066; }
 
-  /* NAYA GLASS CARD */
-.glass-card { background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3); border-radius: 25px; padding: 35px; backdrop-filter: blur(25px); }
+  /* INPUT */
+.glass-card { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); border-radius: 25px; padding: 35px; backdrop-filter: blur(25px); }
 .glass-card input { width: 100%; padding: 15px; margin: 15px 0; border-radius: 15px; border: 2px solid #ff8fc4; background: rgba(0,0,0,0.3); color: white; font-size: 1.1em; }
 
-  /* NAYA PHOTO FRAME */
-.photo-frame { width: 90%; max-width: 450px; padding: 20px; border-radius: 35px; background: linear-gradient(135deg, #ff3f91, #ff8fc4); box-shadow: 0 0 50px #ff3f91; }
+  /* BIRTHDAY */
+  #birthdayPage { background: radial-gradient(circle, #ff0066, #330044); }
+.big-heart { font-size: 8em; animation: heartbeat 0.8s infinite; filter: drop-shadow(0 0 30px #ff8fc4); }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+.birthday h1 { font-family: 'Great Vibes', cursive; font-size: 5.5em; color: #fff; text-shadow: 0 0 30px #fff; }
+
+  /* LETTER */
+.letter { background: #fffdf5; color: #333; padding: 30px; border-radius: 20px; text-align: left; font-size: 1.1em; line-height: 1.8; max-width: 500px; max-height: 70vh; overflow-y: auto; box-shadow: 0 0 40px #ff8fc4; }
+
+  /* PHOTO - 2 OTA MATRA */
+.photo-frame { width: 90%; max-width: 450px; padding: 20px; border-radius: 35px; background: linear-gradient(135deg, #ff3f91, #ff8fc4); box-shadow: 0 0 50px #ff3f91; transform: rotate(-2deg); }
 .photo-frame img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 25px; border: 5px solid white; }
 
-  /* NAYA 3D CAKE */
-.cake3d { position: relative; width: 300px; height: 300px; margin: 20px auto; perspective: 1000px; }
-.cake-layer { position: absolute; border-radius: 50%; }
-.layer1 { width: 300px; height: 120px; background: linear-gradient(#ff3399,#ff0066); bottom: 0; left: 0; }
-.layer2 { width: 250px; height: 100px; background: linear-gradient(#ff66cc,#ff3399); bottom: 120px; left: 25px; }
-.layer3 { width: 200px; height: 80px; background: linear-gradient(#ff99dd,#ff66cc); bottom: 220px; left: 50px; border-radius: 50% 50% 20px 20px; }
-.cream-line { width: 100%; height: 15px; background: #fff; position: absolute; }
-.flame3d { width: 30px; height: 40px; background: radial-gradient(#fff,#ffeb3b,#ff5500); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; position: absolute; top: -30px; left: 135px; animation: fire 0.2s infinite alternate; }
-  @keyframes fire { 0%{transform:scale(1)} 100%{transform:scale(1.3)} }
-.cake3d.cut { animation: fallDown 1.5s ease-in forwards; }
-  @keyframes fallDown { to{transform:translateY(100vh) rotateX(90deg)} }
+  /* NAYA RAMRO CAKE */
+.cake-scene { position: relative; width: 320px; height: 320px; margin: 20px auto; }
+.cake-base { width: 320px; height: 130px; background: linear-gradient(180deg, #ff3399,#ff0066); border-radius: 0 0 60px 60px; position: absolute; bottom: 0; box-shadow: 0 10px 40px rgba(255,0,102,0.5); }
+.cake-mid { width: 270px; height: 110px; background: linear-gradient(180deg, #ff66cc,#ff3399); border-radius: 0 0 50px 50px; position: absolute; bottom: 130px; left: 25px; }
+.cake-top { width: 220px; height: 90px; background: linear-gradient(180deg, #ffb8d8,#ff66cc); border-radius: 50%; position: absolute; bottom: 240px; left: 50px; }
+.cream-wave { width: 100%; height: 25px; background: #fff; border-radius: 50%; position: absolute; }
+.drip { width: 25px; height: 40px; background: #fff; border-radius: 0 0 15px 15px; position: absolute; bottom: 205px; }
+.candle { width: 18px; height: 70px; background: linear-gradient(#fff, #ffe6f0); border-radius: 10px; position: absolute; bottom: 330px; left: 151px; }
+.flame { width: 30px; height: 45px; background: radial-gradient(#fff,#ffeb3b 40%,#ff5500 70%); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; position: absolute; top: -30px; left: -6px; animation: fire 0.2s infinite alternate; filter: drop-shadow(0 0 20px #ff5500); }
+  @keyframes fire { 0%{transform:scale(1) rotate(-5deg)} 100%{transform:scale(1.3) rotate(5deg)} }
+.cake.cut { animation: fallCake 1.5s ease-in forwards; }
+  @keyframes fallCake { to{transform:translateY(100vh) rotate(20deg) scale(0.5)} }
 
-.video-frame { width: 90%; max-width: 420px; border-radius: 30px; overflow: hidden; border: 5px solid #ff8fc4; box-shadow: 0 0 50px #ff3f91; }
+  /* FINAL LOVE TEXT */
+.final-love { font-family: 'Great Vibes', cursive; font-size: 4.5em; background: linear-gradient(90deg, #ff8fc4, #ffd9e9, #ff8fc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: glowText 2s ease-in-out infinite alternate; }
+  @keyframes glowText { from{text-shadow:0 0 20px #ff8fc4} to{text-shadow:0 0 40px #ff3f91} }
 </style>
 </head>
 <body>
-<div class="bg-gradient"></div>
+<div class="bg-hearts"></div>
 
-<!-- 1. NAYA COUNTDOWN -->
+<!-- 1. COUNTDOWN -->
 <section class="page active" id="countPage">
   <div class="count-box">
-    <h2 class="count-title">MOtki's Special Day</h2>
+    <h2 class="count-title">MOtki's Birthday</h2>
     <p style="color:#ffd9e9; font-size:1.3em;">Bhado 12, 2083</p>
     <div class="countdown">
       <div class="timebox"><div class="number" id="days">00</div><div>DAYS</div></div>
@@ -71,7 +82,7 @@
 <!-- 2. AGE -->
 <section class="page" id="agePage">
   <div class="glass-card">
-    <h2 style="font-family:'Great Vibes',cursive; font-size:3em;">Hey Beautiful! ❤️</h2>
+    <h2 style="font-family:'Great Vibes',cursive; font-size:3em;">Hey Baccha! ❤️</h2>
     <p style="font-size:1.2em;">Timi aaja kati barsa ki bhai?</p>
     <input type="number" id="ageInput" placeholder="Age lekha yaha">
     <button class="btn-pink" onclick="goToPage(2)">Next ✨</button>
@@ -89,84 +100,88 @@
 </section>
 
 <!-- 4. BIRTHDAY -->
-<section class="page" id="birthdayPage" style="background:linear-gradient(135deg,#ff0066,#ff3399);">
-  <div style="font-size:8em; animation: heartbeat 0.8s infinite;">❤️</div>
-  <h1 style="font-family:'Great Vibes',cursive; font-size:5.5em; color:#fff;">Happy Birthday</h1>
-  <h2 style="font-family:'Dancing Script',cursive; font-size:3em; color:#fff;">Princess MOtki 👑</h2>
+<section class="page" id="birthdayPage">
+  <div class="birthday">
+    <div class="big-heart">❤️</div>
+    <h1>Happy Birthday</h1>
+    <h2 style="font-family:'Dancing Script',cursive; font-size:3em;">Princess MOtki 👑</h2>
+  </div>
 </section>
 
-<!-- 5. LETTER -->
-<section class="page" id="letterPage" style="background:#12000d;">
-  <div class="glass-card" style="text-align:left; max-height:80vh; overflow-y:auto;">
-    <h2 style="font-family:'Great Vibes',cursive; font-size:3em; color:#ff8fc4; text-align:center;">My Dearest MOtki</h2>
-    <p>Aaja timro din ho. Timro janma le mero life change bhayo. Timro ekta smile ma mero 100 dukha birachhu.</p>
-    <p>Timi mero strength, mero peace, mero sabai kura hau. Ma promise garchu timilai sadhai khusi rakhnechu.</p>
-    <p style="text-align:right;">Love you infinite ❤️</p>
+<!-- 5. LOVE LETTER -->
+<section class="page" id="letterPage">
+  <div class="letter">
+    <h2 style="font-family:'Great Vibes',cursive; font-size:3em; color:#ff3f91; text-align:center;">For My Baccha</h2>
+    <p>Dear MOtki,</p>
+    <p>Aaja timro din ho. Timro ekta smile ma mero sansar cha. Timi hasda ma khusi, timi ruda ma dukhi.</p>
+    <p>Timi mero sabai kura hau. Timilai sadhai maya garnechu, sadhai saath dinechu.</p>
+    <p style="text-align:right; margin-top:20px;"><b>Timro Manche ❤️</b></p>
   </div>
 </section>
 
 <!-- 6. PHOTO 1 -->
-<section class="page" id="photo1" style="background:#12000d;">
-  <h2 style="font-family:'Dancing Script',cursive; font-size:2.5em; margin-bottom:20px;">Memory 1 ❤️</h2>
-  <div class="photo-frame"><img src="2853965898329535"></div>
-</section>
-
-<!-- 7. PHOTO 2 -->
-<section class="page" id="photo2" style="background:#12000d;">
-  <h2 style="font-family:'Dancing Script',cursive; font-size:2.5em; margin-bottom:20px;">Memory 2 ✨</h2>
-  <div class="photo-frame"><img src="1627023902089696"></div>
-</section>
-
-<!-- 8. PHOTO 3 -->
-<section class="page" id="photo3" style="background:#12000d;">
-  <h2 style="font-family:'Dancing Script',cursive; font-size:2.5em; margin-bottom:20px;">Memory 3 💕</h2>
+<section class="page" id="photo1">
+  <h2 style="font-family:'Dancing Script',cursive; font-size:2.5em; margin-bottom:20px;">Our Memory 1 ❤️</h2>
   <div class="photo-frame"><img src="1786729114527.jpg"></div>
 </section>
 
-<!-- 9. NAYA 3D CAKE -->
+<!-- 7. PHOTO 2 -->
+<section class="page" id="photo2">
+  <h2 style="font-family:'Dancing Script',cursive; font-size:2.5em; margin-bottom:20px;">Our Memory 2 ✨</h2>
+  <div class="photo-frame"><img src="ChatGPT Image Jun 20, 2026, 06_12_25 PM.png"></div>
+</section>
+
+<!-- 8. NAYA CAKE -->
 <section class="page" id="cakePage" style="background:linear-gradient(#ffc2d9,#ffe6f0); color:#a3003d;">
   <h2 style="font-family:'Dancing Script',cursive; font-size:2.5em;">Slide up to Cut 🎂</h2>
-  <div class="cake3d" id="cakeContainer">
-    <div class="cake3d" id="cake">
-      <div class="cake-layer layer1"></div>
-      <div class="cream-line" style="bottom:120px;"></div>
-      <div class="cake-layer layer2"></div>
-      <div class="cream-line" style="bottom:220px;"></div>
-      <div class="cake-layer layer3"></div>
-      <div class="flame3d"></div>
+  <div class="cake-scene" id="cakeContainer">
+    <div class="cake" id="cake">
+      <div class="cake-base"></div>
+      <div class="cream-wave" style="bottom:130px;"></div>
+      <div class="cake-mid"></div>
+      <div class="cream-wave" style="bottom:240px;"></div>
+      <div class="cake-top"></div>
+      <div class="drip" style="left:70px;"></div>
+      <div class="drip" style="left:120px;"></div>
+      <div class="drip" style="left:170px;"></div>
+      <div class="drip" style="left:220px;"></div>
+      <div class="candle"><div class="flame"></div></div>
     </div>
   </div>
 </section>
 
-<!-- 10. VIDEO -->
-<section class="page" id="videoPage" style="background:#000;">
-  <h2 style="font-family:'Great Vibes',cursive; font-size:3.5em; color:#ff8fc4;">For You ❤️</h2>
-  <div class="video-frame">
-    <video width="100%" controls autoplay>
-      <source src="birthday_wish.mp4" type="video/mp4">
-    </video>
+<!-- 9. FINAL LOVE TEXT -->
+<section class="page" id="finalPage">
+  <div>
+    <div style="font-size:8em; animation: heartbeat 1s infinite;">💗</div>
+    <h1 class="final-love">I love you Mera baccha 😘💋</h1>
+    <p style="font-size:1.4em; margin-top:20px; color:#ffd9e9;">Forever yours ❤️</p>
   </div>
-  <button class="btn-pink" onclick="goToPage(10)">Final →</button>
-</section>
-
-<!-- 11. FINAL -->
-<section class="page" id="finalPage" style="background:linear-gradient(135deg,#1a0033,#330044);">
-  <div style="font-size:8em;">💗</div>
-  <h1 style="font-family:'Great Vibes',cursive; font-size:5em; background:linear-gradient(90deg,#ff8fc4,#ffd9e9); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Happy Birthday MOtki</h1>
-  <p style="font-size:1.4em; margin-top:20px;">You are my everything. I love you so much! ✨</p>
 </section>
 
 <script>
-const pages = ["countPage", "agePage", "dobPage", "birthdayPage", "letterPage", "photo1", "photo2", "photo3", "cakePage", "videoPage", "finalPage"];
+// FLOATING HEARTS CREATE
+setInterval(() => {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + '%';
+  heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+  document.querySelector('.bg-hearts').appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 300);
+
+const pages = ["countPage", "agePage", "dobPage", "birthdayPage", "letterPage", "photo1", "photo2", "cakePage", "finalPage"];
 let currentPage = 0;
 
 function goToPage(pageIndex) {
   document.getElementById(pages[currentPage]).classList.remove('active');
   document.getElementById(pages[pageIndex]).classList.add('active');
   currentPage = pageIndex;
-  if([3,4,5,6,7].includes(pageIndex)) setTimeout(() => goToPage(pageIndex + 1), 4000);
+  if([3,4,5,6].includes(pageIndex)) setTimeout(() => goToPage(pageIndex + 1), 4000);
 }
 
+/* COUNTDOWN */
 const birthdayDate = new Date("2026-08-28 00:00:00").getTime();
 setInterval(() => {
   const distance = birthdayDate - new Date().getTime();
@@ -176,11 +191,12 @@ setInterval(() => {
   document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2,'0');
 }, 1000);
 
+/* CAKE SLIDE */
 const cake = document.getElementById('cake');
 let startY = 0;
 document.getElementById('cakeContainer').addEventListener('touchstart', e => startY = e.touches[0].clientY);
 document.getElementById('cakeContainer').addEventListener('touchend', e => {
-  if(startY - e.changedTouches[0].clientY > 50){ cake.classList.add('cut'); setTimeout(() => goToPage(9), 1500); }
+  if(startY - e.changedTouches[0].clientY > 50){ cake.classList.add('cut'); setTimeout(() => goToPage(8), 1500); }
 });
 </script>
 </body>
