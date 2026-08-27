@@ -8,242 +8,166 @@
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Poppins', sans-serif; background: #12000d; color: white; overflow: hidden; }
-.page { height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1); padding: 20px; text-align: center; opacity: 0; }
-.page.active { opacity: 1; }
+.page { height: 100vh; width: 100vw; display: none; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; padding: 20px; text-align: center; }
+.page.active { display: flex; } /* display none bata flex ma change */
 
   /* COUNTDOWN */
   #countPage { background: linear-gradient(180deg, #350b29, #12000d); }
 .countdown-title { font-size: 2em; color: #ffd9e9; margin-bottom: 10px; }
 .bs-date { font-size: 1.2em; color: #ff8fc4; margin-bottom: 30px; }
 .countdown { display: flex; gap: 15px; margin-bottom: 30px; }
-.timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 0 20px rgba(255,143,196,0.3); }
+.timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); }
 .number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
-.label { font-size: 0.8em; color: #ffd9e9; }
-.next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; box-shadow: 0 0 25px rgba(255,63,145,0.5); animation: pulse 1.5s infinite; }
+.next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; }
 
   /* INPUT PAGE */
 .input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
-.input-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); }
-.input-box h2 { margin-bottom: 20px; color: #ffd9e9; }
-.input-box input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1em; outline: none; }
-.input-box button { width: 100%; padding: 12px; margin-top: 15px; border-radius: 10px; border: none; background: #ff3f91; color: white; font-weight: 600; font-size: 1.1em; cursor: pointer; }
+.input-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 25px; }
+.input-box input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; }
+.input-box button { width: 100%; padding: 12px; margin-top: 15px; border-radius: 10px; border: none; background: #ff3f91; color: white; font-weight: 600; cursor: pointer; }
 
   /* ARROW GAME */
   #arrowPage { background: linear-gradient(135deg, #ffc2d9, #ffe6f0); color: #a3003d; }
-.instruction { font-size: 1.3em; margin-bottom: 40px; font-weight: 600; position: absolute; top: 50px; }
-.stage { position: relative; width: 100%; height: 100%; } /* Yo line add gareko */
+.instruction { font-size: 1.3em; font-weight: 600; position: absolute; top: 50px; }
+.stage { position: relative; width: 100%; height: 100%; }
 .bow { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
 .bow-upper,.bow-lower { width: 60px; height: 120px; border: 5px solid #a3003d; border-left: none; border-radius: 0 120px 120px 0; }
-.bow-lower { transform: rotate(180deg); margin-top: -5px; }
-.string { position: absolute; left: 60px; top: -10px; height: 240px; width: 3px; background: #a3003d; }
 .arrow { position: absolute; left: 60px; top: 50%; width: 150px; height: 5px; background: #a3003d; cursor: grab; transform: translateY(-50%); }
-.arrow:after { content: ""; position: absolute; right: -12px; border: 12px solid transparent; border-left: 18px solid #a3003d; }
 .target-heart { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
-.heart-shape { width: 80px; height: 80px; background: #ff1a5e; transform: rotate(45deg); box-shadow: 0 0 40px rgba(255,26,94,0.8); transition: all 0.5s ease; }
-.heart-shape:before,.heart-shape:after { content: ""; width: 80px; height: 80px; position: absolute; border-radius: 50%; background: #ff1a5e; }
-.heart-shape:before { top: -40px; }.heart-shape:after { left: -40px; }
-.heart-shape.broken { transform: rotate(45deg) scale(0); opacity: 0; }
-.flying-arrow { position: absolute; height: 5px; background: #a3003d; z-index: 10; transition: left 0.6s linear; }
+.heart-shape { width: 80px; height: 80px; background: #ff1a5e; transform: rotate(45deg); }
+.flying-arrow { position: absolute; height: 5px; background: #a3003d; z-index: 10; }
 
   /* BIRTHDAY */
   #birthdayPage { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
-.big-heart { font-size: 6em; animation: heartBeat 1.2s infinite; }
+.big-heart { font-size: 6em; }
 .birthday h1 { font-family: 'Great Vibes', cursive; font-size: 4.5em; color: #fff; }
 
   /* PHOTO */
 .photo-page { background: linear-gradient(180deg, #350b29, #12000d); }
-.photo-card { width: 90%; max-width: 420px; padding: 12px; border-radius: 25px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.35); }
+.photo-card { width: 90%; max-width: 420px; padding: 12px; border-radius: 25px; background: rgba(255,255,255,0.13); }
 .photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 18px; }
 
   /* CAKE */
 .cake-page { background: linear-gradient(180deg, #ffc2d9, #ffe6f0); color: #a3003d; }
 .cake-container { position: relative; width: 240px; height: 200px; margin: 30px auto; }
 .cake-body { width: 240px; height: 100px; background: #ff8fc4; border-radius: 0 0 25px 25px; position: absolute; bottom: 0; }
-.cream { width: 240px; height: 25px; background: #fff; position: absolute; bottom: 100px; border-radius: 25px; }
-.cake-top { width: 220px; height: 50px; background: #ff6bb3; border-radius: 25px; position: absolute; bottom: 125px; left: 10px; }
-.candle { width: 12px; height: 50px; background: #fff; position: absolute; bottom: 175px; left: 114px; }
-.flame { width: 18px; height: 25px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; position: absolute; top: -18px; left: -3px; animation: flicker 0.4s infinite alternate; }
+.flame { width: 18px; height: 25px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -18px; left: -3px; }
 .cake.cut { animation: cakeCut 0.8s forwards; }
 
   /* FINAL */
 .final { background: linear-gradient(180deg, #350b29, #12000d); }
 .final h1 { font-family: 'Great Vibes', cursive; font-size: 4em; color: #ffd9e9; }
 
-  @keyframes heartBeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
-  @keyframes flicker { 0%{transform:scale(1) rotate(-5deg)} 100%{transform:scale(1.2) rotate(5deg)} }
   @keyframes cakeCut { 0%{transform:translateY(0)} 100%{transform:translateY(100vh)} }
-  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
-  @keyframes fall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1: COUNTDOWN -->
+<!-- PAGE 1 -->
 <section class="page active" id="countPage">
   <h2 class="countdown-title">MOtki's Birthday Countdown</h2>
   <p class="bs-date">Bhado 12, 2083 BS</p>
   <div class="countdown">
-    <div class="timebox"><div class="number" id="days">00</div><div class="label">DAYS</div></div>
-    <div class="timebox"><div class="number" id="hours">00</div><div class="label">HOURS</div></div>
-    <div class="timebox"><div class="number" id="minutes">00</div><div class="label">MINUTES</div></div>
-    <div class="timebox"><div class="number" id="seconds">00</div><div class="label">SECONDS</div></div>
+    <div class="timebox"><div class="number" id="days">00</div><div>DAYS</div></div>
+    <div class="timebox"><div class="number" id="hours">00</div><div>HOURS</div></div>
+    <div class="timebox"><div class="number" id="minutes">00</div><div>MINUTES</div></div>
+    <div class="timebox"><div class="number" id="seconds">00</div><div>SECONDS</div></div>
   </div>
   <button class="next-btn" onclick="goToPage(1)">Next →</button>
 </section>
 
-<!-- PAGE 2: AGE INPUT -->
-<section class="page input-page" id="agePage">
+<!-- PAGE 2 -->
+<section class="page" id="agePage">
   <div class="input-box">
     <h2>Hey MOtki! ❤️</h2>
     <p>Today timi kati barsa ko bhayo?</p>
-    <input type="number" id="ageInput" placeholder="Timi ko age lekha">
-    <button onclick="submitAge()">Submit</button>
+    <input type="number" id="ageInput" placeholder="Age lekha">
+    <button onclick="goToPage(2)">Submit</button>
   </div>
 </section>
 
-<!-- PAGE 3: DOB INPUT -->
-<section class="page input-page" id="dobPage">
+<!-- PAGE 3 -->
+<section class="page" id="dobPage">
   <div class="input-box">
     <h2>Ekchin! ✨</h2>
     <p>Timi ko janma miti k ho?</p>
     <input type="date" id="dobInput">
-    <button onclick="submitDob()">Submit</button>
+    <button onclick="goToPage(3)">Submit</button>
   </div>
 </section>
 
-<!-- PAGE 4: ARROW GAME -->
+<!-- PAGE 4 -->
 <section class="page" id="arrowPage">
-  <div class="instruction"><b>For MOtki ❤️</b><br>Drag the bow string and release</div>
+  <div class="instruction"><b>For MOtki ❤️</b><br>Drag arrow and release</div>
   <div class="stage">
-    <div class="bow"><div class="bow-upper"></div><div class="bow-lower"></div><div class="string" id="bowString"></div></div>
+    <div class="bow"><div class="bow-upper"></div><div class="bow-lower"></div></div>
     <div class="arrow" id="arrow"></div>
-    <div class="target-heart"><div class="heart-shape" id="targetHeart"></div><div class="target-text">MOtki ❤️</div></div>
+    <div class="target-heart"><div class="heart-shape" id="targetHeart"></div></div>
   </div>
 </section>
 
-<!-- PAGE 5 BIRTHDAY -->
+<!-- PAGE 5 -->
 <section class="page" id="birthdayPage"><div class="birthday"><span class="big-heart">❤️</span><h1>Happy Birthday</h1><h2>MOtki ✨</h2></div></section>
 
-<!-- PAGE 6 PHOTO 1 -->
-<section class="page photo-page" id="photo1"><div class="photo-title">MOtki ❤️</div><div class="photo-card"><img src="1786729114527.jpg"></div><div class="photo-number">01 / 03</div></section>
+<!-- PAGE 6 -->
+<section class="page photo-page" id="photo1"><div class="photo-card"><img src="1786729114527.jpg"></div><div>01 / 03</div></section>
 
-<!-- PAGE 7 PHOTO 2 -->
-<section class="page photo-page" id="photo2"><div class="photo-title">A Little Memory ✨</div><div class="photo-card"><img src="ChatGPT Image Jun 15, 2025, 02_27_03 PM.png"></div><div class="photo-number">02 / 03</div></section>
+<!-- PAGE 7 -->
+<section class="page photo-page" id="photo2"><div class="photo-card"><img src="ChatGPT Image Jun 15, 2025, 02_27_03 PM.png"></div><div>02 / 03</div></section>
 
-<!-- PAGE 8 PHOTO 3 -->
-<section class="page photo-page" id="photo3"><div class="photo-title">Always Special ❤️</div><div class="photo-card"><img src="IMG_20250827_184410.jpg"></div><div class="photo-number">03 / 03</div></section>
+<!-- PAGE 8 -->
+<section class="page photo-page" id="photo3"><div class="photo-card"><img src="IMG_20250827_184410.jpg"></div><div>03 / 03</div></section>
 
-<!-- PAGE 9 CAKE -->
+<!-- PAGE 9 -->
 <section class="page cake-page" id="cakePage">
-  <div class="birthday"><h2>Slide up to cut the cake...</h2></div>
+  <h2>Slide up to cut the cake...</h2>
   <div class="cake-container" id="cakeContainer">
     <div class="cake" id="cake">
-      <div class="candle"><div class="flame"></div></div>
-      <div class="cake-top"></div>
-      <div class="cream"></div>
+      <div class="flame"></div>
       <div class="cake-body"></div>
     </div>
   </div>
-  <div class="birthday"><h2>Make a wish, MOtki ✨</h2></div>
 </section>
 
-<!-- PAGE 10 FINAL -->
-<section class="page final" id="finalPage"><div><div class="big-heart">💗</div><h1>Happy Birthday MOtki</h1><p> May your day be filled with<br> smiles, beautiful moments<br> and lots of happiness. ✨ </p></div></section>
+<!-- PAGE 10 -->
+<section class="page final" id="finalPage"><div><div class="big-heart">💗</div><h1>Happy Birthday MOtki</h1></div></section>
 
 <script>
 const pages = ["countPage", "agePage", "dobPage", "arrowPage", "birthdayPage", "photo1", "photo2", "photo3", "cakePage", "finalPage"];
 let currentPage = 0;
 
 function goToPage(pageIndex) {
-  if(pageIndex >= pages.length) return;
   document.getElementById(pages[currentPage]).classList.remove('active');
-  document.getElementById(pages[currentPage]).style.transform = "translateX(-100%)";
-  document.getElementById(pages[pageIndex]).style.transform = "translateX(0)";
   document.getElementById(pages[pageIndex]).classList.add('active');
   currentPage = pageIndex;
-  if(pageIndex >= 4 && pageIndex <= 8) setTimeout(() => goToPage(pageIndex + 1), 3500);
+  if(pageIndex >= 4 && pageIndex <= 8) setTimeout(() => goToPage(pageIndex + 1), 3000);
 }
 
-/* COUNTDOWN - BHADO 12 2083 = AUG 28 2026 */
+/* COUNTDOWN */
 const birthdayDate = new Date("2026-08-28 00:00:00").getTime();
 setInterval(() => {
   const distance = birthdayDate - new Date().getTime();
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  document.getElementById("days").innerText = days < 10? "0" + days : days;
-  document.getElementById("hours").innerText = hours < 10? "0" + hours : hours;
-  document.getElementById("minutes").innerText = minutes < 10? "0" + minutes : minutes;
-  document.getElementById("seconds").innerText = seconds < 10? "0" + seconds : seconds;
+  document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
 }, 1000);
 
-/* AGE INPUT */
-function submitAge() {
-  let age = document.getElementById('ageInput').value;
-  if(age) goToPage(2);
-}
-
-/* DOB INPUT */
-function submitDob() {
-  let dob = document.getElementById('dobInput').value;
-  if(dob) goToPage(3);
-}
-
-/* REAL BOW AND ARROW */
+/* ARROW DRAG */
 const arrow = document.getElementById('arrow');
-const targetHeart = document.getElementById('targetHeart');
 let isDragging = false;
-let startX = 0;
+arrow.addEventListener('mousedown', () => isDragging = true);
+arrow.addEventListener('touchstart', () => isDragging = true);
+document.addEventListener('mouseup', () => { if(isDragging){ isDragging=false; goToPage(4); } });
+document.addEventListener('touchend', () => { if(isDragging){ isDragging=false; goToPage(4); } });
 
-arrow.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
-arrow.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; });
-
-document.addEventListener('mousemove', e => {
-  if(!isDragging) return;
-  let dx = e.clientX - startX;
-  if(dx > 0 && dx < 180) arrow.style.transform = `translate(${dx}px, -50%)`;
-});
-document.addEventListener('touchmove', e => {
-  if(!isDragging) return;
-  let dx = e.touches[0].clientX - startX;
-  if(dx > 0 && dx < 180) arrow.style.transform = `translate(${dx}px, -50%)`;
-});
-
-document.addEventListener('mouseup', shoot);
-document.addEventListener('touchend', shoot);
-
-function shoot() {
-  if(!isDragging) return;
-  isDragging = false;
-  let flyingArrow = document.createElement('div');
-  flyingArrow.className = 'flying-arrow';
-  flyingArrow.style.top = '50%';
-  flyingArrow.style.left = '60px';
-  flyingArrow.style.width = '150px';
-  document.getElementById('arrowPage').querySelector('.stage').appendChild(flyingArrow); // FIX:.stage bhayo
-  setTimeout(() => flyingArrow.style.left = 'calc(100% - 100px)', 50);
-  setTimeout(() => { targetHeart.classList.add('broken'); createConfetti(); flyingArrow.remove(); setTimeout(() => goToPage(4), 800); }, 650);
-  arrow.style.transform = `translate(0, -50%)`;
-}
-
-/* CAKE SLIDE TO CUT */
+/* CAKE SLIDE */
 const cake = document.getElementById('cake');
-const cakeContainer = document.getElementById('cakeContainer');
 let startY = 0;
-cakeContainer.addEventListener('touchstart', e => startY = e.touches[0].clientY);
-cakeContainer.addEventListener('touchend', e => {
-  let dy = startY - e.changedTouches[0].clientY;
-  if(dy > 50) { cake.classList.add('cut'); setTimeout(() => goToPage(9), 1000); }
+document.getElementById('cakeContainer').addEventListener('touchstart', e => startY = e.touches[0].clientY);
+document.getElementById('cakeContainer').addEventListener('touchend', e => {
+  if(startY - e.changedTouches[0].clientY > 50){ cake.classList.add('cut'); setTimeout(() => goToPage(9), 800); }
 });
-
-function createConfetti() {
-  for(let i=0; i<60; i++){
-    let c = document.createElement('div');
-    c.style = `position:fixed;width:10px;height:10px;background:${['#ff3f91','#ffb3d1','#ffd9e9'][i%3]};left:${Math.random()*100}vw;top:-10px;z-index:999;animation:fall ${2+Math.random()*2}s linear forwards`;
-    document.body.appendChild(c); setTimeout(()=>c.remove(), 4000);
-  }
-}
 </script>
 </body>
-   </html>
+</html>
