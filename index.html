@@ -3,228 +3,224 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday MOtki ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<title>For My MOtki ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Poppins', sans-serif; background: #12000d; color: white; overflow: hidden; }
+  body { font-family: 'Poppins', sans-serif; background: #0a0010; color: white; overflow: hidden; }
+.bg-stars { position: fixed; width: 100%; height: 100%; background: radial-gradient(2px 2px at 20px 30px, #fff, transparent), radial-gradient(2px 2px at 40px 70px, #ff8fc4, transparent); background-size: 200px 200px; animation: stars 20s linear infinite; z-index: -1; }
+  @keyframes stars { from {background-position: 0 0;} to {background-position: 200px 200px;} }
+
 .page { height: 100vh; width: 100vw; display: none; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; padding: 20px; text-align: center; }
 .page.active { display: flex; }
+.glass { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; padding: 30px; backdrop-filter: blur(20px); box-shadow: 0 8px 32px rgba(255,63,145,0.3); max-width: 500px; }
+.gradient-text { background: linear-gradient(90deg, #ff8fc4, #ffd9e9, #ff8fc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family: 'Dancing Script', cursive; font-size: 2.5em; }
+.next-btn { padding: 15px 45px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; box-shadow: 0 0 30px rgba(255,63,145,0.6); margin-top: 20px; }
 
-  /* 1. COUNTDOWN */
-  #countPage { background: linear-gradient(180deg, #350b29, #12000d); }
-.countdown-title { font-size: 2em; color: #ffd9e9; margin-bottom: 10px; }
-.bs-date { font-size: 1.2em; color: #ff8fc4; margin-bottom: 30px; }
-.countdown { display: flex; gap: 15px; margin-bottom: 30px; }
-.timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); }
-.number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
-.next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; }
+  /* COUNTDOWN */
+  #countPage { background: linear-gradient(135deg, #1a0033, #330044); }
+.countdown { display: flex; gap: 12px; margin: 30px 0; }
+.timebox { background: rgba(255,255,255,0.1); padding: 18px; border-radius: 20px; min-width: 80px; }
+.number { font-size: 2.8em; font-weight: 700; color: #ff8fc4; text-shadow: 0 0 15px #ff8fc4; }
 
-  /* 2. INPUT */
-.input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
-.input-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 25px; width: 90%; max-width: 400px; }
-.input-box h2 { margin-bottom: 20px; color: #ffd9e9; }
-.input-box input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1em; }
-.input-box button { width: 100%; padding: 12px; margin-top: 15px; border-radius: 10px; border: none; background: #ff3f91; color: white; font-weight: 600; font-size: 1.1em; cursor: pointer; }
+  /* INPUT */
+.input-page { background: radial-gradient(circle at top, #ff8fc4 0%, #350b29 60%); }
+.glass input { width: 100%; padding: 14px; margin: 12px 0; border-radius: 15px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); color: white; font-size: 1em; }
 
-  /* 3. PASSCODE LOCK */
-  #lockPage { background: #000; }
-.pov-text { font-size: 1.4em; color: white; margin-bottom: 20px; font-weight: 600; }
-.phone-mock { background: linear-gradient(180deg, #ffe6f0, #ffc2d9); border-radius: 40px; padding: 15px; width: 320px; box-shadow: 0 0 40px rgba(255,143,196,0.5); }
-.phone-screen { background: #fff; border-radius: 30px; padding: 20px; color: #333; }
-.bear-img { width: 120px; height: 120px; margin: 0 auto 15px; border-radius: 10px; overflow: hidden; background: #000; }
-.bear-img img { width: 100%; height: 100%; object-fit: cover; }
-.locked-text { font-family: 'Great Vibes', cursive; font-size: 2em; color: #ff8fc4; }
-.pass-dots { display: flex; justify-content: center; gap: 12px; margin: 15px 0; }
-.dot { width: 14px; height: 14px; border-radius: 50%; background: #ffe6f0; }
-.dot.filled { background: #ff3f91; }
-.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
-.key { font-size: 1.5em; color: #ff3f91; padding: 15px; cursor: pointer; border-radius: 15px; }
-.key:active { background: rgba(255,63,145,0.1); }
-.key.special { background: #ffc2d9; border-radius: 15px; }
+  /* BIRTHDAY */
+  #birthdayPage { background: linear-gradient(135deg, #ff6bb3, #ff8fc4); }
+.big-heart { font-size: 7em; animation: heartbeat 1s infinite; }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.3)} }
+.birthday h1 { font-family: 'Great Vibes', cursive; font-size: 5em; color: #fff; }
 
-  /* 4. BIRTHDAY */
-  #birthdayPage { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
-.big-heart { font-size: 6em; }
-.birthday h1 { font-family: 'Great Vibes', cursive; font-size: 4.5em; color: #fff; }
+  /* SURPRISE LETTER */
+.letter-page { background: linear-gradient(180deg, #350b29, #12000d); }
+.letter { background: #fffdf5; color: #333; padding: 30px; border-radius: 20px; text-align: left; font-size: 1.1em; line-height: 1.8; max-height: 70vh; overflow-y: auto; box-shadow: 0 0 40px rgba(255,143,196,0.5); }
+.letter h2 { font-family: 'Great Vibes', cursive; font-size: 2.5em; color: #ff3f91; text-align: center; margin-bottom: 15px; }
 
-  /* 5. PHOTO */
-.photo-page { background: linear-gradient(180deg, #350b29, #12000d); }
-.photo-card { width: 90%; max-width: 420px; padding: 12px; border-radius: 25px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.35); }
-.photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 18px; }
+  /* REASONS */
+.reasons-page { background: linear-gradient(135deg, #1a0033, #660066); }
+.reason-box { background: rgba(255,255,255,0.1); padding: 15px; margin: 10px 0; border-radius: 15px; border-left: 4px solid #ff8fc4; text-align: left; font-size: 1.1em; }
 
-  /* 6. CAKE */
+  /* PHOTO */
+.photo-page { background: linear-gradient(180deg, #12000d, #350b29); }
+.photo-card { width: 90%; max-width: 420px; padding: 15px; border-radius: 30px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); }
+.photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 20px; }
+
+  /* CAKE */
 .cake-page { background: linear-gradient(180deg, #ffc2d9, #ffe6f0); color: #a3003d; }
-.cake-container { position: relative; width: 240px; height: 200px; margin: 30px auto; }
-.cake-body { width: 240px; height: 100px; background: #ff8fc4; border-radius: 0 0 25px 25px; position: absolute; bottom: 0; }
-.cream { width: 240px; height: 25px; background: #fff; position: absolute; bottom: 100px; border-radius: 25px; }
-.cake-top { width: 220px; height: 50px; background: #ff6bb3; border-radius: 25px; position: absolute; bottom: 125px; left: 10px; }
-.candle { width: 12px; height: 50px; background: #fff; position: absolute; bottom: 175px; left: 114px; }
-.flame { width: 18px; height: 25px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -18px; left: -3px; }
-.cake.cut { animation: cakeCut 0.8s forwards; }
-
-  /* 7. FINAL */
-.final { background: linear-gradient(180deg, #350b29, #12000d); }
-.final h1 { font-family: 'Great Vibes', cursive; font-size: 4em; color: #ffd9e9; }
+.cake-container { position: relative; width: 260px; height: 220px; margin: 30px auto; }
+.cake-body { width: 260px; height: 110px; background: linear-gradient(#ff8fc4, #ff6bb3); border-radius: 0 30px 30px; position: absolute; bottom: 0; }
+.flame { width: 22px; height: 30px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -20px; left: -4px; animation: flicker 0.3s infinite alternate; }
+  @keyframes flicker { 0%{transform:scale(1)} 100%{transform:scale(1.2)} }
+.cake.cut { animation: cakeCut 1s ease-in forwards; }
   @keyframes cakeCut { 0%{transform:translateY(0)} 100%{transform:translateY(100vh)} }
+
+  /* VIDEO WISH */
+.video-page { background: #000; }
+.video-box { width: 90%; max-width: 400px; border-radius: 25px; overflow: hidden; box-shadow: 0 0 40px rgba(255,63,145,0.6); }
+
+  /* FINAL */
+.final { background: linear-gradient(135deg, #1a0033, #330044); }
+.final h1 { font-family: 'Great Vibes', cursive; font-size: 4.5em; background: linear-gradient(90deg, #ff8fc4, #ffd9e9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 </style>
 </head>
 <body>
+<div class="bg-stars"></div>
 
 <!-- 1. COUNTDOWN -->
 <section class="page active" id="countPage">
-  <h2 class="countdown-title">MOtki's Birthday Countdown</h2>
-  <p class="bs-date">Bhado 12, 2083 BS</p>
+  <h2 class="gradient-text">MOtki's Birthday</h2>
+  <p style="color:#ff8fc4; font-size:1.2em;">Bhado 12, 2083 BS</p>
   <div class="countdown">
     <div class="timebox"><div class="number" id="days">00</div><div>DAYS</div></div>
     <div class="timebox"><div class="number" id="hours">00</div><div>HOURS</div></div>
     <div class="timebox"><div class="number" id="minutes">00</div><div>MINUTES</div></div>
     <div class="timebox"><div class="number" id="seconds">00</div><div>SECONDS</div></div>
   </div>
-  <button class="next-btn" onclick="goToPage(1)">Next →</button>
+  <button class="next-btn" onclick="goToPage(1)">Let's Go →</button>
 </section>
 
 <!-- 2. AGE -->
 <section class="page" id="agePage">
-  <div class="input-box">
-    <h2>Hey MOtki! ❤️</h2>
+  <div class="glass">
+    <h2 style="font-family:'Great Vibes',cursive; font-size:2.5em;">Hey MOtki! ❤️</h2>
     <p>Today timi kati barsa ko bhayo?</p>
     <input type="number" id="ageInput" placeholder="Timi ko age lekha">
-    <button onclick="goToPage(2)">Submit</button>
+    <button class="next-btn" onclick="goToPage(2)">Submit ✨</button>
   </div>
 </section>
 
 <!-- 3. DOB -->
 <section class="page" id="dobPage">
-  <div class="input-box">
-    <h2>Ekchin! ✨</h2>
+  <div class="glass">
+    <h2 style="font-family:'Great Vibes',cursive; font-size:2.5em;">Ekchin! ✨</h2>
     <p>Timi ko janma miti k ho?</p>
     <input type="date" id="dobInput">
-    <button onclick="goToPage(3)">Submit</button>
+    <button class="next-btn" onclick="goToPage(3)">Submit 💕</button>
   </div>
 </section>
 
-<!-- 4. PASSCODE LOCK -->
-<section class="page" id="lockPage">
-  <div class="pov-text">POV : You Recieved This At 12 am 🥰</div>
-  <div class="phone-mock">
-    <div class="phone-screen">
-      <div class="bear-img">
-        <img id="bearPic" src="2853965898329535">
-      </div>
-      <div class="locked-text">Locked</div>
-      <p style="font-size: 0.9em; color: #888;">Enter the 6-digit passcode</p>
-      <div class="pass-dots" id="passDots">
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-      </div>
-      <div class="keypad">
-        <div class="key" onclick="addDigit(1)">1</div><div class="key" onclick="addDigit(2)">2</div><div class="key" onclick="addDigit(3)">3</div>
-        <div class="key" onclick="addDigit(4)">4</div><div class="key" onclick="addDigit(5)">5</div><div class="key" onclick="addDigit(6)">6</div>
-        <div class="key" onclick="addDigit(7)">7</div><div class="key" onclick="addDigit(8)">8</div><div class="key" onclick="addDigit(9)">9</div>
-        <div class="key special" onclick="delDigit()">⌫</div><div class="key" onclick="addDigit(0)">0</div><div class="key special" onclick="clearPass()">X</div>
-      </div>
-    </div>
+<!-- 4. BIRTHDAY -->
+<section class="page" id="birthdayPage">
+  <div class="birthday">
+    <span class="big-heart">❤️</span>
+    <h1>Happy Birthday</h1>
+    <h2 style="font-family:'Dancing Script',cursive; font-size:2.5em;">MOtki ✨</h2>
   </div>
 </section>
 
-<!-- 5. BIRTHDAY -->
-<section class="page" id="birthdayPage"><div class="birthday"><span class="big-heart">❤️</span><h1>Happy Birthday</h1><h2>MOtki ✨</h2></div></section>
+<!-- 5. SURPRISE 1: LAAMO LETTER -->
+<section class="page letter-page" id="letterPage">
+  <div class="letter">
+    <h2>For You My MOtki ❤️</h2>
+    <p>Dear MOtki,</p>
+    <p>Aaja timro birthday ho. Yo din timi yo sansar ma aako din ho. Timilai dekheko bela dekhi nai mero life ma euta naya ra color ayo jasto lagcha.</p>
+    <p>Timi hasda mero sabai tension gayab huncha. Timi ruda mero man dhadkancha. Timro ekta smile ko lagi ma kei pani garna sakchu.</p>
+    <p>Timi jati special chau ma shabda ma batauna sakdina. Timi mero strength hau, mero khusi hau, mero sabai kura hau.</p>
+    <p>May this year bring you all the happiness, success, and love you deserve. I promise to always be there for you, to make you laugh, to hold your hand, and to love you more every single day.</p>
+    <p style="text-align:right; margin-top:20px;">With all my love,<br><b>Timro Manche ❤️</b></p>
+  </div>
+</section>
 
 <!-- 6. PHOTO 1 -->
-<section class="page photo-page" id="photo1"><div class="photo-title">MOtki ❤️</div><div class="photo-card"><img src="1627023902089696"></div><div>01 / 03</div></section>
+<section class="page photo-page" id="photo1">
+  <div style="font-family:'Dancing Script',cursive; font-size:2em; margin-bottom:15px;">MOtki ❤️</div>
+  <div class="photo-card"><img src="2853965898329535"></div>
+</section>
 
 <!-- 7. PHOTO 2 -->
-<section class="page photo-page" id="photo2"><div class="photo-title">A Little Memory ✨</div><div class="photo-card"><img src="2160100761518429"></div><div>02 / 03</div></section>
+<section class="page photo-page" id="photo2">
+  <div style="font-family:'Dancing Script',cursive; font-size:2em; margin-bottom:15px;">A Little Memory ✨</div>
+  <div class="photo-card"><img src="1627023902089696"></div>
+</section>
 
 <!-- 8. PHOTO 3 -->
-<section class="page photo-page" id="photo3"><div class="photo-title">Always Special ❤️</div><div class="photo-card"><img src="1786729114527.jpg"></div><div>03 / 03</div></section>
+<section class="page photo-page" id="photo3">
+  <div style="font-family:'Dancing Script',cursive; font-size:2em; margin-bottom:15px;">Always Special ❤️</div>
+  <div class="photo-card"><img src="1786729114527.jpg"></div>
+</section>
 
-<!-- 9. CAKE -->
+<!-- 9. SURPRISE 2: 5 REASONS -->
+<section class="page reasons-page" id="reasonsPage">
+  <h2 class="gradient-text">5 Reasons Why I Love You</h2>
+  <div class="glass" style="text-align:left;">
+    <div class="reason-box">1. Timi ko haso le mero din banai dincha 😊</div>
+    <div class="reason-box">2. Timi jati caring aru koi chaina ❤️</div>
+    <div class="reason-box">3. Timisanga kura garda time kasari janchha thaha hudaina</div>
+    <div class="reason-box">4. Timi ko pagalpan ra cute fight haru sabai bhanda pyaro cha</div>
+    <div class="reason-box">5. Kina bhane timi MOtki hau... ra ma timilai dherai maya garchu 💗</div>
+  </div>
+</section>
+
+<!-- 10. CAKE -->
 <section class="page cake-page" id="cakePage">
-  <h2>Slide up to cut the cake...</h2>
+  <h2 style="font-family:'Dancing Script',cursive; font-size:2em;">Slide up to cut the cake... 🎂</h2>
   <div class="cake-container" id="cakeContainer">
     <div class="cake" id="cake">
-      <div class="candle"><div class="flame"></div></div>
-      <div class="cake-top"></div>
-      <div class="cream"></div>
+      <div style="width:14px; height:55px; background:#fff; position:absolute; bottom:200px; left:123px; border-radius:10px;">
+        <div class="flame"></div>
+      </div>
       <div class="cake-body"></div>
     </div>
   </div>
-  <h2>Make a wish, MOtki ✨</h2>
 </section>
 
-<!-- 10. FINAL -->
-<section class="page final" id="finalPage"><div><div class="big-heart">💗</div><h1>Happy Birthday MOtki</h1><p>May your day be filled with<br>smiles, beautiful moments<br>and lots of happiness. ✨</p></div></section>
+<!-- 11. SURPRISE 3: VIDEO WISH -->
+<section class="page video-page" id="videoPage">
+  <h2 style="font-family:'Great Vibes',cursive; font-size:3em; color:#ff8fc4;">A Special Message For You</h2>
+  <div class="video-box">
+    <video width="100%" controls autoplay>
+      <source src="birthday_wish.mp4" type="video/mp4">
+      Timi ko browser le video support gardaina.
+    </video>
+  </div>
+  <p style="margin-top:15px;">Yo video maile timro lagi banako chu ❤️</p>
+</section>
+
+<!-- 12. FINAL -->
+<section class="page final" id="finalPage">
+  <div><div class="big-heart">💗</div>
+  <h1>Happy Birthday MOtki</h1>
+  <p style="font-size:1.3em; margin-top:15px; line-height:1.8;">
+    May your day be filled with endless smiles, <br>
+    beautiful surprises, and moments you will <br>
+    cherish forever. <br><br>
+    You deserve the whole world, and I promise <br>
+    to be your little piece of it. <br><br>
+    I love you more than words can say. ✨
+  </p></div>
+</section>
 
 <script>
-const pages = ["countPage", "agePage", "dobPage", "lockPage", "birthdayPage", "photo1", "photo2", "photo3", "cakePage", "finalPage"];
+const pages = ["countPage", "agePage", "dobPage", "birthdayPage", "letterPage", "photo1", "photo2", "photo3", "reasonsPage", "cakePage", "videoPage", "finalPage"];
 let currentPage = 0;
-let passcode = "";
-const correctPass = "120283"; // Bhado 12, 2083 ko passcode. Yo change garna sakchau
 
 function goToPage(pageIndex) {
   document.getElementById(pages[currentPage]).classList.remove('active');
   document.getElementById(pages[pageIndex]).classList.add('active');
   currentPage = pageIndex;
-  if(pageIndex >= 5 && pageIndex <= 8) setTimeout(() => goToPage(pageIndex + 1), 3000);
+  // Auto next for photo and letter
+  if([3,4,5,6,7,8].includes(pageIndex)) setTimeout(() => goToPage(pageIndex + 1), 5000);
 }
 
 /* COUNTDOWN */
 const birthdayDate = new Date("2026-08-28 00:00:00").getTime();
 setInterval(() => {
   const distance = birthdayDate - new Date().getTime();
-  document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-  document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2,'0');
+  document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2,'0');
+  document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2,'0');
+  document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2,'0');
 }, 1000);
-
-/* PASSCODE SYSTEM */
-function updateDots() {
-  const dots = document.querySelectorAll('#passDots.dot');
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('filled', i < passcode.length);
-  });
-}
-function addDigit(num) {
-  if(passcode.length < 6) {
-    passcode += num;
-    updateDots();
-    // Bear ko expression change garne
-    if(passcode.length == 2) document.getElementById('bearPic').src = "2853965898329535";
-    if(passcode.length == 6) document.getElementById('bearPic').src = "2160100761518429";
-
-    if(passcode.length == 6) {
-      setTimeout(() => {
-        if(passcode == correctPass) {
-          goToPage(4);
-        } else {
-          alert("Wrong Passcode! Try again ❤️");
-          clearPass();
-        }
-      }, 500);
-    }
-  }
-}
-function delDigit() {
-  passcode = passcode.slice(0, -1);
-  updateDots();
-  document.getElementById('bearPic').src = "2853965898329535";
-}
-function clearPass() {
-  passcode = "";
-  updateDots();
-  document.getElementById('bearPic').src = "2853965898329535";
-}
 
 /* CAKE SLIDE */
 const cake = document.getElementById('cake');
 let startY = 0;
 document.getElementById('cakeContainer').addEventListener('touchstart', e => startY = e.touches[0].clientY);
 document.getElementById('cakeContainer').addEventListener('touchend', e => {
-  if(startY - e.changedTouches[0].clientY > 50){ cake.classList.add('cut'); setTimeout(() => goToPage(9), 800); }
+  if(startY - e.changedTouches[0].clientY > 50){ cake.classList.add('cut'); setTimeout(() => goToPage(10), 1000); }
 });
 </script>
 </body>
-</html>
+   </html>
