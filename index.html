@@ -15,10 +15,13 @@
   #countPage { background: linear-gradient(180deg, #350b29, #12000d); }
 .countdown-title { font-size: 2em; color: #ffd9e9; margin-bottom: 10px; }
 .bs-date { font-size: 1.2em; color: #ff8fc4; margin-bottom: 30px; }
-.countdown { display: flex; gap: 15px; margin-bottom: 40px; }
+.countdown { display: flex; gap: 15px; margin-bottom: 30px; }
 .timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 0 20px rgba(255,143,196,0.3); }
 .number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
 .label { font-size: 0.8em; color: #ffd9e9; }
+.btn-group { display: flex; gap: 15px; flex-direction: column; }
+.skip-btn { padding: 12px 30px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; font-weight: 600; cursor: pointer; color: #ffd9e9; }
+.auto-btn { padding: 12px 30px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 600; border: none; color: white; }
 
   /* INPUT PAGE */
 .input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
@@ -84,6 +87,10 @@
     <div class="timebox"><div class="number" id="hours">00</div><div class="label">HOURS</div></div>
     <div class="timebox"><div class="number" id="minutes">00</div><div class="label">MINUTES</div></div>
     <div class="timebox"><div class="number" id="seconds">00</div><div class="label">SECONDS</div></div>
+  </div>
+  <div class="btn-group">
+    <button class="auto-btn" id="autoBtn">🎉 Waiting for Birthday...</button>
+    <button class="skip-btn" onclick="goToPage(1)">✨ Skip & See Surprise ✨</button>
   </div>
 </section>
 
@@ -162,6 +169,7 @@ function goToPage(pageIndex) {
 
 /* COUNTDOWN - BHADO 12 2083 = AUG 28 2026 */
 const birthdayDate = new Date("2026-08-28 00:00:00").getTime();
+const autoBtn = document.getElementById('autoBtn');
 const countdownTimer = setInterval(() => {
   const distance = birthdayDate - new Date().getTime();
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -175,7 +183,9 @@ const countdownTimer = setInterval(() => {
 
   if (distance < 0) {
     clearInterval(countdownTimer);
-    goToPage(1); // Countdown sakepachi age sodhne page ma jancha
+    autoBtn.innerText = "🎉 Happy Birthday!";
+    autoBtn.style.background = "linear-gradient(90deg,#00ff88,#00ccff)";
+    setTimeout(() => goToPage(1), 1000); // Auto next
   }
 }, 1000);
 
@@ -247,4 +257,4 @@ function createConfetti() {
 }
 </script>
 </body>
-                                                                                                                        </html>
+   </html>                       
