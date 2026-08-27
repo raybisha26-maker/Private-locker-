@@ -2,148 +2,791 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Motki ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>Happy Birthday MOtki ❤️</title>
+
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: linear-gradient(135deg, #ff9ecb, #ffc4e1, #fff0f5);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:Georgia,serif;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% 35%,#ffdbe7 0%,#f8b7cb 28%,#5b173d 70%,#160513 100%);
+  color:white;
+}
+
+/* ---------- COMMON ---------- */
+
+.page{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transform:scale(1.04);
+  transition:1s ease;
+}
+
+.page.active{
+  opacity:1;
+  pointer-events:auto;
+  transform:scale(1);
+}
+
+.glow{
+  position:absolute;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  background:#ff9dbd;
+  filter:blur(80px);
+  opacity:.5;
+  animation:pulse 3s infinite alternate;
+}
+
+@keyframes pulse{
+  from{transform:scale(.8);opacity:.3}
+  to{transform:scale(1.25);opacity:.6}
+}
+
+/* ---------- FLOATING HEARTS ---------- */
+
+.floating-heart{
+  position:absolute;
+  bottom:-50px;
+  font-size:20px;
+  opacity:.8;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(0) rotate(0);
+    opacity:0;
   }
-  .start-screen, .birthday-screen {
-    text-align: center;
-    transition: all 0.8s ease;
+  15%{opacity:.9}
+  100%{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
   }
-  .hint { color: #d6005c; font-size: 1.1em; margin-bottom: 15px; }
-  
-  .heart {
-    width: 130px;
-    height: 130px;
-    background: #ff2e63;
-    position: relative;
-    transform: rotate(45deg);
-    cursor: pointer;
-    margin: 0 auto;
-    animation: pulse 1.5s infinite;
-    box-shadow: 0 0 40px rgba(255,46,99,0.7);
+}
+
+/* ---------- COUNTDOWN ---------- */
+
+.countdown{
+  z-index:5;
+  width:92%;
+  max-width:650px;
+  text-align:center;
+}
+
+.small-title{
+  letter-spacing:5px;
+  font-size:13px;
+  color:#ffd9e7;
+  margin-bottom:20px;
+  animation:fadeDown 1.5s ease;
+}
+
+.main-title{
+  font-size:48px;
+  line-height:1.05;
+  font-style:italic;
+  text-shadow:0 0 30px rgba(255,180,210,.7);
+  animation:titleIn 1.5s ease;
+}
+
+.sub{
+  margin:20px auto 35px;
+  font-size:18px;
+  color:#ffe8f0;
+}
+
+.timer{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.timebox{
+  padding:17px 5px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:18px;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 35px rgba(0,0,0,.2);
+}
+
+.number{
+  font-size:31px;
+  font-weight:bold;
+}
+
+.label{
+  margin-top:7px;
+  font-size:9px;
+  letter-spacing:3px;
+  color:#ffd5e4;
+}
+
+.next-btn{
+  margin-top:35px;
+  padding:13px 27px;
+  border:1px solid rgba(255,255,255,.4);
+  border-radius:40px;
+  background:rgba(255,255,255,.12);
+  color:white;
+  font-size:14px;
+}
+
+/* ---------- ARROW PAGE ---------- */
+
+#arrowPage{
+  background:
+    radial-gradient(circle at 65% 45%,#fff4f7 0%,#ffdce7 32%,#efafc4 65%,#7e3157 100%);
+}
+
+.instruction{
+  position:absolute;
+  top:9%;
+  width:100%;
+  text-align:center;
+  z-index:20;
+  color:#702043;
+  font-size:18px;
+  letter-spacing:1px;
+}
+
+.instruction b{
+  font-size:25px;
+  display:block;
+  margin-bottom:7px;
+}
+
+.stage{
+  position:relative;
+  width:100%;
+  height:70%;
+  max-width:700px;
+}
+
+/* BIG BOW LEFT */
+
+.bow{
+  position:absolute;
+  left:5%;
+  top:34%;
+  width:145px;
+  height:190px;
+  z-index:10;
+}
+
+.bow-upper,
+.bow-lower{
+  position:absolute;
+  left:50%;
+  width:105px;
+  height:105px;
+  border:6px solid #492335;
+  border-left:0;
+  border-bottom:0;
+  border-radius:0 100% 0 0;
+  transform-origin:left center;
+}
+
+.bow-upper{
+  top:0;
+  transform:rotate(-43deg);
+}
+
+.bow-lower{
+  top:85px;
+  transform:rotate(43deg);
+}
+
+.bow-center{
+  position:absolute;
+  left:50%;
+  top:18px;
+  width:7px;
+  height:154px;
+  background:#39202c;
+  transform:translateX(-50%);
+  border-radius:10px;
+}
+
+.string{
+  position:absolute;
+  left:50%;
+  top:12px;
+  width:2px;
+  height:165px;
+  background:#25151d;
+  transform:translateX(-50%);
+  z-index:3;
+}
+
+.arrow{
+  position:absolute;
+  left:93px;
+  top:49%;
+  width:225px;
+  height:5px;
+  background:#34212b;
+  border-radius:5px;
+  transform-origin:left center;
+  z-index:15;
+  touch-action:none;
+}
+
+.arrow:before{
+  content:"";
+  position:absolute;
+  right:-2px;
+  top:-7px;
+  width:0;
+  height:0;
+  border-top:9px solid transparent;
+  border-bottom:9px solid transparent;
+  border-left:25px solid #34212b;
+}
+
+.arrow:after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-9px;
+  width:25px;
+  height:23px;
+  background:
+    linear-gradient(45deg,transparent 46%,#34212b 47%,#34212b 53%,transparent 54%),
+    linear-gradient(-45deg,transparent 46%,#34212b 47%,#34212b 53%,transparent 54%);
+}
+
+.arrow.dragging{
+  filter:drop-shadow(0 0 10px #ff6f9d);
+}
+
+/* HEART TARGET */
+
+.target-heart{
+  position:absolute;
+  right:10%;
+  top:35%;
+  width:130px;
+  height:130px;
+  z-index:8;
+  animation:heartBeat 1.5s infinite;
+}
+
+.heart-shape{
+  width:100%;
+  height:100%;
+  background:#ff4f88;
+  transform:rotate(-45deg);
+  border-radius:20px;
+  box-shadow:
+    0 0 35px #ff7fa8,
+    0 0 75px rgba(255,90,150,.7);
+}
+
+.heart-shape:before,
+.heart-shape:after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ff4f88;
+  border-radius:50%;
+}
+
+.heart-shape:before{
+  top:-50%;
+  left:0;
+}
+
+.heart-shape:after{
+  top:0;
+  left:50%;
+}
+
+.target-text{
+  position:absolute;
+  width:170px;
+  text-align:center;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:20;
+  font-size:17px;
+  color:white;
+}
+
+@keyframes heartBeat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+}
+
+/* broken effect */
+
+.crack{
+  display:none;
+  position:absolute;
+  inset:0;
+  z-index:30;
+  pointer-events:none;
+}
+
+.crack.show{
+  display:block;
+  animation:crackFlash .7s ease;
+}
+
+@keyframes crackFlash{
+  0%{transform:scale(.6);opacity:0}
+  50%{transform:scale(1.2);opacity:1}
+  100%{transform:scale(1);opacity:0}
+}
+
+.heart-piece{
+  position:absolute;
+  width:65px;
+  height:65px;
+  background:#ff4f88;
+  transform:rotate(-45deg);
+  border-radius:15px;
+}
+
+.piece1{left:0;top:0}
+.piece2{right:0;bottom:0}
+
+/* ---------- BIRTHDAY ---------- */
+
+.birthday{
+  z-index:10;
+  text-align:center;
+}
+
+.birthday h1{
+  font-size:54px;
+  font-style:italic;
+  text-shadow:0 0 35px #ff82ac;
+  animation:birthdayIn 1.4s ease;
+}
+
+.birthday h2{
+  margin-top:15px;
+  font-size:25px;
+  letter-spacing:3px;
+  color:#ffe0ea;
+}
+
+.big-heart{
+  font-size:90px;
+  display:block;
+  animation:heartBeat 1.3s infinite;
+  margin-bottom:10px;
+}
+
+@keyframes birthdayIn{
+  from{opacity:0;transform:scale(.5)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* ---------- PHOTOS ---------- */
+
+.photo-page{
+  background:
+    radial-gradient(circle at 50% 30%,#ffdae7,#9b3e69 55%,#180614);
+  flex-direction:column;
+}
+
+.photo-title{
+  font-size:35px;
+  font-style:italic;
+  margin-bottom:25px;
+  z-index:5;
+}
+
+.photo-card{
+  width:82%;
+  max-width:330px;
+  height:52vh;
+  padding:10px;
+  border-radius:25px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.4);
+  box-shadow:0 20px 70px rgba(0,0,0,.4);
+  backdrop-filter:blur(12px);
+  z-index:5;
+  animation:photoIn 1.3s ease;
+}
+
+.photo-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:18px;
+}
+
+@keyframes photoIn{
+  from{opacity:0;transform:translateY(50px) scale(.85)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.photo-number{
+  margin-top:16px;
+  font-size:14px;
+  letter-spacing:3px;
+  color:#ffd6e4;
+}
+
+/* ---------- CAKE ---------- */
+
+.cake-page{
+  background:
+    radial-gradient(circle at 50% 35%,#ffdbe9,#9b3267 60%,#170512);
+  flex-direction:column;
+}
+
+.cake{
+  position:relative;
+  width:220px;
+  height:200px;
+  margin-top:25px;
+}
+
+.cake-top{
+  position:absolute;
+  top:65px;
+  left:10px;
+  width:200px;
+  height:55px;
+  border-radius:50%;
+  background:#ffd2df;
+  box-shadow:0 0 30px #ff9cbd;
+}
+
+.cake-body{
+  position:absolute;
+  top:88px;
+  left:15px;
+  width:190px;
+  height:85px;
+  background:#e987a8;
+  border-radius:0 0 20px 20px;
+}
+
+.cream{
+  position:absolute;
+  top:105px;
+  left:15px;
+  width:190px;
+  height:30px;
+  background:#fff0f5;
+  border-radius:50%;
+}
+
+.candle{
+  position:absolute;
+  left:50%;
+  top:15px;
+  width:14px;
+  height:60px;
+  background:#fff;
+  transform:translateX(-50%);
+  border-radius:5px;
+}
+
+.flame{
+  position:absolute;
+  left:50%;
+  top:-25px;
+  width:20px;
+  height:28px;
+  background:#ffd34d;
+  border-radius:50% 50% 50% 0;
+  transform:translateX(-50%) rotate(45deg);
+  animation:flame 0.7s infinite alternate;
+}
+
+@keyframes flame{
+  to{transform:translateX(-50%) rotate(45deg) scale(1.2)}
+}
+
+/* ---------- FINAL ---------- */
+
+.final{
+  text-align:center;
+  padding:30px;
+  background:
+    radial-gradient(circle at 50% 30%,#ffb8d0,#70224e 55%,#15040f);
+}
+
+.final h1{
+  font-size:46px;
+  font-style:italic;
+  margin-bottom:18px;
+}
+
+.final p{
+  font-size:18px;
+  color:#ffe5ee;
+  line-height:1.7;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:500px){
+
+  .main-title{
+    font-size:40px;
   }
-  .heart:before, .heart:after {
-    content: "";
-    width: 130px;
-    height: 130px;
-    position: absolute;
-    border-radius: 50%;
-    background: #ff2e63;
+
+  .timer{
+    gap:6px;
   }
-  .heart:before { top: -65px; left: 0; }
-  .heart:after { left: -65px; top: 0; }
-  @keyframes pulse { 0%,100%{transform:rotate(45deg) scale(1)} 50%{transform:rotate(45deg) scale(1.15)} }
-  
-  .pull-text { color: #d6005c; margin-top: 15px; font-weight: 600; }
-  
-  .birthday-screen { display: none; }
-  .birthday-screen h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 4em;
-    color: #d6005c;
-    margin-bottom: 10px;
-    animation: fadeIn 1s ease;
+
+  .timebox{
+    padding:14px 3px;
   }
-  .birthday-screen p {
-    font-size: 1.3em;
-    color: #b3004d;
-    margin-bottom: 20px;
-    animation: fadeIn 1.5s ease;
+
+  .number{
+    font-size:25px;
   }
-  .heart-tree {
-    width: 250px;
-    height: 250px;
-    margin: 20px auto;
-    position: relative;
-    animation: grow 2s ease;
+
+  .label{
+    font-size:7px;
+    letter-spacing:2px;
   }
-  .heart-tree span {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background: #ff4b7d;
-    transform: rotate(45deg);
-    border-radius: 5px;
+
+  .bow{
+    left:0;
+    transform:scale(.85);
   }
-  .heart-tree span:before, .heart-tree span:after {
-    content: ""; width: 30px; height: 30px; position: absolute; border-radius: 50%; background: #ff4b7d;
+
+  .arrow{
+    left:75px;
+    width:190px;
   }
-  .heart-tree span:before { top: -15px; left: 0; }
-  .heart-tree span:after { left: -15px; top: 0; }
-  
-  @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)} }
-  @keyframes grow { from{transform:scale(0)} to{transform:scale(1)} }
-  
-  .confetti {
-    position: absolute;
-    width: 10px; height: 10px;
-    top: -10px;
-    animation: fall 3s linear forwards;
+
+  .target-heart{
+    right:7%;
+    width:105px;
+    height:105px;
   }
-  @keyframes fall {
-    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+
+  .birthday h1{
+    font-size:43px;
   }
+
+  .photo-card{
+    height:50vh;
+  }
+}
 </style>
 </head>
+
 <body>
 
-  <div class="start-screen" id="start">
-    <p class="hint">a little something for you</p>
-    <div class="heart" onclick="showBirthday()"></div>
-    <p class="pull-text">CLICK ME ❤️</p>
+<!-- FLOATING PARTICLES -->
+<div id="particles"></div>
+
+<!-- PAGE 1 COUNTDOWN -->
+<section class="page active" id="countPage">
+  <div class="glow"></div>
+
+  <div class="countdown">
+    <div class="small-title">A SPECIAL MOMENT FOR</div>
+
+    <div class="main-title">
+      Her Special Day<br>
+      is Coming
+    </div>
+
+    <div class="sub">
+      Something special is waiting for MOtki ❤️
+    </div>
+
+    <div class="timer">
+      <div class="timebox">
+        <div class="number" id="days">00</div>
+        <div class="label">DAYS</div>
+      </div>
+
+      <div class="timebox">
+        <div class="number" id="hours">00</div>
+        <div class="label">HOURS</div>
+      </div>
+
+      <div class="timebox">
+        <div class="number" id="minutes">00</div>
+        <div class="label">MINUTES</div>
+      </div>
+
+      <div class="timebox">
+        <div class="number" id="seconds">00</div>
+        <div class="label">SECONDS</div>
+      </div>
+    </div>
+
+    <div class="next-btn">
+      ✨ Wait for the surprise ✨
+    </div>
+  </div>
+</section>
+
+
+<!-- PAGE 2 ARROW -->
+<section class="page" id="arrowPage">
+
+  <div class="instruction">
+    <b>For MOtki ❤️</b>
+    Drag the arrow back and release it
   </div>
 
-  <div class="birthday-screen" id="birthday">
-    <h1>Happy Birthday Motki!</h1>
-    <p>Bhado 12 gate - timro din ❤️</p>
-    <p>Sabnam, tim bina ma adhuro chhu. Timro smile nai mero duniya ho.</p>
-    <div class="heart-tree" id="tree"></div>
-    <p>- Love, [Timi ko naam]</p>
+  <div class="stage">
+
+    <div class="bow">
+      <div class="bow-upper"></div>
+      <div class="bow-lower"></div>
+      <div class="bow-center"></div>
+      <div class="string"></div>
+    </div>
+
+    <div class="arrow" id="arrow"></div>
+
+    <div class="target-heart" id="heartTarget">
+      <div class="heart-shape"></div>
+      <div class="target-text">MOtki ❤️</div>
+    </div>
+
+    <div class="crack" id="crack">
+      <div class="heart-piece piece1"></div>
+      <div class="heart-piece piece2"></div>
+    </div>
+
   </div>
+</section>
+
+
+<!-- PAGE 3 BIRTHDAY -->
+<section class="page" id="birthdayPage">
+  <div class="birthday">
+    <span class="big-heart">❤️</span>
+    <h1>Happy Birthday</h1>
+    <h2>MOtki ✨</h2>
+  </div>
+</section>
+
+
+<!-- PHOTO 1 -->
+<section class="page photo-page" id="photo1">
+  <div class="photo-title">MOtki ❤️</div>
+
+  <div class="photo-card">
+    <img src="1786729114527.jpg"
+         onerror="this.style.background='#ffd6e4'">
+  </div>
+
+  <div class="photo-number">01 / 03</div>
+</section>
+
+
+<!-- PHOTO 2 -->
+<section class="page photo-page" id="photo2">
+  <div class="photo-title">A Little Memory ✨</div>
+
+  <div class="photo-card">
+    <img src="ChatGPT Image Jun 15, 2025, 02_27_03 PM.png"
+         onerror="this.style.background='#ffd6e4'">
+  </div>
+
+  <div class="photo-number">02 / 03</div>
+</section>
+
+
+<!-- PHOTO 3 -->
+<section class="page photo-page" id="photo3">
+  <div class="photo-title">Always Special ❤️</div>
+
+  <div class="photo-card">
+    <img src="IMG_20250827_184410.jpg"
+         onerror="this.style.background='#ffd6e4'">
+  </div>
+
+  <div class="photo-number">03 / 03</div>
+</section>
+
+
+<!-- CAKE -->
+<section class="page cake-page" id="cakePage">
+
+  <div class="birthday">
+    <h2>One more little surprise...</h2>
+  </div>
+
+  <div class="cake">
+    <div class="candle">
+      <div class="flame"></div>
+    </div>
+
+    <div class="cake-top"></div>
+    <div class="cream"></div>
+    <div class="cake-body"></div>
+  </div>
+
+  <div class="birthday">
+    <h2>Make a wish, MOtki ✨</h2>
+  </div>
+
+</section>
+
+
+<!-- FINAL -->
+<section class="page final" id="finalPage">
+
+  <div>
+    <div class="big-heart">💗</div>
+
+    <h1>Happy Birthday MOtki</h1>
+
+    <p>
+      May your day be filled with<br>
+      smiles, beautiful moments<br>
+      and lots of happiness. ✨
+    </p>
+  </div>
+
+</section>
+
 
 <script>
-function showBirthday() {
-  document.getElementById('start').style.display = 'none';
-  document.getElementById('birthday').style.display = 'block';
-  createConfetti();
-  createHeartTree();
-}
 
-function createConfetti() {
-  for(let i=0; i<80; i++){
-    let c = document.createElement('div');
-    c.className = 'confetti';
-    c.style.left = Math.random()*100 + 'vw';
-    c.style.background = ['#ff2e63','#ff85b3','#ffb3d1','#ffc4e1'][Math.floor(Math.random()*4)];
-    c.style.animationDelay = Math.random()*0.5 + 's';
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(), 3000);
-  }
-}
+/* =========================================
+   PAGE SYSTEM
+========================================= */
 
-function createHeartTree() {
-  let tree = document.getElementById('tree');
-  for(let i=0; i<15; i++){
-    let h = document.createElement('span');
-    let x = Math.random()*200 + 25;
-    let y = Math.random()*200 + 25;
-    h.style.left = x + 'px';
-    h.style.top = y + 'px';
-    h.style.animationDelay = (i*0.1) + 's';
-    tree.appendChild(h);
-  }
-}
-</script>
-</body>
-</html>
+const pages = [
+  "countPage",
+  "arrowPage",
+  "birthdayPage",
+  "photo1",
+  "
