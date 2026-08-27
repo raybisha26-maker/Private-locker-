@@ -19,9 +19,7 @@
 .timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 0 20px rgba(255,143,196,0.3); }
 .number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
 .label { font-size: 0.8em; color: #ffd9e9; }
-.btn-group { display: flex; gap: 15px; flex-direction: column; }
-.skip-btn { padding: 12px 30px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; font-weight: 600; cursor: pointer; color: #ffd9e9; }
-.auto-btn { padding: 12px 30px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 600; border: none; color: white; }
+.next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; box-shadow: 0 0 25px rgba(255,63,145,0.5); animation: pulse 1.5s infinite; }
 
   /* INPUT PAGE */
 .input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
@@ -33,6 +31,7 @@
   /* ARROW GAME */
   #arrowPage { background: linear-gradient(135deg, #ffc2d9, #ffe6f0); color: #a3003d; }
 .instruction { font-size: 1.3em; margin-bottom: 40px; font-weight: 600; position: absolute; top: 50px; }
+.stage { position: relative; width: 100%; height: 100%; } /* Yo line add gareko */
 .bow { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
 .bow-upper,.bow-lower { width: 60px; height: 120px; border: 5px solid #a3003d; border-left: none; border-radius: 0 120px 120px 0; }
 .bow-lower { transform: rotate(180deg); margin-top: -5px; }
@@ -73,6 +72,7 @@
   @keyframes heartBeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
   @keyframes flicker { 0%{transform:scale(1) rotate(-5deg)} 100%{transform:scale(1.2) rotate(5deg)} }
   @keyframes cakeCut { 0%{transform:translateY(0)} 100%{transform:translateY(100vh)} }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
   @keyframes fall { to { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
 </style>
 </head>
@@ -88,10 +88,7 @@
     <div class="timebox"><div class="number" id="minutes">00</div><div class="label">MINUTES</div></div>
     <div class="timebox"><div class="number" id="seconds">00</div><div class="label">SECONDS</div></div>
   </div>
-  <div class="btn-group">
-    <button class="auto-btn" id="autoBtn">🎉 Waiting for Birthday...</button>
-    <button class="skip-btn" onclick="goToPage(1)">✨ Skip & See Surprise ✨</button>
-  </div>
+  <button class="next-btn" onclick="goToPage(1)">Next →</button>
 </section>
 
 <!-- PAGE 2: AGE INPUT -->
@@ -169,8 +166,7 @@ function goToPage(pageIndex) {
 
 /* COUNTDOWN - BHADO 12 2083 = AUG 28 2026 */
 const birthdayDate = new Date("2026-08-28 00:00:00").getTime();
-const autoBtn = document.getElementById('autoBtn');
-const countdownTimer = setInterval(() => {
+setInterval(() => {
   const distance = birthdayDate - new Date().getTime();
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -180,13 +176,6 @@ const countdownTimer = setInterval(() => {
   document.getElementById("hours").innerText = hours < 10? "0" + hours : hours;
   document.getElementById("minutes").innerText = minutes < 10? "0" + minutes : minutes;
   document.getElementById("seconds").innerText = seconds < 10? "0" + seconds : seconds;
-
-  if (distance < 0) {
-    clearInterval(countdownTimer);
-    autoBtn.innerText = "🎉 Happy Birthday!";
-    autoBtn.style.background = "linear-gradient(90deg,#00ff88,#00ccff)";
-    setTimeout(() => goToPage(1), 1000); // Auto next
-  }
 }, 1000);
 
 /* AGE INPUT */
@@ -232,7 +221,7 @@ function shoot() {
   flyingArrow.style.top = '50%';
   flyingArrow.style.left = '60px';
   flyingArrow.style.width = '150px';
-  document.querySelector('#arrowPage.stage').appendChild(flyingArrow);
+  document.getElementById('arrowPage').querySelector('.stage').appendChild(flyingArrow); // FIX:.stage bhayo
   setTimeout(() => flyingArrow.style.left = 'calc(100% - 100px)', 50);
   setTimeout(() => { targetHeart.classList.add('broken'); createConfetti(); flyingArrow.remove(); setTimeout(() => goToPage(4), 800); }, 650);
   arrow.style.transform = `translate(0, -50%)`;
@@ -257,4 +246,4 @@ function createConfetti() {
 }
 </script>
 </body>
-   </html>                       
+   </html>
