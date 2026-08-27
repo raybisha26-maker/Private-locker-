@@ -8,63 +8,64 @@
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Poppins', sans-serif; background: #12000d; color: white; overflow: hidden; }
- .page { height: 100vh; width: 100vw; display: none; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; padding: 20px; text-align: center; }
- .page.active { display: flex; }
+.page { height: 100vh; width: 100vw; display: none; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; padding: 20px; text-align: center; }
+.page.active { display: flex; }
 
   /* 1. COUNTDOWN */
   #countPage { background: linear-gradient(180deg, #350b29, #12000d); }
- .countdown-title { font-size: 2em; color: #ffd9e9; margin-bottom: 10px; }
- .bs-date { font-size: 1.2em; color: #ff8fc4; margin-bottom: 30px; }
- .countdown { display: flex; gap: 15px; margin-bottom: 30px; }
- .timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); }
- .number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
- .next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; }
+.countdown-title { font-size: 2em; color: #ffd9e9; margin-bottom: 10px; }
+.bs-date { font-size: 1.2em; color: #ff8fc4; margin-bottom: 30px; }
+.countdown { display: flex; gap: 15px; margin-bottom: 30px; }
+.timebox { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; min-width: 85px; border: 1px solid rgba(255,255,255,0.2); }
+.number { font-size: 2.5em; font-weight: 700; color: #ff8fc4; }
+.next-btn { padding: 14px 40px; background: linear-gradient(90deg,#ff3f91,#ff8fc4); border-radius: 50px; font-weight: 700; border: none; color: white; font-size: 1.1em; cursor: pointer; }
 
   /* 2. INPUT */
- .input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
- .input-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 25px; width: 90%; max-width: 400px; }
- .input-box h2 { margin-bottom: 20px; color: #ffd9e9; }
- .input-box input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1em; }
- .input-box button { width: 100%; padding: 12px; margin-top: 15px; border-radius: 10px; border: none; background: #ff3f91; color: white; font-weight: 600; font-size: 1.1em; cursor: pointer; }
+.input-page { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
+.input-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 25px; width: 90%; max-width: 400px; }
+.input-box h2 { margin-bottom: 20px; color: #ffd9e9; }
+.input-box input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.2); color: white; font-size: 1em; }
+.input-box button { width: 100%; padding: 12px; margin-top: 15px; border-radius: 10px; border: none; background: #ff3f91; color: white; font-weight: 600; font-size: 1.1em; cursor: pointer; }
 
-  /* 3. ARROW GAME */
-  #arrowPage { background: linear-gradient(135deg, #ffc2d9, #ffe6f0); color: #a3003d; }
- .instruction { font-size: 1.3em; font-weight: 600; position: absolute; top: 50px; }
- .stage { position: relative; width: 100%; height: 80%; }
- .bow { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
- .bow-upper,.bow-lower { width: 60px; height: 120px; border: 5px solid #a3003d; border-left: none; border-radius: 0 120px 120px 0; }
- .bow-lower { transform: rotate(180deg); margin-top: -5px; }
- .arrow { position: absolute; left: 60px; top: 50%; width: 150px; height: 5px; background: #a3003d; cursor: grab; transform: translateY(-50%); }
- .arrow:after { content: ""; position: absolute; right: -12px; border: 12px solid transparent; border-left: 18px solid #a3003d; }
- .target-heart { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); }
- .heart-shape { width: 80px; height: 80px; background: #ff1a5e; transform: rotate(45deg); transition: all 0.5s; }
- .heart-shape:before,.heart-shape:after { content: ""; width: 80px; height: 80px; position: absolute; border-radius: 50%; background: #ff1a5e; }
- .heart-shape:before { top: -40px; }.heart-shape:after { left: -40px; }
- .heart-shape.broken { transform: rotate(45deg) scale(0); opacity: 0; }
+  /* 3. PASSCODE LOCK */
+  #lockPage { background: #000; }
+.pov-text { font-size: 1.4em; color: white; margin-bottom: 20px; font-weight: 600; }
+.phone-mock { background: linear-gradient(180deg, #ffe6f0, #ffc2d9); border-radius: 40px; padding: 15px; width: 320px; box-shadow: 0 0 40px rgba(255,143,196,0.5); }
+.phone-screen { background: #fff; border-radius: 30px; padding: 20px; color: #333; }
+.bear-img { width: 120px; height: 120px; margin: 0 auto 15px; border-radius: 10px; overflow: hidden; background: #000; }
+.bear-img img { width: 100%; height: 100%; object-fit: cover; }
+.locked-text { font-family: 'Great Vibes', cursive; font-size: 2em; color: #ff8fc4; }
+.pass-dots { display: flex; justify-content: center; gap: 12px; margin: 15px 0; }
+.dot { width: 14px; height: 14px; border-radius: 50%; background: #ffe6f0; }
+.dot.filled { background: #ff3f91; }
+.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
+.key { font-size: 1.5em; color: #ff3f91; padding: 15px; cursor: pointer; border-radius: 15px; }
+.key:active { background: rgba(255,63,145,0.1); }
+.key.special { background: #ffc2d9; border-radius: 15px; }
 
   /* 4. BIRTHDAY */
   #birthdayPage { background: radial-gradient(circle, #ffb8d8 0%, #350b29 70%); }
- .big-heart { font-size: 6em; }
- .birthday h1 { font-family: 'Great Vibes', cursive; font-size: 4.5em; color: #fff; }
+.big-heart { font-size: 6em; }
+.birthday h1 { font-family: 'Great Vibes', cursive; font-size: 4.5em; color: #fff; }
 
   /* 5. PHOTO */
- .photo-page { background: linear-gradient(180deg, #350b29, #12000d); }
- .photo-card { width: 90%; max-width: 420px; padding: 12px; border-radius: 25px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.35); }
- .photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 18px; }
+.photo-page { background: linear-gradient(180deg, #350b29, #12000d); }
+.photo-card { width: 90%; max-width: 420px; padding: 12px; border-radius: 25px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.35); }
+.photo-card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 18px; }
 
   /* 6. CAKE */
- .cake-page { background: linear-gradient(180deg, #ffc2d9, #ffe6f0); color: #a3003d; }
- .cake-container { position: relative; width: 240px; height: 200px; margin: 30px auto; }
- .cake-body { width: 240px; height: 100px; background: #ff8fc4; border-radius: 0 0 25px 25px; position: absolute; bottom: 0; }
- .cream { width: 240px; height: 25px; background: #fff; position: absolute; bottom: 100px; border-radius: 25px; }
- .cake-top { width: 220px; height: 50px; background: #ff6bb3; border-radius: 25px; position: absolute; bottom: 125px; left: 10px; }
- .candle { width: 12px; height: 50px; background: #fff; position: absolute; bottom: 175px; left: 114px; }
- .flame { width: 18px; height: 25px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -18px; left: -3px; }
- .cake.cut { animation: cakeCut 0.8s forwards; }
+.cake-page { background: linear-gradient(180deg, #ffc2d9, #ffe6f0); color: #a3003d; }
+.cake-container { position: relative; width: 240px; height: 200px; margin: 30px auto; }
+.cake-body { width: 240px; height: 100px; background: #ff8fc4; border-radius: 0 0 25px 25px; position: absolute; bottom: 0; }
+.cream { width: 240px; height: 25px; background: #fff; position: absolute; bottom: 100px; border-radius: 25px; }
+.cake-top { width: 220px; height: 50px; background: #ff6bb3; border-radius: 25px; position: absolute; bottom: 125px; left: 10px; }
+.candle { width: 12px; height: 50px; background: #fff; position: absolute; bottom: 175px; left: 114px; }
+.flame { width: 18px; height: 25px; background: radial-gradient(#fff,#ffeb3b,#ff9800); border-radius: 50%; position: absolute; top: -18px; left: -3px; }
+.cake.cut { animation: cakeCut 0.8s forwards; }
 
   /* 7. FINAL */
- .final { background: linear-gradient(180deg, #350b29, #12000d); }
- .final h1 { font-family: 'Great Vibes', cursive; font-size: 4em; color: #ffd9e9; }
+.final { background: linear-gradient(180deg, #350b29, #12000d); }
+.final h1 { font-family: 'Great Vibes', cursive; font-size: 4em; color: #ffd9e9; }
   @keyframes cakeCut { 0%{transform:translateY(0)} 100%{transform:translateY(100vh)} }
 </style>
 </head>
@@ -103,13 +104,27 @@
   </div>
 </section>
 
-<!-- 4. ARROW GAME -->
-<section class="page" id="arrowPage">
-  <div class="instruction"><b>For MOtki ❤️</b><br>Drag arrow back and release</div>
-  <div class="stage">
-    <div class="bow"><div class="bow-upper"></div><div class="bow-lower"></div></div>
-    <div class="arrow" id="arrow"></div>
-    <div class="target-heart"><div class="heart-shape" id="targetHeart"></div><div>MOtki ❤️</div></div>
+<!-- 4. PASSCODE LOCK -->
+<section class="page" id="lockPage">
+  <div class="pov-text">POV : You Recieved This At 12 am 🥰</div>
+  <div class="phone-mock">
+    <div class="phone-screen">
+      <div class="bear-img">
+        <img id="bearPic" src="2853965898329535">
+      </div>
+      <div class="locked-text">Locked</div>
+      <p style="font-size: 0.9em; color: #888;">Enter the 6-digit passcode</p>
+      <div class="pass-dots" id="passDots">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="keypad">
+        <div class="key" onclick="addDigit(1)">1</div><div class="key" onclick="addDigit(2)">2</div><div class="key" onclick="addDigit(3)">3</div>
+        <div class="key" onclick="addDigit(4)">4</div><div class="key" onclick="addDigit(5)">5</div><div class="key" onclick="addDigit(6)">6</div>
+        <div class="key" onclick="addDigit(7)">7</div><div class="key" onclick="addDigit(8)">8</div><div class="key" onclick="addDigit(9)">9</div>
+        <div class="key special" onclick="delDigit()">⌫</div><div class="key" onclick="addDigit(0)">0</div><div class="key special" onclick="clearPass()">X</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -117,13 +132,13 @@
 <section class="page" id="birthdayPage"><div class="birthday"><span class="big-heart">❤️</span><h1>Happy Birthday</h1><h2>MOtki ✨</h2></div></section>
 
 <!-- 6. PHOTO 1 -->
-<section class="page photo-page" id="photo1"><div class="photo-title">MOtki ❤️</div><div class="photo-card"><img src="1786729114527.jpg"></div><div>01 / 03</div></section>
+<section class="page photo-page" id="photo1"><div class="photo-title">MOtki ❤️</div><div class="photo-card"><img src="1627023902089696"></div><div>01 / 03</div></section>
 
 <!-- 7. PHOTO 2 -->
-<section class="page photo-page" id="photo2"><div class="photo-title">A Little Memory ✨</div><div class="photo-card"><img src="ChatGPT Image Jun 15, 2025, 02_27_03 PM.png"></div><div>02 / 03</div></section>
+<section class="page photo-page" id="photo2"><div class="photo-title">A Little Memory ✨</div><div class="photo-card"><img src="2160100761518429"></div><div>02 / 03</div></section>
 
 <!-- 8. PHOTO 3 -->
-<section class="page photo-page" id="photo3"><div class="photo-title">Always Special ❤️</div><div class="photo-card"><img src="IMG_20250827_184410.jpg"></div><div>03 / 03</div></section>
+<section class="page photo-page" id="photo3"><div class="photo-title">Always Special ❤️</div><div class="photo-card"><img src="1786729114527.jpg"></div><div>03 / 03</div></section>
 
 <!-- 9. CAKE -->
 <section class="page cake-page" id="cakePage">
@@ -143,18 +158,19 @@
 <section class="page final" id="finalPage"><div><div class="big-heart">💗</div><h1>Happy Birthday MOtki</h1><p>May your day be filled with<br>smiles, beautiful moments<br>and lots of happiness. ✨</p></div></section>
 
 <script>
-const pages = ["countPage", "agePage", "dobPage", "arrowPage", "birthdayPage", "photo1", "photo2", "photo3", "cakePage", "finalPage"];
+const pages = ["countPage", "agePage", "dobPage", "lockPage", "birthdayPage", "photo1", "photo2", "photo3", "cakePage", "finalPage"];
 let currentPage = 0;
+let passcode = "";
+const correctPass = "120283"; // Bhado 12, 2083 ko passcode. Yo change garna sakchau
 
 function goToPage(pageIndex) {
   document.getElementById(pages[currentPage]).classList.remove('active');
   document.getElementById(pages[pageIndex]).classList.add('active');
   currentPage = pageIndex;
-  // Photo dekhi Cake samma auto 3 sec ma next
-  if(pageIndex >= 4 && pageIndex <= 8) setTimeout(() => goToPage(pageIndex + 1), 3000);
+  if(pageIndex >= 5 && pageIndex <= 8) setTimeout(() => goToPage(pageIndex + 1), 3000);
 }
 
-/* COUNTDOWN - BHADO 12 2083 = AUG 28 2026 */
+/* COUNTDOWN */
 const birthdayDate = new Date("2026-08-28 00:00:00").getTime();
 setInterval(() => {
   const distance = birthdayDate - new Date().getTime();
@@ -164,14 +180,43 @@ setInterval(() => {
   document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
 }, 1000);
 
-/* ARROW DRAG */
-const arrow = document.getElementById('arrow');
-let isDragging = false;
-let startX = 0;
-arrow.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; });
-arrow.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; });
-document.addEventListener('mouseup', () => { if(isDragging){ isDragging=false; document.getElementById('targetHeart').classList.add('broken'); setTimeout(() => goToPage(4), 600); } });
-document.addEventListener('touchend', () => { if(isDragging){ isDragging=false; document.getElementById('targetHeart').classList.add('broken'); setTimeout(() => goToPage(4), 600); } });
+/* PASSCODE SYSTEM */
+function updateDots() {
+  const dots = document.querySelectorAll('#passDots.dot');
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('filled', i < passcode.length);
+  });
+}
+function addDigit(num) {
+  if(passcode.length < 6) {
+    passcode += num;
+    updateDots();
+    // Bear ko expression change garne
+    if(passcode.length == 2) document.getElementById('bearPic').src = "2853965898329535";
+    if(passcode.length == 6) document.getElementById('bearPic').src = "2160100761518429";
+
+    if(passcode.length == 6) {
+      setTimeout(() => {
+        if(passcode == correctPass) {
+          goToPage(4);
+        } else {
+          alert("Wrong Passcode! Try again ❤️");
+          clearPass();
+        }
+      }, 500);
+    }
+  }
+}
+function delDigit() {
+  passcode = passcode.slice(0, -1);
+  updateDots();
+  document.getElementById('bearPic').src = "2853965898329535";
+}
+function clearPass() {
+  passcode = "";
+  updateDots();
+  document.getElementById('bearPic').src = "2853965898329535";
+}
 
 /* CAKE SLIDE */
 const cake = document.getElementById('cake');
